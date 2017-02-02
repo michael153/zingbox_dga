@@ -8,7 +8,7 @@ from zipfile import ZipFile
 from itertools import chain
 from collections import Counter
 from collections import defaultdict
-from utils import is_ip
+
 
 from dga_generators import banjori, corebot, cryptolocker, \
     dircrypt, kraken, lockyv2, pykspa, qakbot, ramdo, ramnit, simda
@@ -40,14 +40,13 @@ class Dataprocess():
 
     #logger = logging.getLogger(__name__)
 
-    def __init__(self, num, internal = True):
+    def __init__(self, num):
         #self.env = env
         #self.tenantid = tenantid
         self.data_dir = os.path.abspath('data')
-        self.datafile1 = os.path.join(self.data_dir, 'dga_train_'+'.pkl')
-        self.datafile2 = os.path.join(self.data_dir, 'all_train_'+'.pkl')
+        self.datafile1 = os.path.join(self.data_dir, 'dga_train'+'.pkl')
+        self.datafile2 = os.path.join(self.data_dir, 'all_train'+'.pkl')
         self.num = num
-        self.internal = internal
 
     def get_alexa(self):
         filename='top-1m.csv'
@@ -55,7 +54,7 @@ class Dataprocess():
         url = urlopen(address)
         zipfile = ZipFile(StringIO(url.read()))
         return [tldextract.extract(x.split(',')[1]).domain for x in \
-                zipfile.read(filename).split()[:(8*self.num)]]
+                zipfile.read(filename).split()[:(10*self.num)]]
 
     def get_malicious(self):
         num_per_dga=self.num
@@ -152,15 +151,75 @@ class Dataprocess():
             internal_domain.extend([k for k in counter if counter[k] > 5])
       return list(set(internal_domain))
     '''
+
+    def get_external(self):
+        domains = []
+        labels = []
+        external_path = os.path.abspath('dga_wordlists')
+        
+        conficker = []
+        with open(os.path.join(external_path,'conficker.txt'), 'r') as f:
+            for line in f:
+                conficker.append(tldextract.extract(line).domain)
+        domains += conficker[:self.num]
+        labels += ['conficker']*self.num
+
+        goz = []
+        with open(os.path.join(external_path,'goz.txt'), 'r') as f:
+            for line in f:
+                goz.append(tldextract.extract(line).domain)
+        domains += goz[:self.num]
+        labels += ['goz']*self.num
+
+        matsnu = []
+        with open(os.path.join(external_path,'matsnu.txt'), 'r') as f:
+            for line in f:
+                matsnu.append(tldextract.extract(line).domain)
+        domains += matsnu[:self.num]
+        labels += ['matsnu']*self.num
+
+        zeus = []
+        with open(os.path.join(external_path,'zeus.txt'), 'r') as f:
+            for line in f:
+                zeus.append(tldextract.extract(line).domain)
+        domains += zeus[:self.num]
+        labels += ['zeus']*self.num
+
+        tinba = []
+        with open(os.path.join(external_path,'tinba.txt'), 'r') as f:
+            for line in f:
+                tinba.append(tldextract.extract(line).domain)
+        domains += tinba[:self.num]
+        labels += ['tinba']*self.num
+
+        rovnix = []
+        with open(os.path.join(external_path,'rovnix.txt'), 'r') as f:
+            for line in f:
+                rovnix.append(tldextract.extract(line).domain)
+        domains += rovnix[:self.num]
+        labels += ['rovnix']*self.num
+
+        pushdo = []
+        with open(os.path.join(external_path,'pushdo.txt'), 'r') as f:
+            for line in f:
+                pushdo.append(tldextract.extract(line).domain)
+        domains += pushdo[:self.num]
+        labels += ['pushdo']*self.num
+
+        return domains, labels
+
     def gen_data(self, force=False):
         if force or (not os.path.isfile(self.datafile1)) or (not os.path.isfile(self.datafile2)):
             domains, labels = self.get_malicious()
+            otherdomains, otherlabels = self.get_external()
+            domains += otherdomains
+            labels += otherlabels
             pickle.dump(zip(labels, domains), open(self.datafile1, 'w'))
             labels = ['malicious']*len(labels)
             # Get equal number of benign/malicious
             exdomains = self.get_alexa()
             domains += exdomains
-            labels += ['benign']*len(exdomains)
+            labels += ['benign']*len(exdomains)           
             '''
             if self.internal:
                 indomains = self.get_internal()

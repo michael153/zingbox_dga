@@ -19,9 +19,9 @@ data_dir = os.path.abspath('data')
 
 def multi_model(max_features):
     model = Sequential()
-   # model.add(Dense(20, input_dim=max_features, init='uniform', activation='relu'))
-    #model.add(Dense(15, init='uniform', activation='relu'))                                               
-    model.add(Dense(11, input_dim=max_features,init='uniform', activation='sigmoid'))
+    model.add(Dense(30, input_dim=max_features, init='uniform', activation='relu'))
+    model.add(Dense(22, init='uniform', activation='relu'))                                               
+    model.add(Dense(18, input_dim=max_features,init='uniform', activation='sigmoid'))
     model.compile(loss='categorical_crossentropy',
                   optimizer='adam', metrics = [top_k_categorical_accuracy])
     return model
@@ -38,7 +38,7 @@ def binary_model(max_features):
 def run(type, max_epoch=50, nfolds=10, batch_size=128):
     """Run train/test on logistic regression model"""
 
-    indata = Dataprocess(None, None, 70000, internal = False).get_data(type)
+    indata = Dataprocess(50000).get_data(type)
     # Extract data and labels
     X = [x[1] for x in indata]
     labels = [x[0] for x in indata]
@@ -48,12 +48,15 @@ def run(type, max_epoch=50, nfolds=10, batch_size=128):
     cols = ngram_vectorizer.get_feature_names()
     #countvec = pd.DataFrame(countvec.toarray(), columns=ngram_vectorizer.get_feature_names()).toarray()
     max_features = countvec.shape[1]
+    print len(cols)
     print max_features
     # Create feature vectors
-    print "vectorizing data"    
-    with open(type+'cols.txt', 'w') as outfile:
-        json.dump(cols, outfile)
-    # Convert labels to 0-13
+    print "vectorizing data"
+    thefile = open(type+'cols.txt', 'w')
+    for item in cols:
+        thefile.write("%s\n" % item)  
+
+    # Convert labels to 0-18/0-2
     y = [label_set.index(x) for x in labels]
     #if type == 'multi':
     y = np_utils.to_categorical(y, len(label_set))
