@@ -1,6 +1,7 @@
 """Train and test bigram classifier"""
 
 import os
+import sys
 import json
 import numpy as np
 import pandas as pd
@@ -35,10 +36,10 @@ def binary_model(max_features):
                   optimizer='adam',  metrics = ['accuracy'])
     return model
 
-def run(type, max_epoch=50, nfolds=10, batch_size=128):
+def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     """Run train/test on logistic regression model"""
 
-    indata = Dataprocess(50000).get_data(type)
+    indata = Dataprocess(num).get_data(type,force=True)
     # Extract data and labels
     X = [x[1] for x in indata]
     labels = [x[0] for x in indata]
@@ -117,10 +118,10 @@ def run(type, max_epoch=50, nfolds=10, batch_size=128):
         with open(type+"_model.json", "w") as json_file:
             json_file.write(model_json)
             model_json = best_model.to_json()
-        best_model.save_weights(type+"_model.h5")
-    
+        best_model.save_weights(type+"_model.h5") 
 
     return best_model
 
-binary_model = run('binary', max_epoch=10, nfolds=5, batch_size=128)
-multi_model = run('multi', max_epoch=10, nfolds=5, batch_size=128)
+if __name__ == '__main__':
+    main(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])  
+
