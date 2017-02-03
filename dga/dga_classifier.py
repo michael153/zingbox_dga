@@ -38,7 +38,10 @@ def binary_model(max_features):
 
 def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     """Run train/test on logistic regression model"""
-
+    num = int(num)
+    max_epoch = int(max_epoch)
+    nfolds = int(nfolds)
+    batch_size = int(batch_size)
     indata = Dataprocess(num).get_data(type,force=True)
     # Extract data and labels
     X = [x[1] for x in indata]
