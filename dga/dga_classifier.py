@@ -11,8 +11,10 @@ from keras.models import Sequential
 from keras.utils import np_utils
 from keras.metrics import top_k_categorical_accuracy
 from keras.models import model_from_json
+from collections import defaultdict
 import sklearn
 from sklearn import feature_extraction
+from sklearn.decomposition import PCA
 from sklearn.cross_validation import train_test_split
 
 
@@ -42,22 +44,44 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     max_epoch = int(max_epoch)
     nfolds = int(nfolds)
     batch_size = int(batch_size)
-    indata = Dataprocess(num).get_data(type,force=False)
+    indata = Dataprocess(num).get_data(type,force=True)
     # Extract data and labels
     X = [x[1] for x in indata]
     labels = [x[0] for x in indata]
     label_set = list(set(labels))
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3), min_df = 0.0003)
+
     countvec = ngram_vectorizer.fit_transform(X)
+    print countvec.shape
     cols = ngram_vectorizer.get_feature_names()
-    #countvec = pd.DataFrame(countvec.toarray(), columns=ngram_vectorizer.get_feature_names(), min_df=0.05)
-    max_features = countvec.shape[1]
+    countvec = countvec.toarray()
+    print countvec
+    countvec = PCA(n_components=0.9).fit_transform(countvec)
+    print countvec.shape
     '''
+    count_proj = pca.transform(countvec)
+    print count_proj
+    count_rec = pca.inverse_transform(count_proj)
+    print count_rec
+    print count_rec.shape
+    '''
+    '''
+    unknown_letter = defaultdict(int)
+    for x in X:
+        ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))
+        countvec2 = ngram_vectorizer.fit_transform(x)
+        cols2 = ngram_vectorizer.get_feature_names()
+        for col in cols2:
+            if cols2 not in cols1:
+                unknown_letter[x] += 1
+    countvec = pd.DataFrame(countvec.toarray(), columns=ngram_vectorizer.get_feature_names())
+    
+    
     for col_index in range(countvec.shape[1]):
         if sum(countvec.loc[col_index]) <= 10:
             print countvec.loc[col_index]
     '''
-    
+    max_features = countvec.shape[1]
     # Create feature vectors
     print "vectorizing data"
     thefile = open(type+'cols.txt', 'w')
