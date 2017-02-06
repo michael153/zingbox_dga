@@ -32,7 +32,6 @@ cols1= [line.rstrip('\n') for line in open('binary'+'cols.txt')]
 cols2= [line.rstrip('\n') for line in open('multi'+'cols.txt')]
 
 def subtest(binary_model, multi_model, data, cols1, cols2):
-    indata = Dataprocess(42000).get_data('binary')
     labels = ['benign','malicious']
 
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3),min_df = 0.0001)
@@ -46,7 +45,6 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
     is_dga = [labels[i] for i in binary_model.predict_classes(np.array([newvec]))]
     type_dga = None
 
-    indata = Dataprocess(50000).get_data('multi')
     labels = ['qakbot', 'dircrypt', 'pykspa', 'corebot', 'kraken', 'pushdo', 'ramnit', 'banjori', 'tinba', 'conficker', 'locky', 'simda', 'ramdo', 'cryptolocker']
  
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))    
