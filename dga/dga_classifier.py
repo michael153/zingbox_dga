@@ -50,10 +50,8 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     labels = [x[0] for x in indata]
     label_set = list(set(labels))
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3), min_df = 0.0001)
-
     countvec = ngram_vectorizer.fit_transform(X)
-    countvec = pd.DataFrame(countvec.toarray(), columns=ngram_vectorizer.get_feature_names())
-    cols1 = ngram_vectorizer.get_feature_names()
+    cols = ngram_vectorizer.get_feature_names()
     '''
     unknown_letter = defaultdict(int)
     for x in X:
@@ -103,8 +101,8 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
         out_data = {}
 
         for ep in range(max_epoch):
-            model.fit(X_train.todense(), y_train, batch_size=batch_size, nb_epoch=1)
-            t_probs = model.predict_proba(X_holdout.todense())
+            model.fit(X_train.toarray(), y_train, batch_size=batch_size, nb_epoch=1)
+            t_probs = model.predict_proba(X_holdout.toarray())
             t_auc = sklearn.metrics.roc_auc_score(y_holdout, t_probs)
             print 'Epoch %d: auc = %f (best=%f)' % (ep, t_auc, best_auc)
             if t_auc > best_auc:
@@ -114,7 +112,7 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
             else:
                 if (ep-best_iter) >= 2:
                     break
-        probs = model.predict_proba(X_test.todense())
+        probs = model.predict_proba(X_test.toarray())
         m_auc = sklearn.metrics.roc_auc_score(y_test, probs)
         print 'score is %f' % m_auc
         if m_auc > best_m_auc:
@@ -126,7 +124,7 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
         top_prob = np.concatenate((top_prob, np.array([label_test]).T), axis=1)
         metric = pd.DataFrame([final_test, final_prob])
         metric = metric.transpose()
-        metric.columns = ['pred','actual']
+        metric.columns = ['actual','pred']
         #metric = np.asarray(sklearn.metrics.confusion_matrix(final_test, final_prob))
         #print metric
         #metric = pd.DataFrame(data=metric, index=label_set, columns=label_set)
