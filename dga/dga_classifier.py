@@ -22,9 +22,9 @@ data_dir = os.path.abspath('data')
 
 def multi_model(max_features):
     model = Sequential()
-    model.add(Dense(30, input_dim=max_features, init='uniform', activation='relu'))
-    model.add(Dense(22, init='uniform', activation='relu'))                                               
-    model.add(Dense(18, input_dim=max_features,init='uniform', activation='sigmoid'))
+    #model.add(Dense(30, input_dim=max_features, init='uniform', activation='relu'))
+    #model.add(Dense(22, init='uniform', activation='relu'))                                               
+    model.add(Dense(14, input_dim=max_features,init='uniform', activation='sigmoid'))
     model.compile(loss='categorical_crossentropy',
                   optimizer='adam', metrics = [top_k_categorical_accuracy])
     return model
@@ -44,12 +44,14 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     max_epoch = int(max_epoch)
     nfolds = int(nfolds)
     batch_size = int(batch_size)
-    indata = Dataprocess(num).get_data(type,force=True)
+    indata = Dataprocess(num).get_data(type,force=False)
     # Extract data and labels
     X = [x[1] for x in indata]
     X_length = [len(x) for x in X]
     labels = [x[0] for x in indata]
     label_set = list(set(labels))
+    print label_set
+    print labels[0]
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3), min_df = 0.0001)
     countvec = ngram_vectorizer.fit_transform(X)
     '''
@@ -77,14 +79,17 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     # Create feature vectors
     print "vectorizing data"
     thefile = open(type+'cols.txt', 'w')
+    i = 0
     for item in cols:
+        i += 1
         thefile.write("%s\n" % item)  
-
+    print i
     # Convert labels to 0-18/0-2
     y = [label_set.index(x) for x in labels]
+    print y[:10]
     #if type == 'multi':
     y = np_utils.to_categorical(y, len(label_set))
-
+    print y[:10]
     final_data = []
     final_score = []
     best_m_auc = 0.0
@@ -141,7 +146,6 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
         model_json = best_model.to_json()
         with open(type+"_model.json", "w") as json_file:
             json_file.write(model_json)
-            model_json = best_model.to_json()
         best_model.save_weights(type+"_model.h5") 
 
     return best_model
