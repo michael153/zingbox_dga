@@ -52,8 +52,10 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     label_set = list(set(labels))
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3), min_df = 0.0001)
     countvec = ngram_vectorizer.fit_transform(X)
-    countvec.toarray()
-    countvec = np.append(countvec, [X_length], axis = 1)
+    '''
+    countvec = countvec.toarray()
+    countvec =np.append(countvec, [X_length], axis = 1)
+    '''
     cols = ngram_vectorizer.get_feature_names()
     '''
     unknown_letter = defaultdict(int)
@@ -104,8 +106,8 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
         out_data = {}
 
         for ep in range(max_epoch):
-            model.fit(X_train, y_train, batch_size=batch_size, nb_epoch=1)
-            t_probs = model.predict_proba(X_holdout)
+            model.fit(X_train.toarray(), y_train, batch_size=batch_size, nb_epoch=1)
+            t_probs = model.predict_proba(X_holdout.toarray())
             t_auc = sklearn.metrics.roc_auc_score(y_holdout, t_probs)
             print 'Epoch %d: auc = %f (best=%f)' % (ep, t_auc, best_auc)
             if t_auc > best_auc:
@@ -115,7 +117,7 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
             else:
                 if (ep-best_iter) >= 2:
                     break
-        probs = model.predict_proba(X_test)
+        probs = model.predict_proba(X_test.toarray())
         m_auc = sklearn.metrics.roc_auc_score(y_test, probs)
         print 'score is %f' % m_auc
         if m_auc > best_m_auc:
