@@ -49,7 +49,7 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     X = [x[1] for x in indata]
     labels = [x[0] for x in indata]
     label_set = list(set(labels))
-    ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3), max_df = 0.001)
+    ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3), min_df = 0.0001)
     countvec = ngram_vectorizer.fit_transform(X)
     cols = ngram_vectorizer.get_feature_names()
     '''
