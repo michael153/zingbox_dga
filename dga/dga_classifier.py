@@ -49,39 +49,28 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     X = [x[1] for x in indata]
     labels = [x[0] for x in indata]
     label_set = list(set(labels))
-    ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3), min_df = 0.0003)
+    ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3), min_df = 0.0001)
 
     countvec = ngram_vectorizer.fit_transform(X)
-    print countvec.shape
-    cols = ngram_vectorizer.get_feature_names()
-    countvec = countvec.toarray()
-    print countvec
-    countvec = PCA(n_components=0.9).fit_transform(countvec)
-    print countvec.shape
-    '''
-    count_proj = pca.transform(countvec)
-    print count_proj
-    count_rec = pca.inverse_transform(count_proj)
-    print count_rec
-    print count_rec.shape
-    '''
+    countvec = pd.DataFrame(countvec.toarray(), columns=ngram_vectorizer.get_feature_names())
+    cols1 = ngram_vectorizer.get_feature_names()
     '''
     unknown_letter = defaultdict(int)
     for x in X:
         ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))
-        countvec2 = ngram_vectorizer.fit_transform(x)
+        countvec2 = ngram_vectorizer.fit_transform([x])
         cols2 = ngram_vectorizer.get_feature_names()
+        print cols2
         for col in cols2:
             if cols2 not in cols1:
                 unknown_letter[x] += 1
-    countvec = pd.DataFrame(countvec.toarray(), columns=ngram_vectorizer.get_feature_names())
     
-    
-    for col_index in range(countvec.shape[1]):
-        if sum(countvec.loc[col_index]) <= 10:
-            print countvec.loc[col_index]
+    print unknown_letter
+    print unknown_letter.values()
+    countvec['unknown'] = unknown_letter.values()
     '''
     max_features = countvec.shape[1]
+
     # Create feature vectors
     print "vectorizing data"
     thefile = open(type+'cols.txt', 'w')
