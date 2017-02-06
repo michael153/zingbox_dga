@@ -163,21 +163,20 @@ class Dataprocess():
                 conficker.append(tldextract.extract(line).domain)
         domains += conficker[:self.num]
         labels += ['conficker']*self.num
-        '''
+        
         goz = []
         with open(os.path.join(external_path,'goz.txt'), 'r') as f:
             for line in f:
                 goz.append(tldextract.extract(line).domain)
         domains += goz[:self.num]
         labels += ['goz']*self.num
-        '''
-        '''
-        other = []
-        with open(os.path.join(external_path,'others_dga.txt'), 'r') as f:
+        
+        new_goz = []
+        with open(os.path.join(external_path,'new_goz.txt'), 'r') as f:
             for line in f:
                 other.append(tldextract.extract(line).domain)
-        domains += other[:self.num]
-        labels += ['other']*self.num
+        domains += new_goz[:self.num]
+        labels += ['new_goz']*self.num
         
         zeus = []
         with open(os.path.join(external_path,'zeus.txt'), 'r') as f:
@@ -185,21 +184,21 @@ class Dataprocess():
                 zeus.append(tldextract.extract(line).domain)
         domains += zeus[:self.num]
         labels += ['zeus']*self.num
-        '''
+        
         tinba = []
         with open(os.path.join(external_path,'tinba.txt'), 'r') as f:
             for line in f:
                 tinba.append(tldextract.extract(line).domain)
         domains += tinba[:self.num]
         labels += ['tinba']*self.num
-
+        '''
         rovnix = []
         with open(os.path.join(external_path,'rovnix.txt'), 'r') as f:
             for line in f:
                 rovnix.append(tldextract.extract(line).domain)
         domains += rovnix[:self.num]
         labels += ['rovnix']*self.num
-
+        '''
         pushdo = []
         with open(os.path.join(external_path,'pushdo.txt'), 'r') as f:
             for line in f:
