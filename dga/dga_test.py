@@ -14,7 +14,7 @@ from sklearn.cross_validation import train_test_split
 import urllib2
 import tldextract
 
-data_dir = os.path.abspath('data/' + 'staging')
+data_dir = os.path.abspath('data')
 json_file = open('binary_model.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
@@ -100,4 +100,5 @@ res = [labels, is_dga_list, type_dga_list, probs_list, domain_list]
 table = pd.DataFrame(res).transpose()
 table.columns = ['true','pred1','pred2','prob','address']
 print table
+
 table.to_csv(os.path.join(data_dir,'test_res.csv'))
