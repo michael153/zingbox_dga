@@ -42,18 +42,22 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     max_epoch = int(max_epoch)
     nfolds = int(nfolds)
     batch_size = int(batch_size)
-    indata = Dataprocess(num).get_data(type,force=True)
+    indata = Dataprocess(num).get_data(type,force=False)
     # Extract data and labels
     X = [x[1] for x in indata]
     labels = [x[0] for x in indata]
     label_set = list(set(labels))
-    ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))
+    ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3), min_df = 0.0003)
     countvec = ngram_vectorizer.fit_transform(X)
     cols = ngram_vectorizer.get_feature_names()
-    #countvec = pd.DataFrame(countvec.toarray(), columns=ngram_vectorizer.get_feature_names()).toarray()
+    #countvec = pd.DataFrame(countvec.toarray(), columns=ngram_vectorizer.get_feature_names(), min_df=0.05)
     max_features = countvec.shape[1]
-    print len(cols)
-    print max_features
+    '''
+    for col_index in range(countvec.shape[1]):
+        if sum(countvec.loc[col_index]) <= 10:
+            print countvec.loc[col_index]
+    '''
+    
     # Create feature vectors
     print "vectorizing data"
     thefile = open(type+'cols.txt', 'w')
@@ -80,6 +84,7 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
             model = binary_model(max_features)
         print "Train..."
         X_train, X_holdout, y_train, y_holdout = train_test_split(X_train, y_train, test_size=0.05)
+        print X_train.shape
         best_iter = -1
         best_auc = 0.0
         out_data = {}
@@ -127,4 +132,3 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
 
 if __name__ == '__main__':
     main(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])  
-
