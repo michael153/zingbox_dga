@@ -170,14 +170,14 @@ class Dataprocess():
                 goz.append(tldextract.extract(line).domain)
         domains += goz[:self.num]
         labels += ['goz']*self.num
-
-        matsnu = []
-        with open(os.path.join(external_path,'matsnu.txt'), 'r') as f:
+        
+        other = []
+        with open(os.path.join(external_path,'others_dga.txt'), 'r') as f:
             for line in f:
-                matsnu.append(tldextract.extract(line).domain)
-        domains += matsnu[:self.num]
-        labels += ['matsnu']*self.num
-
+                other.append(tldextract.extract(line).domain)
+        domains += other[:self.num]
+        labels += ['other']*self.num
+        
         zeus = []
         with open(os.path.join(external_path,'zeus.txt'), 'r') as f:
             for line in f:
