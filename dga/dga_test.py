@@ -42,7 +42,7 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
     for i in range(len(cols1)):
         if cols1[i] in newcols:
             newvec[i] = 1 
-    is_dga = [labels[i] for i in binary_model.predict_classes(np.array([newvec]))]
+    is_dga = [labels[i] for i in binary_model.predict_classes(np.array([newvec]+[len(newvec)]))]
     type_dga = None
 
     labels = ['qakbot', 'dircrypt', 'pykspa', 'corebot', 'kraken', 'pushdo', 'ramnit', 'banjori', 'tinba', 'conficker', 'locky', 'simda', 'ramdo', 'cryptolocker']
