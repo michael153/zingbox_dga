@@ -5,6 +5,8 @@ import sys
 import json
 import numpy as np
 import pandas as pd
+from numpy import array
+from scipy.sparse import csr_matrix
 from dataprocess import Dataprocess
 from keras.layers.core import Dense
 from keras.models import Sequential
@@ -38,13 +40,25 @@ def binary_model(max_features):
                   optimizer='adam',  metrics = ['accuracy'])
     return model
 
+def csc_vappend(countvec, list):
+    countvec_row = []
+    nrow = countvec.shape[0]
+    ncol = countvec.shape[1]
+    for i in range(len(countvec.indptr)-1):
+        countvec_row.extend([i]*(countvec.indptr[i+1] - countvec.indptr[i]))
+    new_row = countvec_row + range(countvec.shape[0])
+    new_col = np.array(countvec.indices.tolist()+ [countvec.shape[1]]*countvec.shape[0])
+    new_data = np.array(countvec.data.tolist() + list)
+    countvec = csr_matrix((new_data,(new_row, new_col)), shape=(nrow, ncol+1))
+    return countvec
+
 def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     """Run train/test on logistic regression model"""
     num = int(num)
     max_epoch = int(max_epoch)
     nfolds = int(nfolds)
     batch_size = int(batch_size)
-    indata = Dataprocess(num).get_data(type,force=False)
+    indata = Dataprocess(num).get_data(type,force=True)
     # Extract data and labels
     X = [x[1] for x in indata]
     X_length = [len(x) for x in X]
@@ -52,36 +66,28 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     label_set = list(set(labels))
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3), min_df = 0.0001)
     countvec = ngram_vectorizer.fit_transform(X)
-    '''
-    countvec = countvec.toarray()
-    countvec = np.concatenate((countvec, np.array([X_length]).T), axis=1)
-    '''
     cols = ngram_vectorizer.get_feature_names()
-    '''
-    unknown_letter = defaultdict(int)
-    for x in X:
-        ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))
-        countvec2 = ngram_vectorizer.fit_transform([x])
-        cols2 = ngram_vectorizer.get_feature_names()
-        print cols2
-        for col in cols2:
-            if cols2 not in cols1:
-                unknown_letter[x] += 1
-    
-    print unknown_letter
-    print unknown_letter.values()
-    countvec['unknown'] = unknown_letter.values()
-    '''
-    max_features = countvec.shape[1]
-
-    # Create feature vectors
-    print "vectorizing data"
     thefile = open(type+'cols.txt', 'w')
     i = 0
     for item in cols:
         i += 1
         thefile.write("%s\n" % item)  
-    print i
+    
+    unknown_letter = []
+    for x in X:
+        l2 = [x[i]+x[i+1] for i in range(len(x)-1)]
+        l3 = [x[i]+x[i+1]+x[i+2] for i in range(len(x)-2)]
+        subcols = [col for col in l2+l3 if col not in cols]
+        unknown_letter.append(len(subcols))
+
+    countvec = csc_vappend(countvec, X_length)
+    countvec = csc_vappend(countvec, unknown_letter)
+    
+    max_features = countvec.shape[1]
+    print len(cols), max_features
+    # Create feature vectors
+    print "vectorizing data"
+    
     # Convert labels to 0-18/0-2
     y = [label_set.index(x) for x in labels]
     #if type == 'multi':
@@ -131,9 +137,6 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
         metric = pd.DataFrame([final_test, final_prob])
         metric = metric.transpose()
         metric.columns = ['actual','pred']
-        #metric = np.asarray(sklearn.metrics.confusion_matrix(final_test, final_prob))
-        #print metric
-        #metric = pd.DataFrame(data=metric, index=label_set, columns=label_set)
         top_prob_metric = pd.DataFrame(data=top_prob)
         metric.to_csv(os.path.join(data_dir,"final" + type + str(fold)+".csv"))
         top_prob_metric.to_csv(os.path.join(data_dir,"ranking" + type + str(fold)+".csv"))
