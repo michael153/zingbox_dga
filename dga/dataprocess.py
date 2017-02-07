@@ -54,7 +54,7 @@ class Dataprocess():
         url = urlopen(address)
         zipfile = ZipFile(StringIO(url.read()))
         return [tldextract.extract(x.split(',')[1]).domain for x in \
-                zipfile.read(filename).split()[:(10*self.num)]]
+                zipfile.read(filename).split()[:(5*self.num)]]
 
     def get_malicious(self):
         num_per_dga=self.num
@@ -103,19 +103,21 @@ class Dataprocess():
         #labels += ['kraken']*kraken_to_gen
 
         # generate locky and divide between configs
+        '''
         locky_gen = max(1, num_per_dga/11)
         for i in range(1, 12):
             domains += lockyv2.generate_domains(locky_gen, config=i)
             labels += ['locky']*locky_gen
-        
+        '''
         # Generate pyskpa domains
         #domains += pykspa.generate_domains(num_per_dga, datetime(2016, 1, 1))
         #labels += ['pykspa']*num_per_dga
 
         # Generate qakbot
+        '''
         domains += qakbot.generate_domains(num_per_dga, tlds=[])
         labels += ['qakbot']*num_per_dga
-
+        '''
         # ramdo divided over different lengths
         ramdo_lengths = range(8, 32)
         segs_size = max(1, num_per_dga/len(ramdo_lengths))
@@ -126,8 +128,8 @@ class Dataprocess():
             labels += ['ramdo']*segs_size
 
         # ramnit
-        domains += ramnit.generate_domains(num_per_dga, 0x123abc12)
-        labels += ['ramnit']*num_per_dga
+        #domains += ramnit.generate_domains(num_per_dga, 0x123abc12)
+        #labels += ['ramnit']*num_per_dga
 
         # simda
         simda_lengths = range(8, 32)

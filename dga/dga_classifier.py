@@ -14,7 +14,7 @@ from keras.utils import np_utils
 from keras.metrics import top_k_categorical_accuracy
 from keras.models import model_from_json
 from collections import defaultdict
-from progressbar import bar
+#from progressbar import bar
 import sklearn
 from sklearn import feature_extraction
 from sklearn.decomposition import PCA
