@@ -104,8 +104,8 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
         out_data = {}
 
         for ep in range(max_epoch):
-            model.fit(X_train.toarray(), y_train, batch_size=batch_size, nb_epoch=1)
-            t_probs = model.predict_proba(X_holdout.toarray())
+            model.fit(X_train, y_train, batch_size=batch_size, nb_epoch=1)
+            t_probs = model.predict_proba(X_holdout)
             t_auc = sklearn.metrics.roc_auc_score(y_holdout, t_probs)
             print 'Epoch %d: auc = %f (best=%f)' % (ep, t_auc, best_auc)
             if t_auc > best_auc:
@@ -115,7 +115,7 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
             else:
                 if (ep-best_iter) >= 2:
                     break
-        probs = model.predict_proba(X_test.toarray())
+        probs = model.predict_proba(X_test)
         m_auc = sklearn.metrics.roc_auc_score(y_test, probs)
         print 'score is %f' % m_auc
         if m_auc > best_m_auc:
