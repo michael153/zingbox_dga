@@ -34,9 +34,9 @@ def multi_model(max_features):
 
 def binary_model(max_features):
     model = Sequential()
-    model.add(Dense(12, input_dim=max_features, init='uniform', activation='relu'))
-    model.add(Dense(8, init='uniform', activation='relu'))
-    model.add(Dense(2,input_dim=max_features, init='uniform', activation='sigmoid'))
+    model.add(Dense(30, input_dim=max_features, activation='relu'))
+    model.add(Dense(12, input_dim = 30, activation='relu'))
+    model.add(Dense(2,input_dim=12,  activation='sigmoid'))
     model.compile(loss='binary_crossentropy',
                   optimizer='adam',  metrics = ['accuracy'])
     return model
@@ -65,7 +65,7 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     X_length = [len(x) for x in X]
     labels = [x[0] for x in indata]
     label_set = list(set(labels))
-    ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3), min_df = 0.0001)
+    ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3), min_df = 0.00008)
     countvec = ngram_vectorizer.fit_transform(X)
     cols = ngram_vectorizer.get_feature_names()
     thefile = open(type+'cols.txt', 'w')
