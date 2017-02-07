@@ -14,6 +14,7 @@ from keras.utils import np_utils
 from keras.metrics import top_k_categorical_accuracy
 from keras.models import model_from_json
 from collections import defaultdict
+from progressbar import bar
 import sklearn
 from sklearn import feature_extraction
 from sklearn.decomposition import PCA
@@ -72,13 +73,19 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     for item in cols:
         i += 1
         thefile.write("%s\n" % item)  
-    
+
+    print 'Create Unknown Feature '
     unknown_letter = []
-    for x in X:
-        l2 = [x[i]+x[i+1] for i in range(len(x)-1)]
-        l3 = [x[i]+x[i+1]+x[i+2] for i in range(len(x)-2)]
-        subcols = [col for col in l2+l3 if col not in cols]
-        unknown_letter.append(len(subcols))
+    
+    for k in range(len(X)):
+        x = X[k]
+        l2 = [x[i]+x[i+1] for i in range(len(x)-1) if x[i]+x[i+1] not in cols]
+        l3 = [x[i]+x[i+1]+x[i+2] for i in range(len(x)-2) if x[i]+x[i+1]+x[i+2] not in cols]
+        unknown_letter.append(len(l2+l3))
+        if k%100==0:
+            print k
+
+
 
     countvec = csc_vappend(countvec, X_length)
     countvec = csc_vappend(countvec, unknown_letter)
