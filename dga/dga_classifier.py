@@ -74,21 +74,21 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
         i += 1
         thefile.write("%s\n" % item)  
 
-    print 'Create Unknown Feature '
-    unknown_letter = []
+    #print 'Create Unknown Feature '
+    #unknown_letter = []
     
-    for k in range(len(X)):
-        x = X[k]
-        l2 = [x[i]+x[i+1] for i in range(len(x)-1) if x[i]+x[i+1] not in cols]
-        l3 = [x[i]+x[i+1]+x[i+2] for i in range(len(x)-2) if x[i]+x[i+1]+x[i+2] not in cols]
-        unknown_letter.append(len(l2+l3))
-        if k%100==0:
-            print k
+    #for k in range(len(X)):
+     #   x = X[k]
+      #  l2 = [x[i]+x[i+1] for i in range(len(x)-1) if x[i]+x[i+1] not in cols]
+       # l3 = [x[i]+x[i+1]+x[i+2] for i in range(len(x)-2) if x[i]+x[i+1]+x[i+2] not in cols]
+       # unknown_letter.append(len(l2+l3))
+       # if k%100==0:
+        #    print k
 
 
 
     countvec = csc_vappend(countvec, X_length)
-    countvec = csc_vappend(countvec, unknown_letter)
+    #countvec = csc_vappend(countvec, unknown_letter)
     
     max_features = countvec.shape[1]
     print len(cols), max_features
