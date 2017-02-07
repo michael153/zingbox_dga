@@ -50,8 +50,6 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     X_length = [len(x) for x in X]
     labels = [x[0] for x in indata]
     label_set = list(set(labels))
-    print label_set
-    print labels[0]
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3), min_df = 0.0001)
     countvec = ngram_vectorizer.fit_transform(X)
     '''
@@ -86,10 +84,8 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     print i
     # Convert labels to 0-18/0-2
     y = [label_set.index(x) for x in labels]
-    print y[:10]
     #if type == 'multi':
     y = np_utils.to_categorical(y, len(label_set))
-    print y[:10]
     final_data = []
     final_score = []
     best_m_auc = 0.0
