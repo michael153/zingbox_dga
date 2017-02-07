@@ -52,10 +52,8 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     label_set = list(set(labels))
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3), min_df = 0.0001)
     countvec = ngram_vectorizer.fit_transform(X)
-    '''
     countvec = countvec.toarray()
-    countvec =np.append(countvec, [X_length], axis = 1)
-    '''
+    countvec = np.concatenate((countvec, np.array([X_length]).T), axis=1)
     cols = ngram_vectorizer.get_feature_names()
     '''
     unknown_letter = defaultdict(int)
