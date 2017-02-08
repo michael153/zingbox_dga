@@ -68,7 +68,7 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
         X_length = [1 if x > 19 else 0 for x in X_length]
     labels = [x[0] for x in indata]
     label_set = list(set(labels))
-    print label_set
+    print 'Label set: %s' % label_set
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))
     countvec = ngram_vectorizer.fit_transform(X)
     cols = ngram_vectorizer.get_feature_names()
@@ -89,22 +89,16 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
        # if k%100==0:
         #    print k
 
-   # countvec = csc_vappend(countvec, X_length)
-   # print countvec.todense()
-    print X[:10],X[-10:]
+    countvec = csc_vappend(countvec, X_length)
     #countvec = csc_vappend(countvec, unknown_letter)
     
     max_features = countvec.shape[1]
-    print len(cols), max_features
     # Create feature vectors
-    print "vectorizing data"
-    
+    print "Vectorizing data"   
     # Convert labels to 0-18/0-2
-    print labels[:10], labels[-10:]
     y = [label_set.index(x) for x in labels]
     #if type == 'multi':
     y = np_utils.to_categorical(y, len(label_set))
-    print y[:10]
     final_data = []
     final_score = []
     best_m_auc = 0.0
@@ -120,7 +114,6 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
             model = binary_model(max_features)
         print "Train..."
         X_train, X_holdout, y_train, y_holdout = train_test_split(X_train, y_train, test_size=0.05)
-        print X_train.shape
         best_iter = -1
         best_auc = 0.0
         out_data = {}
@@ -139,7 +132,7 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
                     break
         probs = model.predict_proba(X_test.todense())
         m_auc = sklearn.metrics.roc_auc_score(y_test, probs)
-        print 'score is %f' % m_auc
+        print '\nScore is %f' % m_auc
         if m_auc > best_m_auc:
             best_model = model
         
@@ -147,20 +140,18 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
         final_prob = [label_set[i] for i in probs.argmax(axis=1)]
         top_prob = np.array([np.array(label_set)[i] for i in probs.argsort()])
         top_prob = np.concatenate((top_prob, np.array([label_test]).T), axis=1)
-        metric = pd.DataFrame([final_test, final_prob])
-        metric = metric.transpose()
-        metric.columns = ['actual','pred']
-        top_prob_metric = pd.DataFrame(data=top_prob)
-        metric.to_csv(os.path.join(data_dir,"final" + type + str(fold)+".csv"))
-        top_prob_metric.to_csv(os.path.join(data_dir,"ranking" + type + str(fold)+".csv"))
+        output = pd.DataFrame([final_test, final_prob])
+        output = output.transpose()
+        output.columns = ['actual','pred']
+        top_prob_output = pd.DataFrame(data=top_prob)
+        output.to_csv(os.path.join(data_dir,"final" + type + str(fold)+".csv"))
+        top_prob_output.to_csv(os.path.join(data_dir,"ranking" + type + str(fold)+".csv"))
         final_score.append(m_auc)
-        print final_score
         best_model.save_weights(type+"_model") 
         model_json = best_model.to_json()
         json_file = open(type+"_model_json", "w")
         json_file.write(model_json)
         
-
     return best_model
 
 if __name__ == '__main__':
