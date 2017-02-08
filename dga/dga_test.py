@@ -50,7 +50,7 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
     is_dga = [labels[i] for i in binary_model.predict_classes(np.array([newvec]))]
     type_dga = None
 
-    labels =  ['corebot', 'zeus', 'kraken', 'pushdo', 'banjori', 'tinba', 'rovnix', 'conficker', 'cryptolocker']
+    labels =  ['corebot', 'zeus', 'pushdo', 'matsnu', 'banjori', 'tinba', 'rovnix', 'conficker']
  
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))    
     newvec = [0]*len(cols2)
