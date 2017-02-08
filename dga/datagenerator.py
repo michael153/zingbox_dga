@@ -66,14 +66,12 @@ class Datagenerator():
         self.num = max_num - min_num
 
     def get_alexa(self):
-    	external_path = os.path.abspath('dga_wordlists')
-        benign = []
-        with open(os.path.join(external_path,'opendns-random-domains.txt'), 'r') as f:
-            for line in f:
-                benign.append(tldextract.extract(line).domain)
-        domains = benign[:self.num]
-        labels = ['benign']*len(domains)
-        print len(domains)
+    	filename='top-1m.csv'
+        address = 'http://s3.amazonaws.com/alexa-static/top-1m.csv.zip'
+        url = urlopen(address)
+        zipfile = ZipFile(StringIO(url.read()))
+        return [tldextract.extract(x.split(',')[1]).domain for x in \
+                zipfile.read(filename).split()[2*self.min_num:2*self.max_num]]
         return domains, labels
 
     def get_malicious(self):
