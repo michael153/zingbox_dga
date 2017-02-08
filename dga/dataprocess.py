@@ -79,7 +79,7 @@ class Dataprocess():
         for banjori_seed in banjori_seeds:
             domains += banjori.generate_domains(segs_size, banjori_seed)
             labels += ['banjori']*segs_size
-
+        '''
         domains += corebot.generate_domains(num_per_dga)
         labels += ['corebot']*num_per_dga
 
@@ -115,8 +115,8 @@ class Dataprocess():
 
         # Generate qakbot
         '''
-        domains += qakbot.generate_domains(num_per_dga, tlds=[])
-        labels += ['qakbot']*num_per_dga
+        #domains += qakbot.generate_domains(num_per_dga, tlds=[])
+        #labels += ['qakbot']*num_per_dga
         '''
         # ramdo divided over different lengths
         ramdo_lengths = range(8, 32)
@@ -140,6 +140,7 @@ class Dataprocess():
                                               tld=None,
                                               base=random.randint(2, 2**32))
             labels += ['simda']*segs_size
+        '''
         return domains, labels
     '''
     def get_internal(self):
@@ -207,7 +208,7 @@ class Dataprocess():
                 pushdo.append(tldextract.extract(line).domain)
         domains += pushdo[:self.num]
         labels += ['pushdo']*self.num
-
+        
         return domains, labels
 
     def gen_data(self, force=False):
