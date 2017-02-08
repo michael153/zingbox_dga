@@ -88,11 +88,11 @@ def test(testdata, labels):
     for d in testdata:
         try:
             is_dga, type_dga, probs = subtest(binary_model, multi_model, [d], cols1, cols2)
+            is_dga_list.append(is_dga[0])
+            type_dga_list.append(type_dga)
+            probs_list.append(probs)
         except:
-            pass
-        is_dga_list.append(is_dga[0])
-        type_dga_list.append(type_dga)
-        probs_list.append(probs)
+            pass    
     type_dga_list = pd.DataFrame(np.array(type_dga_list))
     probs_list = pd.DataFrame(np.array(probs_list))
     res = [testdata, labels, is_dga_list]
