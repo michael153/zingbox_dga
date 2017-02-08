@@ -50,7 +50,7 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
     is_dga = [labels[i] for i in binary_model.predict_classes(np.array([newvec]))]
     type_dga = None
 
-    labels =  ['corebot', 'zeus', 'pushdo', 'matsnu', 'banjori', 'tinba', 'rovnix', 'conficker']
+    labels =  ['zeus', 'corebot', 'pushdo', 'ramnit', 'matsnu', 'banjori', 'tinba', 'rovnix', 'conficker', 'locky', 'cryptolocker']
  
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))    
     newvec = [0]*len(cols2)
@@ -92,7 +92,7 @@ def test(testdata, labels):
             type_dga_list.append(type_dga)
             probs_list.append(probs)
         except:
-            pass    
+            pass   
     type_dga_list = pd.DataFrame(np.array(type_dga_list))
     probs_list = pd.DataFrame(np.array(probs_list))
     res = [testdata, labels, is_dga_list]
@@ -109,11 +109,12 @@ with open('dga.txt','r') as f:
         address = line.split(' ')[1]
         domain = tldextract.extract(address).domain
         domain_list.append(domain)
+print domain_list
 
 labels = ['cryptolocker']*len(domain_list)
 table = test(domain_list, labels)
 table.to_csv(os.path.join(data_dir,'res_'+'cryptolocker'+'.csv'))
-indata = Datagenerator(43000,43100).get_data(force=True)
+indata = Datagenerator(43000,43050).get_data(force=True)
 
 X = [x[1] for x in indata]
 print len(X)

@@ -71,8 +71,7 @@ class Datagenerator():
         url = urlopen(address)
         zipfile = ZipFile(StringIO(url.read()))
         return [tldextract.extract(x.split(',')[1]).domain for x in \
-                zipfile.read(filename).split()[2*self.min_num:2*self.max_num]]
-        return domains, labels
+                zipfile.read(filename).split()[1*self.min_num:3*self.max_num]]
 
     def get_malicious(self):
         num_per_dga=self.max_num
@@ -137,7 +136,7 @@ class Datagenerator():
         
         domains += qakbot.generate_domains(num_per_dga, tlds=[])
         labels += ['qakbot']*num_per_dga
-        
+        '''
         # ramdo divided over different lengths
         ramdo_lengths = range(8, 32)
         segs_size = max(1, num_per_dga/len(ramdo_lengths))
@@ -152,6 +151,7 @@ class Datagenerator():
         labels += ['ramnit']*num_per_dga
 
         # simda
+        
         simda_lengths = range(8, 32)
         segs_size = max(1, num_per_dga/len(simda_lengths))
         for simda_length in range(len(simda_lengths)):
@@ -160,9 +160,11 @@ class Datagenerator():
                                               tld=None,
                                               base=random.randint(2, 2**32))
             labels += ['simda']*segs_size
+        '''
         final_domains = []
         final_labels = []
-        for i in range(11):
+        
+        for i in range(8):
         	final_domains.extend(domains[(max_num*i+min_num):(max_num*(i+1))])
         	final_labels.extend(labels[(max_num*i+min_num):(max_num*(i+1))])
         return final_domains, final_labels
@@ -197,6 +199,13 @@ class Datagenerator():
                 zeus.append(tldextract.extract(line).domain)
         domains += zeus[self.min_num:self.max_num]
         labels += ['zeus']*self.num
+
+        matsnu = []
+        with open(os.path.join(external_path,'matsnu.txt'), 'r') as f:
+            for line in f:
+                matsnu.append(tldextract.extract(line).domain)
+        domains += matsnu[:self.num]
+        labels += ['matsnu']*self.num
         
         tinba = []
         with open(os.path.join(external_path,'tinba.txt'), 'r') as f:
@@ -227,11 +236,10 @@ class Datagenerator():
             otherdomains, otherlabels = self.get_external()
             domains += otherdomains
             labels += otherlabels
-            print len(domains), len(labels), set(labels)
             # Get equal number of benign/malicious
-            good_domains, good_labels = self.get_alexa()
+            good_domains = self.get_alexa()
             domains += good_domains
-            labels += good_labels        
+            labels += ['Benign']*len(good_domains)        
             '''
             if self.internal:
                 indomains = self.get_internal()
@@ -239,7 +247,6 @@ class Datagenerator():
                 domains += indomains
                 labels += ['benign']*len(indomains)
             '''
-            print len(domains), len(labels), set(labels)
             pickle.dump(zip(labels, domains), open(self.test_data, 'w'))
 
     def get_data(self, force=False):

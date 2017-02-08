@@ -54,7 +54,7 @@ class Dataprocess():
         url = urlopen(address)
         zipfile = ZipFile(StringIO(url.read()))
         return [tldextract.extract(x.split(',')[1]).domain for x in \
-                zipfile.read(filename).split()[:(5*self.num)]]
+                zipfile.read(filename).split()[(4*self.num):(10*self.num)]]
 
     def get_malicious(self):
         num_per_dga=self.num
