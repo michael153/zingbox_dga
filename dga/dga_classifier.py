@@ -26,7 +26,7 @@ data_dir = os.path.abspath('data')
 def multi_model(max_features):
     model = Sequential()
     #model.add(Dense(30, input_dim=max_features, init='uniform', activation='relu'))
-    model.add(Dense(18, input_dim=max_features,init='uniform', activation='relu'))                                               
+    model.add(Dense(22, input_dim=max_features,init='uniform', activation='relu'))                                               
     model.add(Dense(9, init='uniform', activation='softmax'))
     model.compile(loss='categorical_crossentropy',
                   optimizer='adam', metrics = [top_k_categorical_accuracy])
@@ -35,8 +35,7 @@ def multi_model(max_features):
 def binary_model(max_features):
     model = Sequential()
     model.add(Dense(12, input_dim=max_features, init='uniform', activation='relu'))
-    model.add(Dense(8, input_dim=12, activation='relu'))
-    model.add(Dense(2,input_dim=8, init='uniform', activation='sigmoid'))
+    model.add(Dense(2,input_dim=12, init='uniform', activation='sigmoid'))
     model.compile(loss='categorical_crossentropy',
                   optimizer='adam',  metrics = ['accuracy'])
     return model
@@ -63,6 +62,7 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     # Extract data and labels
     X = [x[1] for x in indata]
     X_length = [len(x) for x in X]
+    X_length = [1 if x > 25 else 0 for x in X_length]
     labels = [x[0] for x in indata]
     label_set = list(set(labels))
     print label_set
@@ -86,9 +86,9 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
        # if k%100==0:
         #    print k
 
-
-
-    countvec = csc_vappend(countvec, X_length)
+   # countvec = csc_vappend(countvec, X_length)
+   # print countvec.todense()
+    print X[:10],X[-10:]
     #countvec = csc_vappend(countvec, unknown_letter)
     
     max_features = countvec.shape[1]
@@ -97,7 +97,7 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     print "vectorizing data"
     
     # Convert labels to 0-18/0-2
-    print labels[:10]
+    print labels[:10], labels[-10:]
     y = [label_set.index(x) for x in labels]
     #if type == 'multi':
     y = np_utils.to_categorical(y, len(label_set))
@@ -123,8 +123,8 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
         out_data = {}
 
         for ep in range(max_epoch):
-            model.fit(X_train.toarray(), y_train, batch_size=batch_size, nb_epoch=1)
-            t_probs = model.predict_proba(X_holdout.toarray())
+            model.fit(X_train.todense(), y_train, batch_size=batch_size, nb_epoch=1)
+            t_probs = model.predict_proba(X_holdout.todense())
             t_auc = sklearn.metrics.roc_auc_score(y_holdout, t_probs)
             print 'Epoch %d: auc = %f (best=%f)' % (ep, t_auc, best_auc)
             if t_auc > best_auc:
@@ -134,7 +134,7 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
             else:
                 if (ep-best_iter) >= 2:
                     break
-        probs = model.predict_proba(X_test.toarray())
+        probs = model.predict_proba(X_test.todense())
         m_auc = sklearn.metrics.roc_auc_score(y_test, probs)
         print 'score is %f' % m_auc
         if m_auc > best_m_auc:

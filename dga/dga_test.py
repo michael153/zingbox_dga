@@ -46,7 +46,7 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
     is_dga = [labels[i] for i in binary_model.predict_classes(np.array([newvec]))]
     type_dga = None
 
-    labels = ['new_goz', 'tinba', 'zeus', 'pushdo', 'banjori', 'goz', 'rovnix', 'conficker', 'locky']
+    labels = ['zeus', 'new_goz', 'tinba', 'corebot', 'banjori', 'goz', 'rovnix', 'conficker', 'locky']
  
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))    
     newvec = [0]*len(cols2)
@@ -56,7 +56,7 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
     for i in range(len(cols2)):
         if cols2[i] in newcols:
             newvec[i] = 1
-    newvec.append(len(newvec))
+   # newvec.append(len(newvec))
     probs = multi_model.predict_proba(np.array([newvec]))
 
     top_prob = np.array([np.array(labels)[i] for i in probs.argsort()])
