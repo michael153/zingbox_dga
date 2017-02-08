@@ -41,12 +41,17 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
     newcols = ngram_vectorizer.get_feature_names()
     for i in range(len(cols1)):
         if cols1[i] in newcols:
-            newvec[i] = 1 
-    newvec.append(len(newvec))
+            newvec[i] = 1
+    if len(newvec) > 20:
+        newvec.append(1)
+    else:
+        newvec.append(0) 
+    
     is_dga = [labels[i] for i in binary_model.predict_classes(np.array([newvec]))]
     type_dga = None
 
-    labels = ['zeus', 'new_goz', 'tinba', 'corebot', 'banjori', 'goz', 'rovnix', 'conficker', 'locky']
+    labels = ['qakbot', 'zeus', 'dircrypt', 'pykspa', 'corebot', 'kraken', 'pushdo', 'ramnit', 'banjori', 'tinba', 'rovnix', 
+        'conficker', 'locky', 'simda', 'ramdo', 'cryptolocker']
  
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))    
     newvec = [0]*len(cols2)
@@ -56,7 +61,10 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
     for i in range(len(cols2)):
         if cols2[i] in newcols:
             newvec[i] = 1
-   # newvec.append(len(newvec))
+    if len(newvec) > 20:
+        newvec.append(1)
+    else:
+        newvec.append(0) 
     probs = multi_model.predict_proba(np.array([newvec]))
 
     top_prob = np.array([np.array(labels)[i] for i in probs.argsort()])

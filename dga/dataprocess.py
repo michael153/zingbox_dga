@@ -82,7 +82,7 @@ class Dataprocess():
         
         domains += corebot.generate_domains(num_per_dga)
         labels += ['corebot']*num_per_dga
-        '''
+        
         #Create different length domains using cryptolocker
         crypto_lengths = range(8, 32)
         segs_size = max(1, num_per_dga/len(crypto_lengths))
@@ -103,21 +103,21 @@ class Dataprocess():
         labels += ['kraken']*kraken_to_gen
 
         # generate locky and divide between configs
-        '''
+        
         locky_gen = max(1, num_per_dga/11)
         for i in range(1, 12):
             domains += lockyv2.generate_domains(locky_gen, config=i)
             labels += ['locky']*locky_gen
-        '''
+        
         #Generate pyskpa domains
         domains += pykspa.generate_domains(num_per_dga, datetime(2016, 1, 1))
         labels += ['pykspa']*num_per_dga
 
         # Generate qakbot
-        '''
-        #domains += qakbot.generate_domains(num_per_dga, tlds=[])
-        #labels += ['qakbot']*num_per_dga
-        '''
+        
+        domains += qakbot.generate_domains(num_per_dga, tlds=[])
+        labels += ['qakbot']*num_per_dga
+        
         # ramdo divided over different lengths
         ramdo_lengths = range(8, 32)
         segs_size = max(1, num_per_dga/len(ramdo_lengths))
@@ -140,7 +140,7 @@ class Dataprocess():
                                               tld=None,
                                               base=random.randint(2, 2**32))
             labels += ['simda']*segs_size
-        '''
+        
         return domains, labels
     '''
     def get_internal(self):
@@ -166,20 +166,6 @@ class Dataprocess():
                 conficker.append(tldextract.extract(line).domain)
         domains += conficker[:self.num]
         labels += ['conficker']*self.num
-        
-        goz = []
-        with open(os.path.join(external_path,'goz.txt'), 'r') as f:
-            for line in f:
-                goz.append(tldextract.extract(line).domain)
-        domains += goz[:self.num]
-        labels += ['goz']*self.num
-        
-        new_goz = []
-        with open(os.path.join(external_path,'new_goz.txt'), 'r') as f:
-            for line in f:
-                new_goz.append(tldextract.extract(line).domain)
-        domains += new_goz[:self.num]
-        labels += ['new_goz']*self.num
         
         zeus = []
         with open(os.path.join(external_path,'zeus.txt'), 'r') as f:
