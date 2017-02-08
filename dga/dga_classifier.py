@@ -26,8 +26,8 @@ data_dir = os.path.abspath('data')
 def multi_model(max_features):
     model = Sequential()
     #model.add(Dense(30, input_dim=max_features, init='uniform', activation='relu'))
-    model.add(Dense(29, input_dim=max_features,init='uniform', activation='relu'))                                               
-    model.add(Dense(16, input_dim=29, init='uniform', activation='softmax'))
+    model.add(Dense(22, input_dim=max_features,init='uniform', activation='relu'))                                               
+    model.add(Dense(9, input_dim=22, init='uniform', activation='softmax'))
     model.compile(loss='categorical_crossentropy',
                   optimizer='adam', metrics = [top_k_categorical_accuracy])
     return model

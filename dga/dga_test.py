@@ -3,6 +3,7 @@ import json
 import numpy as np
 import pandas as pd
 from dataprocess import Dataprocess
+from datagenerator import Datagenerator
 from keras.layers.core import Dense
 from keras.models import Sequential
 from keras.utils import np_utils
@@ -49,8 +50,7 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
     is_dga = [labels[i] for i in binary_model.predict_classes(np.array([newvec]))]
     type_dga = None
 
-    labels = ['qakbot', 'zeus', 'dircrypt', 'pykspa', 'corebot', 'kraken', 'pushdo', 'ramnit', 'banjori', 'tinba', 'rovnix', 
-        'conficker', 'locky', 'simda', 'ramdo', 'cryptolocker']
+    labels =  ['corebot', 'zeus', 'kraken', 'pushdo', 'banjori', 'tinba', 'rovnix', 'conficker', 'cryptolocker']
  
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))    
     newvec = [0]*len(cols2)
@@ -86,7 +86,10 @@ def test(testdata, labels):
     type_dga_list = []
     probs_list = []
     for d in testdata:
-        is_dga, type_dga, probs = subtest(binary_model, multi_model, [d], cols1, cols2)
+        try:
+            is_dga, type_dga, probs = subtest(binary_model, multi_model, [d], cols1, cols2)
+        except:
+            pass
         is_dga_list.append(is_dga[0])
         type_dga_list.append(type_dga)
         probs_list.append(probs)
@@ -110,8 +113,10 @@ with open('dga.txt','r') as f:
 labels = ['cryptolocker']*len(domain_list)
 table = test(domain_list, labels)
 table.to_csv(os.path.join(data_dir,'res_'+'cryptolocker'+'.csv'))
-indata = Dataprocess(40000,41000).get_data(type,force=True)
+indata = Datagenerator(40000,40020).get_data(force=True)
+
 X = [x[1] for x in indata]
+print len(X)
 labels = [x[0] for x in indata]
 table = test(X, labels)
 table.to_csv(os.path.join(data_dir,'res_'+'all_test'+'.csv'))

@@ -52,11 +52,11 @@ import tldextract
 #  (C) Copyright Zingbox Ltd 2016
 #  All Rights Reserved
 
-class Dataprocess():
+class Datagenerator():
 
     #logger = logging.getLogger(__name__)
 
-    def __init__(self, max_num, min_num):
+    def __init__(self, min_num, max_num):
         #self.env = env
         #self.tenantid = tenantid
         self.data_dir = os.path.abspath('data')
@@ -71,12 +71,15 @@ class Dataprocess():
         with open(os.path.join(external_path,'opendns-random-domains.txt'), 'r') as f:
             for line in f:
                 benign.append(tldextract.extract(line).domain)
-        domains = benign
-        labels = ['benign']*len(benign)
+        domains = benign[:self.num]
+        labels = ['benign']*len(domains)
+        print len(domains)
         return domains, labels
 
     def get_malicious(self):
         num_per_dga=self.max_num
+        max_num = self.max_num
+        min_num = self.min_num
         """Generates num_per_dga of each DGA"""
         domains = []
         labels = []
@@ -159,8 +162,12 @@ class Dataprocess():
                                               tld=None,
                                               base=random.randint(2, 2**32))
             labels += ['simda']*segs_size
-        
-        return domains[self.min_num:self.max_num], labels[self.min_num:self.max_num]
+        final_domains = []
+        final_labels = []
+        for i in range(11):
+        	final_domains.extend(domains[(max_num*i+min_num):(max_num*(i+1))])
+        	final_labels.extend(labels[(max_num*i+min_num):(max_num*(i+1))])
+        return final_domains, final_labels
     '''
     def get_internal(self):
         fex_table = pd.DataFrame().from_csv(os.path.join(self.data_dir,'fex_table_'+self.tenantid+'.csv'))
@@ -222,6 +229,7 @@ class Dataprocess():
             otherdomains, otherlabels = self.get_external()
             domains += otherdomains
             labels += otherlabels
+            print len(domains), len(labels), set(labels)
             # Get equal number of benign/malicious
             good_domains, good_labels = self.get_alexa()
             domains += good_domains
@@ -233,10 +241,10 @@ class Dataprocess():
                 domains += indomains
                 labels += ['benign']*len(indomains)
             '''
+            print len(domains), len(labels), set(labels)
             pickle.dump(zip(labels, domains), open(self.test_data, 'w'))
 
-    def get_data(self, type, force=False):
+    def get_data(self, force=False):
         self.gen_data(force)
         return pickle.load(open(self.test_data))
 
-print Dataprocess(40000, 41000).get_data(type,force=True)
