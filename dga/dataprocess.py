@@ -82,7 +82,7 @@ class Dataprocess():
         
         domains += corebot.generate_domains(num_per_dga)
         labels += ['corebot']*num_per_dga
-        
+        '''
         #Create different length domains using cryptolocker
         crypto_lengths = range(8, 32)
         segs_size = max(1, num_per_dga/len(crypto_lengths))
@@ -91,17 +91,17 @@ class Dataprocess():
                                                      seed_num=random.randint(1, 1000000),
                                                      length=crypto_length)
             labels += ['cryptolocker']*segs_size
-
+        '''
        # domains += dircrypt.generate_domains(num_per_dga)
        # labels += ['dircrypt']*num_per_dga
-
+        '''
         #generate kraken and divide between configs
         kraken_to_gen = max(1, num_per_dga/2)
         domains += kraken.generate_domains(kraken_to_gen, datetime(2016, 1, 1), 'a', 3)
         labels += ['kraken']*kraken_to_gen
         domains += kraken.generate_domains(kraken_to_gen, datetime(2016, 1, 1), 'b', 3)
         labels += ['kraken']*kraken_to_gen
-
+        '''
         # generate locky and divide between configs
         '''
         locky_gen = max(1, num_per_dga/11)
@@ -180,6 +180,13 @@ class Dataprocess():
                 tinba.append(tldextract.extract(line).domain)
         domains += tinba[:self.num]
         labels += ['tinba']*self.num
+
+        matsnu = []
+        with open(os.path.join(external_path,'matsnu.txt'), 'r') as f:
+            for line in f:
+                matsnu.append(tldextract.extract(line).domain)
+        domains += matsnu[:self.num]
+        labels += ['matsnu']*self.num
         
         rovnix = []
         with open(os.path.join(external_path,'rovnix.txt'), 'r') as f:
