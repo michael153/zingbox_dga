@@ -3601,7 +3601,6 @@
 4in
 4ip
 4ir
-4is
 4it
 4iv
 4ix
@@ -3785,7 +3784,6 @@
 4sa
 4sb
 4sd
-4se
 4sf
 4sh
 4sj
@@ -3839,7 +3837,6 @@
 4uo
 4up
 4ur
-4us
 4ut
 4uv
 4ux
@@ -14250,7 +14247,6 @@ grz
 gs
 gs0
 gs1
-gs4
 gs5
 gs7
 gsa
@@ -22653,7 +22649,6 @@ ovy
 ovz
 ow
 ow3
-ow4
 ow5
 ow6
 ow7

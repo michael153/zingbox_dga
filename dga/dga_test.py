@@ -113,7 +113,7 @@ with open('dga.txt','r') as f:
 labels = ['cryptolocker']*len(domain_list)
 table = test(domain_list, labels)
 table.to_csv(os.path.join(data_dir,'res_'+'cryptolocker'+'.csv'))
-indata = Datagenerator(40000,40020).get_data(force=True)
+indata = Datagenerator(43000,43100).get_data(force=True)
 
 X = [x[1] for x in indata]
 print len(X)
