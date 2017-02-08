@@ -97,7 +97,7 @@ def test(testdata, labels):
     table = pd.concat([res, type_dga_list, probs_list], axis=1)
     table.columns = ['Domain','Label','Pred','Top1','Top2','Top3','Top4','Prob1','Prob2','Prob3','Prob4',]
     print table
-    table.to_csv(os.path.join(data_dir,'res_'+str(testdata)+'.csv'))
+    return table
 
 
 domain_list = []
@@ -108,9 +108,10 @@ with open('dga.txt','r') as f:
         domain_list.append(domain)
 
 labels = ['cryptolocker']*len(domain_list)
-test(domain_list, labels)
-
+table = test(domain_list, labels)
+table.to_csv(os.path.join(data_dir,'res_'+'cryptolocker'+'.csv'))
 indata = Dataprocess(40000,41000).get_data(type,force=True)
 X = [x[1] for x in indata]
 labels = [x[0] for x in indata]
-test(X, labels)
+table = test(X, labels)
+table.to_csv(os.path.join(data_dir,'res_'+'all_test'+'.csv'))
