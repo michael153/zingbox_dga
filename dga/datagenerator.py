@@ -61,8 +61,8 @@ class Dataprocess():
         #self.tenantid = tenantid
         self.data_dir = os.path.abspath('data')
         self.test_data = os.path.join(self.data_dir, 'all_test'+'.pkl')
-        self.max = max_num
-        self.min = min_num
+        self.max_num = max_num
+        self.min_num = min_num
         self.num = max_num - min_num
 
     def get_alexa(self):
@@ -238,3 +238,5 @@ class Dataprocess():
     def get_data(self, type, force=False):
         self.gen_data(force)
         return pickle.load(open(self.test_data))
+
+print Dataprocess(40000, 41000).get_data(type,force=True)

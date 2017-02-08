@@ -81,6 +81,25 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
     print '%s Domain Address: %s   Top 4 Suspicious DGA Type: %s   Top 4 DGA Prob %s' % (res, data[0], ' '.join(type_dga), probs)
     return is_dga, type_dga, probs
 
+def test(testdata, labels):
+    is_dga_list = []
+    type_dga_list = []
+    probs_list = []
+    for d in testdata:
+        is_dga, type_dga, probs = subtest(binary_model, multi_model, [d], cols1, cols2)
+        is_dga_list.append(is_dga[0])
+        type_dga_list.append(type_dga)
+        probs_list.append(probs)
+    type_dga_list = pd.DataFrame(np.array(type_dga_list))
+    probs_list = pd.DataFrame(np.array(probs_list))
+    res = [testdata, labels, is_dga_list]
+    res = pd.DataFrame(res).transpose()
+    table = pd.concat([res, type_dga_list, probs_list], axis=1)
+    table.columns = ['Domain','Label','Pred','Top1','Top2','Top3','Top4','Prob1','Prob2','Prob3','Prob4',]
+    print table
+    table.to_csv(os.path.join(data_dir,'res_'+str(testdata)+'.csv'))
+
+
 domain_list = []
 with open('dga.txt','r') as f:
     for line in f:
@@ -88,21 +107,10 @@ with open('dga.txt','r') as f:
         domain = tldextract.extract(address).domain
         domain_list.append(domain)
 
-labels = ['Malicious']*len(domain_list)
-is_dga_list = []
-type_dga_list = []
-probs_list = []
-for d in domain_list[:500]:
-    is_dga, type_dga, probs = subtest(binary_model, multi_model, [d], cols1, cols2)
-    is_dga_list.append(is_dga[0])
-    type_dga_list.append(type_dga)
-    probs_list.append(probs)
+labels = ['cryptolocker']*len(domain_list)
+test(domain_list, labels)
 
-type_dga_list = pd.DataFrame(np.array(type_dga_list))
-probs_list = pd.DataFrame(np.array(probs_list))
-res = [domain_list, labels, is_dga_list]
-res = pd.DataFrame(res).transpose()
-table = pd.concat([res, type_dga_list, probs_list], axis=1)
-table.columns = ['Domain','Label','Pred','Top1','Top2','Top3','Top4','Prob1','Prob2','Prob3','Prob4',]
-print table
-table.to_csv(os.path.join(data_dir,'test_res.csv'))
+indata = Dataprocess(40000,41000).get_data(type,force=True)
+X = [x[1] for x in indata]
+labels = [x[0] for x in indata]
+test(X, labels)
