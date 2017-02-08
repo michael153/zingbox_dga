@@ -15,17 +15,17 @@ import urllib2
 import tldextract
 
 data_dir = os.path.abspath('data')
-json_file = open('binary_model.json', 'r')
+json_file = open('binary_model_json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 binary_model = model_from_json(loaded_model_json)
-json_file = open('multi_model.json', 'r')
+json_file = open('multi_model_json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 multi_model = model_from_json(loaded_model_json)
 
-binary_model.load_weights("binary_model.h5")
-multi_model.load_weights("multi_model.h5")
+binary_model.load_weights("binary_model")
+multi_model.load_weights("multi_model")
 
 
 cols1= [line.rstrip('\n') for line in open('binary'+'cols.txt')]
@@ -42,18 +42,21 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
     for i in range(len(cols1)):
         if cols1[i] in newcols:
             newvec[i] = 1 
-    is_dga = [labels[i] for i in binary_model.predict_classes(np.array([newvec]+[len(newvec)]))]
+    newvec.append(len(newvec))
+    is_dga = [labels[i] for i in binary_model.predict_classes(np.array([newvec]))]
     type_dga = None
 
-    labels = ['qakbot', 'dircrypt', 'pykspa', 'corebot', 'kraken', 'pushdo', 'ramnit', 'banjori', 'tinba', 'conficker', 'locky', 'simda', 'ramdo', 'cryptolocker']
+    labels = ['new_goz', 'tinba', 'zeus', 'pushdo', 'banjori', 'goz', 'rovnix', 'conficker', 'locky']
  
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))    
     newvec = [0]*len(cols2)
+
     newcount = ngram_vectorizer.fit_transform(data)
     newcols = ngram_vectorizer.get_feature_names()
     for i in range(len(cols2)):
         if cols2[i] in newcols:
-            newvec[i] = 1 
+            newvec[i] = 1
+    newvec.append(len(newvec))
     probs = multi_model.predict_proba(np.array([newvec]))
 
     top_prob = np.array([np.array(labels)[i] for i in probs.argsort()])
@@ -65,7 +68,7 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
     probs = sorted(probs, reverse = True)
     probs = probs[:4]
     #print probs
-    if is_dga == 'benign':
+    if is_dga == ['benign']:
         res = 'Safe'
     else:
         res = 'Malicious'

@@ -26,18 +26,18 @@ data_dir = os.path.abspath('data')
 def multi_model(max_features):
     model = Sequential()
     #model.add(Dense(30, input_dim=max_features, init='uniform', activation='relu'))
-    #model.add(Dense(22, init='uniform', activation='relu'))                                               
-    model.add(Dense(14, input_dim=max_features,init='uniform', activation='sigmoid'))
+    model.add(Dense(18, input_dim=max_features,init='uniform', activation='relu'))                                               
+    model.add(Dense(9, init='uniform', activation='softmax'))
     model.compile(loss='categorical_crossentropy',
                   optimizer='adam', metrics = [top_k_categorical_accuracy])
     return model
 
 def binary_model(max_features):
     model = Sequential()
-    model.add(Dense(30, input_dim=max_features, activation='relu'))
-    model.add(Dense(12, input_dim = 30, activation='relu'))
-    model.add(Dense(2,input_dim=12,  activation='sigmoid'))
-    model.compile(loss='binary_crossentropy',
+    model.add(Dense(12, input_dim=max_features, init='uniform', activation='relu'))
+    model.add(Dense(8, input_dim=12, activation='relu'))
+    model.add(Dense(2,input_dim=8, init='uniform', activation='sigmoid'))
+    model.compile(loss='categorical_crossentropy',
                   optimizer='adam',  metrics = ['accuracy'])
     return model
 
@@ -65,7 +65,8 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     X_length = [len(x) for x in X]
     labels = [x[0] for x in indata]
     label_set = list(set(labels))
-    ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3), min_df = 0.00008)
+    print label_set
+    ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))
     countvec = ngram_vectorizer.fit_transform(X)
     cols = ngram_vectorizer.get_feature_names()
     thefile = open(type+'cols.txt', 'w')
@@ -96,9 +97,11 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     print "vectorizing data"
     
     # Convert labels to 0-18/0-2
+    print labels[:10]
     y = [label_set.index(x) for x in labels]
     #if type == 'multi':
     y = np_utils.to_categorical(y, len(label_set))
+    print y[:10]
     final_data = []
     final_score = []
     best_m_auc = 0.0
@@ -149,10 +152,11 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
         top_prob_metric.to_csv(os.path.join(data_dir,"ranking" + type + str(fold)+".csv"))
         final_score.append(m_auc)
         print final_score
+        best_model.save_weights(type+"_model") 
         model_json = best_model.to_json()
-        with open(type+"_model.json", "w") as json_file:
-            json_file.write(model_json)
-        best_model.save_weights(type+"_model.h5") 
+        json_file = open(type+"_model_json", "w")
+        json_file.write(model_json)
+        
 
     return best_model
 
