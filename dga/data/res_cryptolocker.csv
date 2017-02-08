@@ -1,252 +1,252 @@
-,Domain,Label,Pred,Top1,Top2,Top3,Top4,Prob1,Prob2,Prob3,Prob4
-0,xwtoqnuz,cryptolocker,Malicious,conficker,kraken,cryptolocker,pushdo,0.85456264019,0.0804421380162,0.0418233461678,0.0201029069722
-1,mjwiwookx,cryptolocker,Malicious,cryptolocker,kraken,conficker,rovnix,0.442280828953,0.347543686628,0.207749441266,0.00108550465666
-2,xscgglem,cryptolocker,Malicious,conficker,tinba,kraken,cryptolocker,0.782488107681,0.0857970565557,0.0817659273744,0.0389882661402
-3,fqpjw,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.980153083801,0.018734600395,0.00105409242678,4.28370294685e-05
-4,lbsrhj,cryptolocker,Malicious,cryptolocker,conficker,kraken,zeus,0.964621245861,0.0316078439355,0.00322697428055,0.000527359894477
-5,jbkjhdmnkqy,cryptolocker,Malicious,tinba,cryptolocker,conficker,kraken,0.675996422768,0.229908972979,0.087981492281,0.00354924774729
-6,tauhdwfr,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.998642742634,0.00108916172758,0.000265665963525,1.91979347619e-06
-7,lyqzuctj,cryptolocker,Malicious,kraken,conficker,zeus,cryptolocker,0.890419065952,0.109551198781,2.07603461604e-05,4.0894515223e-06
-8,bnptwthcsig,cryptolocker,Malicious,cryptolocker,rovnix,kraken,conficker,0.999934673309,2.69825704891e-05,1.72189011209e-05,1.22269366329e-05
-9,xlgomxqvm,cryptolocker,Malicious,cryptolocker,kraken,conficker,zeus,0.754145026207,0.213111668825,0.032635781914,6.59114375594e-05
-10,qhepu,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.993656337261,0.00318923289888,0.00260816817172,0.000308818445774
-11,vifntre,cryptolocker,Malicious,conficker,kraken,banjori,zeus,0.982867956161,0.0135143306106,0.00174449256156,0.00154364772607
-12,idolldtk,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.519635796547,0.418103724718,0.0233244113624,0.022239100188
-13,vnaeazd,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.745329320431,0.254379540682,0.000234995619394,5.46888695681e-05
-14,jccodgknalw,cryptolocker,Malicious,cryptolocker,conficker,kraken,zeus,0.99893194437,0.00104931695387,1.28370929815e-05,3.84993791158e-06
-15,hvxdmyzumo,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.993618011475,0.00442264182493,0.00144834746607,0.000509701843839
-16,klbkxpj,cryptolocker,Malicious,cryptolocker,conficker,kraken,zeus,0.513738334179,0.393962323666,0.0886901319027,0.00351906381547
-17,wdrkhaike,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.814343810081,0.183672606945,0.00166732410435,0.000133207067847
-18,iubvefdhcwv,cryptolocker,Malicious,conficker,kraken,tinba,zeus,0.548800826073,0.443538725376,0.00749054085463,0.000106601692096
-19,bebsxkxq,cryptolocker,Malicious,conficker,cryptolocker,kraken,corebot,0.571940660477,0.236368536949,0.176842927933,0.011835440062
-20,nqcvesg,cryptolocker,Malicious,conficker,kraken,zeus,rovnix,0.991588413715,0.00765898171812,0.000702707329765,2.7552327083e-05
-21,dqqzyv,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.932218790054,0.0676706582308,0.000107006577309,2.7691885407e-06
-22,wjlshamn,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.993447601795,0.00470006559044,0.00127916911151,0.000552808400244
-23,twscozurok,cryptolocker,Malicious,conficker,pushdo,kraken,banjori,0.995355129242,0.00271914014593,0.0016533844173,0.000136700735311
-24,pwyfvlx,cryptolocker,Malicious,kraken,conficker,cryptolocker,zeus,0.992171168327,0.00507484842092,0.0027286214754,1.75498917088e-05
-25,aquinf,cryptolocker,Malicious,conficker,kraken,zeus,rovnix,0.993795752525,0.00296473503113,0.00224874936976,0.000592667143792
-26,rycndwon,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.999040067196,0.000681595760398,0.000218745641178,3.43721440004e-05
-27,uvvop,cryptolocker,Malicious,banjori,conficker,kraken,rovnix,0.993781149387,0.00593819981441,0.000215693813516,3.25443106703e-05
-28,qvmlv,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.985448658466,0.0127173168585,0.00118762860075,0.000596129335463
-29,velsgxhbzxj,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.997049570084,0.00290949316695,3.53585019184e-05,2.80710742118e-06
-30,zegaqgiout,cryptolocker,Malicious,kraken,conficker,banjori,cryptolocker,0.952112674713,0.047753777355,0.000112224479381,9.93149205897e-06
-31,carbb,cryptolocker,Malicious,banjori,conficker,kraken,cryptolocker,0.989592432976,0.0103707592934,2.18747791223e-05,6.54427140034e-06
-32,fypbetgtjaf,cryptolocker,Malicious,cryptolocker,conficker,kraken,corebot,0.914066314697,0.0713995844126,0.011449967511,0.00238402956165
-33,nilnd,cryptolocker,Malicious,conficker,kraken,zeus,pushdo,0.969627678394,0.0263493694365,0.00280389026739,0.000711859494913
-34,tyzsxaxohlx,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.806891739368,0.191846057773,0.00065058079781,0.00060145475436
-35,ozqnzti,cryptolocker,Malicious,conficker,kraken,zeus,pushdo,0.998919487,0.00104115100112,3.62968276022e-05,1.89405079709e-06
-36,jjwkcmly,cryptolocker,Malicious,cryptolocker,kraken,conficker,zeus,0.998396575451,0.00120337179396,0.000364252307918,2.39364580921e-05
-37,ugphzkkpbns,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.836641430855,0.163342043757,1.59997725859e-05,4.92947492603e-07
-38,tivftte,cryptolocker,Malicious,cryptolocker,kraken,conficker,rovnix,0.914334833622,0.0425262562931,0.0242752879858,0.0142503809184
-39,tmxjypcjket,cryptolocker,Malicious,cryptolocker,corebot,tinba,conficker,0.993937969208,0.00312036951073,0.00276047643274,0.000140001255204
-40,whdepznu,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.928357124329,0.0711299702525,0.000343936291756,0.000158466777066
-41,tgatpiowtq,cryptolocker,Malicious,cryptolocker,kraken,conficker,rovnix,0.566647469997,0.429917395115,0.0033310118597,5.62953464396e-05
-42,axvxv,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.963436484337,0.0346276015043,0.00187331694178,4.86403987452e-05
-43,hugjjrna,cryptolocker,Malicious,conficker,kraken,cryptolocker,pushdo,0.896244823933,0.0845955014229,0.0150962267071,0.00323960953392
-44,zysgtfcz,cryptolocker,Malicious,kraken,conficker,zeus,cryptolocker,0.764993906021,0.234997242689,7.90870490164e-06,7.61265312121e-07
-45,jgdoplc,cryptolocker,Malicious,cryptolocker,conficker,kraken,banjori,0.381246119738,0.347959071398,0.208451926708,0.0535420849919
-46,ijroe,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.981388986111,0.0179246533662,0.000538849446457,0.000109170097858
-47,vcdumtl,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.95338255167,0.0303501039743,0.012915790081,0.00138421636075
-48,nfbcsohyzoi,cryptolocker,Malicious,conficker,kraken,tinba,cryptolocker,0.957238435745,0.0426107533276,7.85073862062e-05,3.84789127565e-05
-49,gqmgnf,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.991507649422,0.00670841243118,0.000917286262847,0.000813553866465
-50,ymvgell,cryptolocker,Malicious,conficker,kraken,cryptolocker,banjori,0.499072492123,0.491890311241,0.00416249036789,0.00402387464419
-51,sxtdkposc,cryptolocker,Malicious,cryptolocker,kraken,conficker,rovnix,0.997424602509,0.00226571876556,0.000134794856422,0.000131850523758
-52,sijqj,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.961770236492,0.0353992171586,0.002563231159,0.000204506577575
-53,blrzvmtxjit,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.812276542187,0.186964765191,0.000547301082406,0.000208793469938
-54,gbdwpo,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.970592200756,0.0287813190371,0.000486467237351,0.000119474047096
-55,uvefslvxwls,cryptolocker,Malicious,cryptolocker,conficker,corebot,tinba,0.60281264782,0.213636398315,0.0860565453768,0.082440815866
-56,ndlftheyi,cryptolocker,Malicious,cryptolocker,rovnix,banjori,conficker,0.952244460583,0.0418119467795,0.00366324116476,0.00159058778081
-57,ssnvguuav,cryptolocker,Malicious,kraken,conficker,cryptolocker,zeus,0.649103283882,0.348793983459,0.00194996164646,0.000145224898006
-58,kvyrdhxm,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.935039639473,0.0363550931215,0.0277651418,0.000823727110401
-59,nntaiqauw,cryptolocker,Malicious,conficker,banjori,kraken,zeus,0.682381749153,0.289342790842,0.0272909738123,0.000444352597697
-60,gnfzlqbvnw,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.982306420803,0.0169126652181,0.000419514253736,0.000357380486093
-61,blnpfvwtl,cryptolocker,Malicious,cryptolocker,kraken,conficker,tinba,0.873776733875,0.0748161375523,0.0302394069731,0.0205543953925
-62,nucxdjsh,cryptolocker,Malicious,conficker,cryptolocker,zeus,kraken,0.993614912033,0.00386367551982,0.001999191707,0.000513496634085
-63,ztwzec,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.989342331886,0.0106096155941,4.48969731224e-05,3.0742285162e-06
-64,jrytflal,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.967794239521,0.0195936951786,0.00920210592449,0.00323942373507
-65,gttrqqae,cryptolocker,Malicious,kraken,conficker,cryptolocker,banjori,0.703627943993,0.295525938272,0.000643538834993,0.000157010115799
-66,nhsmfl,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.798955976963,0.198986321688,0.0016611708561,0.000308957125526
-67,jjtxlbjdhrg,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.994832158089,0.00479728635401,0.000349198409822,1.84764357982e-05
-68,srdrbxekizd,cryptolocker,Malicious,kraken,cryptolocker,conficker,zeus,0.976771473885,0.0122011685744,0.011007075198,1.41154614539e-05
-69,urhzb,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.994174182415,0.00527633167803,0.000452413223684,9.63005950325e-05
-70,vqghqsfted,cryptolocker,Malicious,cryptolocker,rovnix,conficker,zeus,0.999994754791,3.1679330732e-06,1.44658099543e-06,5.06257151756e-07
-71,ruxriht,cryptolocker,Malicious,pushdo,conficker,kraken,rovnix,0.82348293066,0.117654964328,0.0549798719585,0.00168148614466
-72,przdtvlt,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.980428516865,0.0191770158708,0.000363947270671,1.93243467947e-05
-73,uihcjx,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.992195129395,0.00721750548109,0.000583537039347,1.50238895458e-06
-74,lmesvdyh,cryptolocker,Malicious,conficker,cryptolocker,zeus,kraken,0.98637843132,0.00812300294638,0.00304046063684,0.00229607149959
-75,vubrhfol,cryptolocker,Malicious,kraken,conficker,cryptolocker,zeus,0.872642159462,0.12408388406,0.00301589840092,0.000192871011677
-76,sldzmutv,cryptolocker,Malicious,kraken,conficker,zeus,cryptolocker,0.768547058105,0.231093972921,0.000135929920361,9.90557309706e-05
-77,nsgrcsm,cryptolocker,Malicious,kraken,conficker,zeus,cryptolocker,0.6978328228,0.300902664661,0.000931785383727,0.000308273738483
-78,btnput,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.839115023613,0.155258789659,0.00277514662594,0.00197419314645
-79,nkwqfu,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.992126345634,0.00590252503753,0.00156657502521,0.000384954444598
-80,xxcet,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.623681604862,0.370347380638,0.00323421531357,0.00157585565466
-81,fakeua,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.530814111233,0.468554615974,0.000382722821087,0.000145497499034
-82,zbtgfwl,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.999463260174,0.000436761620222,9.97233364615e-05,1.61680020483e-07
-83,ngakumuqbt,cryptolocker,Malicious,conficker,kraken,pushdo,cryptolocker,0.826040625572,0.133568912745,0.0399204567075,0.000171764419065
-84,legnzubxhy,cryptolocker,Malicious,conficker,kraken,banjori,zeus,0.995696425438,0.00360760767944,0.000292550685117,0.000271407654509
-85,hxohc,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.975962460041,0.0211482401937,0.00262530590408,0.000149037194205
-86,aqjchrl,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.996941030025,0.00244057993405,0.00042363643297,0.000182924297405
-87,lydpz,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.981780588627,0.0174890663475,0.000715629954357,1.26497197925e-05
-88,kluswilopgk,cryptolocker,Malicious,cryptolocker,rovnix,conficker,pushdo,0.962221205235,0.025147151202,0.00829662848264,0.00307557405904
-89,idgumxqgmg,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.62258130312,0.355063587427,0.0222249757499,0.000105167790025
-90,cstzascihp,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.531907379627,0.468042582273,3.51541093551e-05,1.02052299553e-05
-91,erwllnavx,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.997276604176,0.00188152887858,0.000416829367168,0.000414876558352
-92,loaef,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.974215567112,0.0254970844835,0.000282296183286,2.98271424981e-06
-93,ogawjdaj,cryptolocker,Malicious,conficker,pushdo,kraken,zeus,0.975108623505,0.013942791149,0.0107800532132,0.000154813475092
-94,tsexz,cryptolocker,Malicious,conficker,kraken,zeus,rovnix,0.995499312878,0.00420322269201,0.000286191439955,5.65113396078e-06
-95,pvfyg,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.963496804237,0.0359403453767,0.000501866918057,2.94740984828e-05
-96,deuxuoupr,cryptolocker,Malicious,kraken,conficker,zeus,rovnix,0.8298189044,0.169480502605,0.00023983157007,0.000166170517332
-97,ronmkpwunm,cryptolocker,Malicious,conficker,cryptolocker,zeus,corebot,0.940685808659,0.0459473058581,0.00872252974659,0.00284318323247
-98,mnfaoq,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.994864284992,0.00457822391763,0.000496223627124,5.21358779224e-05
-99,knwuryuqoj,cryptolocker,Malicious,cryptolocker,conficker,kraken,rovnix,0.99889755249,0.00102840410545,4.55424014945e-05,1.50346977534e-05
-100,ygrmocpao,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.982044696808,0.0178213231266,0.000125857579405,6.65752850182e-06
-101,xohmtqeg,cryptolocker,Malicious,cryptolocker,conficker,kraken,zeus,0.444639325142,0.44291254878,0.102240651846,0.00524173025042
-102,tnzshph,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.999244809151,0.000652257411275,0.000101877230918,1.12664815788e-06
-103,dwynzev,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.990764379501,0.00915360450745,7.65063959989e-05,5.28978080183e-06
-104,cgxqfichwzd,cryptolocker,Malicious,conficker,kraken,banjori,zeus,0.996388912201,0.00284513342194,0.000492689025123,0.000178944217623
-105,hgcvrm,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.986780107021,0.0102211879566,0.00280424556695,0.000171111474629
-106,bwtjcpd,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.97497934103,0.0205481853336,0.00337574374862,0.00105075060856
-107,bikbyhruja,cryptolocker,Malicious,conficker,cryptolocker,corebot,zeus,0.989104509354,0.00392776494846,0.00286009698175,0.00213518342935
-108,couwtaihei,cryptolocker,Malicious,conficker,kraken,rovnix,zeus,0.43163523078,0.383467823267,0.169668078423,0.0118994489312
-109,lechgifle,cryptolocker,Benign,conficker,zeus,cryptolocker,kraken,0.997632741928,0.00119458686095,0.00053954066243,0.000414512469433
-110,ksfcmtxl,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.943105995655,0.0568472184241,2.3065980713e-05,2.21668797167e-05
-111,kqazijri,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.974743902683,0.0250849165022,0.000169528502738,1.33546393499e-06
-112,xlnukyaserm,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.992683231831,0.00503327418119,0.00188133004121,0.00036831208854
-113,uccrnraiylm,cryptolocker,Malicious,conficker,kraken,cryptolocker,banjori,0.761334836483,0.228823706508,0.00749815907329,0.0020013214089
-114,hqnrha,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.983876168728,0.00990452896804,0.00338179059327,0.00269432342611
-115,gcvshjj,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.522544384003,0.313998162746,0.158836692572,0.00375580904074
-116,yqkexsmrhlh,cryptolocker,Malicious,kraken,conficker,cryptolocker,tinba,0.691348195076,0.207905873656,0.100606009364,8.77097045304e-05
-117,tpttlbmbbz,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.990983009338,0.00528581393883,0.00344875315204,0.000216664106119
-118,rpcpr,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.952488601208,0.0460599288344,0.00135666772258,6.03288644925e-05
-119,fzsexkrk,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.997228682041,0.00275136134587,1.78534755833e-05,2.06055142371e-06
-120,go,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.981225788593,0.012979241088,0.00395896565169,0.00163837731816
-121,iaopcu,cryptolocker,Malicious,banjori,conficker,kraken,zeus,0.896155714989,0.099188387394,0.00440936302766,0.000111052890134
-122,pqqmcdxg,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.979264736176,0.0182416923344,0.00168429221958,0.000456291541923
-123,apgqjdtb,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.959800541401,0.0317223891616,0.00543748168275,0.0030318798963
-124,xhthttye,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.897705316544,0.066265180707,0.0280658546835,0.00669117318466
-125,qqlpcfjvmqi,cryptolocker,Malicious,conficker,tinba,kraken,cryptolocker,0.974405825138,0.0115682212636,0.0103661129251,0.00343209062703
-126,okkdcsfjjuo,cryptolocker,Malicious,conficker,cryptolocker,tinba,kraken,0.47180595994,0.326557338238,0.197307929397,0.00424693990499
-127,fgcpbd,cryptolocker,Malicious,kraken,conficker,zeus,cryptolocker,0.692846238613,0.306581676006,0.000323563814163,0.00023385923123
-128,qxvtxnlrcz,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.899008333683,0.100206032395,0.000457070942502,0.000328178110067
-129,fwhnbvqy,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.846085190773,0.100626438856,0.0528925806284,0.000367682456272
-130,svubgqosq,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.98470044136,0.0106936339289,0.00272728735581,0.00178857066203
-131,inlunf,cryptolocker,Malicious,conficker,kraken,zeus,rovnix,0.952094018459,0.0357734113932,0.00522117083892,0.00291577703319
-132,zopalutdgt,cryptolocker,Malicious,pushdo,conficker,rovnix,cryptolocker,0.81924033165,0.103939294815,0.0428875274956,0.0125557612628
-133,fxfwbikqob,cryptolocker,Malicious,cryptolocker,kraken,conficker,rovnix,0.999277889729,0.0003618177725,0.000352586735971,2.86524436888e-06
-134,czvdgczwdq,cryptolocker,Malicious,kraken,conficker,zeus,cryptolocker,0.981891810894,0.0181058309972,1.80158508556e-06,4.37614033899e-07
-135,ujwhupfrtku,cryptolocker,Malicious,cryptolocker,kraken,conficker,zeus,0.982361376286,0.0112772891298,0.00418164022267,0.000915957440156
-136,nnjyrwahhoi,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.98072373867,0.00974951777607,0.00908449105918,0.00037906790385
-137,fhdsykyro,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.995840489864,0.00378766120411,0.000349638197804,1.95575266844e-05
-138,xfzmeio,cryptolocker,Malicious,kraken,conficker,zeus,banjori,0.75847017765,0.241447731853,5.11211583216e-05,2.69249339908e-05
-139,kwcaagk,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.993000745773,0.00609338423237,0.000456302863313,0.000307409762172
-140,ademacqhtos,cryptolocker,Malicious,kraken,conficker,rovnix,pushdo,0.949704170227,0.0253044385463,0.0235528219491,0.00100671907421
-141,ktxyy,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.933070719242,0.0661840364337,0.000636437558569,7.10655440344e-05
-142,ognseme,cryptolocker,Malicious,conficker,kraken,zeus,rovnix,0.977215111256,0.0202383566648,0.00116978236474,0.00116352178156
-143,plhjis,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.780326247215,0.216401815414,0.00176553893834,0.00111785833724
-144,jpqrdqqo,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.909639894962,0.0897296145558,0.000506138487253,7.63806528994e-05
-145,trbcublg,cryptolocker,Malicious,cryptolocker,conficker,kraken,zeus,0.990638136864,0.00621940614656,0.00293874042109,0.000136323578772
-146,dmealng,cryptolocker,Malicious,conficker,cryptolocker,kraken,rovnix,0.953101992607,0.0256478600204,0.0106900967658,0.00570872193202
-147,truarxm,cryptolocker,Malicious,conficker,banjori,kraken,zeus,0.997010111809,0.00131716066971,0.000856277067214,0.00041002035141
-148,znmdgqrwicp,cryptolocker,Malicious,conficker,kraken,zeus,corebot,0.995171487331,0.0047162771225,7.60206166888e-05,2.07574466913e-05
-149,rqbnqmmc,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.642359554768,0.304089784622,0.0518773272634,0.00144032307435
-150,ohngldqiht,cryptolocker,Malicious,kraken,cryptolocker,conficker,tinba,0.865904271603,0.129876941442,0.00390758411959,0.000233812184888
-151,ewyhgr,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.99304318428,0.00540874479339,0.00148144073319,4.6776029194e-05
-152,mwbidueyb,cryptolocker,Malicious,kraken,cryptolocker,banjori,conficker,0.845097601414,0.0783320739865,0.0569564066827,0.00969779491425
-153,xvbcfuo,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.939072012901,0.0608153603971,7.65783261159e-05,2.22296112042e-05
-154,hsejrqdm,cryptolocker,Malicious,cryptolocker,conficker,zeus,kraken,0.993724763393,0.00595693755895,0.000182581949048,6.90118176863e-05
-155,tdcwlwnw,cryptolocker,Malicious,conficker,tinba,zeus,corebot,0.996408641338,0.00162060011644,0.00109014601912,0.000351848721039
-156,opzftls,cryptolocker,Malicious,conficker,kraken,banjori,zeus,0.863698601723,0.117209628224,0.0188779439777,0.000206672062632
-157,rvivhhbyg,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.978639483452,0.0136322369799,0.00625057611614,0.00146340159699
-158,wakgepu,cryptolocker,Malicious,conficker,kraken,zeus,pushdo,0.999567449093,0.000265277485596,0.00014748153626,1.54965127876e-05
-159,hsyzmwse,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.885452032089,0.112488672137,0.0017116147792,0.000290117313853
-160,ysftaklogdb,cryptolocker,Malicious,cryptolocker,conficker,kraken,rovnix,0.998654961586,0.000887846807018,0.000448813283583,5.36767356607e-06
-161,jbwcmvz,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.983062386513,0.0167176537216,0.00021108056535,4.82600398755e-06
-162,vzgecmpyrlz,cryptolocker,Malicious,kraken,conficker,zeus,banjori,0.563887476921,0.436055034399,3.23008898704e-05,2.43954127654e-05
-163,adeuwmgj,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.836803078651,0.134433105588,0.0272289961576,0.000950398854911
-164,ipjkrw,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.998092234135,0.00178076769225,0.000120298893307,3.73740772375e-06
-165,nftdckcn,cryptolocker,Malicious,conficker,kraken,tinba,cryptolocker,0.570911049843,0.426710486412,0.00109613756649,0.000821169523988
-166,lkhjuycqh,cryptolocker,Malicious,cryptolocker,kraken,conficker,zeus,0.759098410606,0.148356020451,0.0916171744466,0.000572432414629
-167,ycmeqkqb,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.987371683121,0.0125166270882,7.81377675594e-05,3.32452764269e-05
-168,jitcxqfug,cryptolocker,Malicious,cryptolocker,conficker,kraken,corebot,0.607714235783,0.278014838696,0.110777921975,0.00204142183065
-169,sbpspbz,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.988426744938,0.0113972015679,0.000164057099028,8.86878387973e-06
-170,dhzytqhgw,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.966582834721,0.0328893512487,0.00051226420328,1.40756837936e-05
-171,asfdbhp,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.993870615959,0.00516202440485,0.000587906921282,0.000369377230527
-172,ttfcejibc,cryptolocker,Malicious,cryptolocker,kraken,conficker,tinba,0.860210001469,0.136774808168,0.00261560035869,0.000214148603845
-173,wvkdo,cryptolocker,Malicious,kraken,conficker,zeus,cryptolocker,0.828923106194,0.169602826238,0.000788721779827,0.000402073579608
-174,hpckmto,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.958407700062,0.0287523325533,0.00957582704723,0.00288035091944
-175,fcjqeqyc,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.911774218082,0.0880249887705,0.000125889986521,7.31705149519e-05
-176,jjespwyo,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.605310201645,0.387399613857,0.00540023343638,0.00170435826294
-177,jrrvwmfqszd,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.998182535172,0.00176393601578,5.15655701747e-05,1.0098273151e-06
-178,zjrcfwhug,cryptolocker,Malicious,kraken,conficker,cryptolocker,zeus,0.797027587891,0.105258628726,0.0965760052204,0.000707477040123
-179,apzirmyju,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.99768102169,0.00175087852404,0.000502745213453,5.59216641705e-05
-180,yknkqjbmjls,cryptolocker,Malicious,cryptolocker,conficker,tinba,corebot,0.975820064545,0.0239374618977,7.26605576347e-05,6.66119376547e-05
-181,ekvnsxwk,cryptolocker,Malicious,cryptolocker,conficker,kraken,zeus,0.584564745426,0.410931885242,0.00356478989124,0.000866250949912
-182,mlxdmmcbim,cryptolocker,Malicious,cryptolocker,kraken,conficker,tinba,0.651850223541,0.236376404762,0.065529294312,0.0455259680748
-183,paiobbz,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.986215949059,0.0136988218874,4.51420455647e-05,3.98254851461e-05
-184,qijefwjf,cryptolocker,Malicious,kraken,conficker,cryptolocker,zeus,0.435521990061,0.29413369298,0.267234951258,0.00134471454658
-185,ommvnkbune,cryptolocker,Malicious,cryptolocker,conficker,kraken,rovnix,0.869584977627,0.0554142184556,0.0410737097263,0.0268850121647
-186,vdmjlydlb,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.949830412865,0.0373039394617,0.0119672557339,0.000843801768497
-187,digpf,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.990315258503,0.00785902049392,0.00172423955519,5.38104686711e-05
-188,kzfhiyg,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.920252561569,0.0796892717481,5.63545290788e-05,1.52753477778e-06
-189,hlxvppznmk,cryptolocker,Malicious,kraken,conficker,banjori,cryptolocker,0.909941494465,0.0900552645326,1.47204048062e-06,1.08792880837e-06
-190,bjnewbpo,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.99347692728,0.00265159830451,0.00175585504621,0.00153687619604
-191,adknuhkxao,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.729330897331,0.262904524803,0.0043197022751,0.00240119337104
-192,zhvdgnoo,cryptolocker,Malicious,kraken,conficker,zeus,cryptolocker,0.631565570831,0.364669263363,0.00236678356305,0.0012703940738
-193,dlgrdf,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.823719620705,0.16897508502,0.00585423829034,0.00104775442742
-194,jhamn,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.994326174259,0.00461343256757,0.000738595612347,0.000310840870952
-195,ffataqk,cryptolocker,Malicious,conficker,kraken,pushdo,zeus,0.966668248177,0.0295281000435,0.00310031534173,0.000460004026536
-196,hemyfkyt,cryptolocker,Malicious,cryptolocker,conficker,kraken,zeus,0.542908191681,0.314747989178,0.131045147777,0.00757792079821
-197,rsdolpacs,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.735829591751,0.15360891819,0.10975150764,0.000720539013855
-198,hvzmlunvfyj,cryptolocker,Malicious,kraken,conficker,cryptolocker,zeus,0.625760614872,0.372288674116,0.00167347339448,0.000250016251812
-199,pvoqdubd,cryptolocker,Malicious,conficker,kraken,pushdo,zeus,0.89435505867,0.102316960692,0.00234418455511,0.000796612352133
-200,xgyaw,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.85304659605,0.146081790328,0.000824333925266,2.82506625808e-05
-201,xqdxdkkl,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.993309140205,0.00545143475756,0.000749661005102,0.000487375247758
-202,kwwyqr,cryptolocker,Malicious,kraken,conficker,cryptolocker,zeus,0.499897092581,0.496860355139,0.00300026475452,0.000197169501917
-203,cttoplzgb,cryptolocker,Malicious,banjori,conficker,kraken,rovnix,0.442443013191,0.435128360987,0.0913488790393,0.0180207360536
-204,btraikjuic,cryptolocker,Malicious,conficker,banjori,kraken,cryptolocker,0.800663709641,0.197177097201,0.00119772017933,0.000704156758729
-205,ubiwenoj,cryptolocker,Malicious,pushdo,conficker,kraken,rovnix,0.987151622772,0.00660745427012,0.00314600230195,0.00147636106703
-206,acybnyke,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.969343304634,0.0152890533209,0.0151028838009,0.000253893464105
-207,vxoanpdwz,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.919165015221,0.0802586376667,0.000567629060242,3.2214481962e-06
-208,qxxjhgca,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.993258714676,0.00619382178411,0.000273107696557,0.000170358849573
-209,reoyk,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.919195771217,0.0711668357253,0.00542877102271,0.00333724543452
-210,gxwztnh,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.987915277481,0.0116270836443,0.000437099544797,1.47761302287e-05
-211,tgjnskqwc,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.796446979046,0.114119976759,0.086579695344,0.00267970911227
-212,xdxohczb,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.945276558399,0.0546350739896,7.14402267477e-05,1.19089982036e-05
-213,kcilwfwa,cryptolocker,Malicious,conficker,kraken,pushdo,cryptolocker,0.95105689764,0.0443922095001,0.00227834749967,0.00178415619303
-214,xyrlnmked,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.561091780663,0.224894091487,0.212290525436,0.00153786723968
-215,geafdzzte,cryptolocker,Malicious,conficker,pushdo,kraken,banjori,0.936613798141,0.0448504835367,0.0179852675647,0.000259087973973
-216,cqkxkx,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.860951542854,0.138203844428,0.00080056337174,1.77137499122e-05
-217,pcidwqyndcv,cryptolocker,Malicious,conficker,kraken,tinba,cryptolocker,0.769578099251,0.179511785507,0.0469949357212,0.0025468620006
-218,tfguq,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.813294768333,0.134154587984,0.0486179403961,0.00366961723194
-219,uugyq,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.896128237247,0.102235771716,0.00134304608218,0.000205985168577
-220,izqilywevz,cryptolocker,Malicious,conficker,zeus,kraken,rovnix,0.999974131584,1.92123952729e-05,6.59388342683e-06,4.88184035419e-08
-221,bvylklpm,cryptolocker,Malicious,conficker,cryptolocker,zeus,kraken,0.717245817184,0.275507748127,0.00559731665999,0.000757972593419
-222,ystaplnttos,cryptolocker,Malicious,kraken,cryptolocker,conficker,rovnix,0.56413257122,0.191049218178,0.170031577349,0.0696031823754
-223,oulfhf,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.927540242672,0.040744356811,0.022212645039,0.00936503242701
-224,szmxrai,cryptolocker,Malicious,conficker,kraken,banjori,zeus,0.972081005573,0.0160938985646,0.0116650154814,0.000158221286256
-225,mugeb,cryptolocker,Malicious,conficker,kraken,zeus,pushdo,0.70243704319,0.295692056417,0.000812752288766,0.000801220769063
-226,kawkyht,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.779347777367,0.211265742779,0.00793685484678,0.000860522908624
-227,wcrcyifbgt,cryptolocker,Malicious,conficker,tinba,zeus,kraken,0.864276409149,0.126582711935,0.00484528997913,0.00257168500684
-228,yuluk,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.698794960976,0.270625829697,0.0200250390917,0.00684789335355
-229,hhdsxbbgckx,cryptolocker,Malicious,kraken,cryptolocker,tinba,conficker,0.514553189278,0.446767926216,0.0292924568057,0.00933646876365
-230,yncstk,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.91686630249,0.0768849104643,0.00413585919887,0.00206043827347
-231,diprrmlodl,cryptolocker,Malicious,tinba,conficker,zeus,corebot,0.599750459194,0.399608612061,0.000383918755688,0.000191305589397
-232,jxltlgoq,cryptolocker,Malicious,cryptolocker,conficker,kraken,rovnix,0.919811785221,0.0502263642848,0.0290292426944,0.000603235850576
-233,tybvvfu,cryptolocker,Malicious,conficker,kraken,zeus,tinba,0.989556252956,0.00960897002369,0.000703007215634,6.79923905409e-05
-234,djlsyaox,cryptolocker,Malicious,kraken,conficker,cryptolocker,zeus,0.640483438969,0.348120689392,0.00972733739763,0.00162944826297
-235,yowtmmtsq,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.920969665051,0.063330963254,0.014373075217,0.00104164436925
-236,klnydhr,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.960144996643,0.0361100919545,0.00316382828169,0.000571114767808
-237,grxvbt,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.898031532764,0.100254267454,0.000824822986033,0.000643287145067
-238,txwcpoa,cryptolocker,Malicious,conficker,kraken,zeus,banjori,0.979172289371,0.0206272024661,0.00019626080757,2.55708573604e-06
-239,izoqmtf,cryptolocker,Malicious,kraken,conficker,zeus,banjori,0.926922738552,0.0730688720942,7.28892655388e-06,5.20846299423e-07
-240,ucdcatkpg,cryptolocker,Malicious,kraken,conficker,cryptolocker,corebot,0.676014304161,0.310552328825,0.0121372016147,0.000445411831606
-241,rbxgcdmu,cryptolocker,Malicious,conficker,cryptolocker,kraken,zeus,0.62635487318,0.237460151315,0.133335635066,0.00217557023279
-242,ypunarcpu,cryptolocker,Malicious,conficker,cryptolocker,rovnix,zeus,0.934287965298,0.0183916240931,0.0146115366369,0.0139646893367
-243,bjtrunm,cryptolocker,Malicious,conficker,cryptolocker,zeus,rovnix,0.991745531559,0.0061945063062,0.00158157141414,0.000227360957069
-244,kelajcvz,cryptolocker,Malicious,kraken,conficker,zeus,cryptolocker,0.959468901157,0.0403180941939,0.00011388650455,6.9753266871e-05
-245,dfyrzdalkq,cryptolocker,Malicious,banjori,conficker,kraken,zeus,0.494156628847,0.461936533451,0.0436625704169,0.00016874812718
-246,qihxcazk,cryptolocker,Malicious,kraken,conficker,zeus,cryptolocker,0.744489133358,0.255098700523,0.000336118566338,6.87993669999e-05
-247,uvpakmfq,cryptolocker,Malicious,conficker,kraken,zeus,cryptolocker,0.990140020847,0.00955289509147,0.000264776375843,3.6594010453e-05
-248,grhbnhd,cryptolocker,Malicious,conficker,kraken,cryptolocker,zeus,0.945217192173,0.0527129285038,0.00128060008865,0.000729451072402
-249,agfkhcjwru,cryptolocker,Malicious,kraken,cryptolocker,corebot,conficker,0.799755930901,0.123254172504,0.0666844397783,0.00570403737947
-250,mltdlobqa,cryptolocker,Malicious,kraken,conficker,cryptolocker,zeus,0.624893724918,0.369160801172,0.00562329264358,0.000124838945339
+,Domain,Label,Pred,Benign_prob,Top1,Top2,Top3,Top4,Prob1,Prob2,Prob3,Prob4
+0,xwtoqnuz,cryptolocker,Malicious,[  2.87816124e-06   9.99979734e-01],conficker,locky,zeus,pushdo,0.996397674084,0.00327406893484,0.000125726990518,0.000108335589175
+1,mjwiwookx,cryptolocker,Malicious,[  1.87626654e-07   9.99999285e-01],conficker,tinba,ramnit,locky,0.784687936306,0.103365704417,0.0671452879906,0.0406415574253
+2,xscgglem,cryptolocker,Malicious,[  5.05628122e-04   9.90513325e-01],ramnit,conficker,tinba,locky,0.328434735537,0.310296267271,0.209780290723,0.145578086376
+3,fqpjw,cryptolocker,Malicious,[  3.16907564e-04   9.97715473e-01],conficker,locky,ramnit,tinba,0.968841075897,0.027724545449,0.00153427838814,0.000981109216809
+4,lbsrhj,cryptolocker,Malicious,[  2.07605262e-05   9.99761283e-01],conficker,locky,ramnit,zeus,0.971800386906,0.0275601390749,0.000378521188395,0.000120156837511
+5,jbkjhdmnkqy,cryptolocker,Malicious,[  2.06144740e-10   1.00000000e+00],cryptolocker,locky,ramnit,conficker,0.701608538628,0.184029296041,0.103880092502,0.00705065205693
+6,tauhdwfr,cryptolocker,Malicious,[  1.52112780e-05   9.99845982e-01],conficker,locky,ramnit,cryptolocker,0.747619986534,0.214771032333,0.0365407168865,0.00103746622335
+7,lyqzuctj,cryptolocker,Malicious,[  1.71799456e-06   9.99990106e-01],conficker,locky,zeus,banjori,0.9999781847,1.49824654727e-05,5.17172156833e-06,1.58288389684e-06
+8,bnptwthcsig,cryptolocker,Malicious,[  6.10147254e-05   9.99383211e-01],locky,cryptolocker,conficker,ramnit,0.866634786129,0.101067870855,0.0193738248199,0.0127139342949
+9,xlgomxqvm,cryptolocker,Malicious,[  7.01473191e-09   1.00000000e+00],cryptolocker,locky,conficker,ramnit,0.349034518003,0.294590443373,0.237857162952,0.117199733853
+10,qhepu,cryptolocker,Malicious,[ 0.00651061  0.88342547],conficker,locky,zeus,cryptolocker,0.919666647911,0.071371473372,0.004420096986,0.00105281232391
+11,vifntre,cryptolocker,Malicious,[ 0.00248164  0.96391398],conficker,locky,ramnit,matsnu,0.76397138834,0.131848543882,0.0453865900636,0.0399167016149
+12,idolldtk,cryptolocker,Malicious,[ 0.02439096  0.78206038],tinba,ramnit,locky,conficker,0.594815075397,0.206913754344,0.118295632303,0.0392829887569
+13,vnaeazd,cryptolocker,Ambiguous,[ 0.23455846  0.14526635],conficker,banjori,locky,zeus,0.999049723148,0.000797743734438,0.000148483784869,3.16828527502e-06
+14,jccodgknalw,cryptolocker,Malicious,[  1.01041439e-06   9.99994040e-01],conficker,locky,cryptolocker,ramnit,0.671335697174,0.241482794285,0.0685123205185,0.015479718335
+15,hvxdmyzumo,cryptolocker,Malicious,[  8.58794829e-06   9.99923587e-01],conficker,locky,zeus,cryptolocker,0.999923467636,7.35823487048e-05,1.58744876444e-06,7.18282706202e-07
+16,klbkxpj,cryptolocker,Malicious,[  6.89497767e-07   9.99997258e-01],conficker,locky,cryptolocker,ramnit,0.567316114902,0.308527737856,0.118582293391,0.00522767659277
+17,wdrkhaike,cryptolocker,Malicious,[ 0.00827236  0.7702269 ],cryptolocker,locky,ramnit,conficker,0.911302089691,0.0560074448586,0.0168555919081,0.014524506405
+18,iubvefdhcwv,cryptolocker,Malicious,[  2.55206833e-09   1.00000000e+00],cryptolocker,locky,conficker,ramnit,0.551624238491,0.345780491829,0.0919150337577,0.00580436736345
+19,bebsxkxq,cryptolocker,Malicious,[  1.21565540e-06   9.99992728e-01],cryptolocker,conficker,locky,tinba,0.459125071764,0.304410308599,0.14102448523,0.0693342760205
+20,nqcvesg,cryptolocker,Malicious,[  1.25041232e-04   9.98813868e-01],conficker,locky,ramnit,rovnix,0.937051951885,0.0590007975698,0.00374022847973,6.8006964284e-05
+21,dqqzyv,cryptolocker,Malicious,[  3.23381624e-04   9.96272206e-01],conficker,zeus,banjori,locky,0.99998152256,1.31275755848e-05,2.96059829452e-06,2.33978039432e-06
+22,wjlshamn,cryptolocker,Malicious,[ 0.00287393  0.94188929],locky,conficker,ramnit,cryptolocker,0.486280679703,0.468446552753,0.0428161509335,0.00110508687794
+23,twscozurok,cryptolocker,Malicious,[  9.58007877e-04   9.87924933e-01],conficker,locky,pushdo,banjori,0.999550282955,0.000204266136279,0.0001172157572,5.96779536863e-05
+24,pwyfvlx,cryptolocker,Malicious,[  1.35806502e-07   9.99999523e-01],cryptolocker,locky,conficker,ramnit,0.966019034386,0.0180901642889,0.0151894185692,0.00065130146686
+25,aquinf,cryptolocker,Ambiguous,[ 0.04304912  0.39555761],conficker,cryptolocker,locky,ramnit,0.66682934761,0.209218785167,0.0878295823932,0.0154721783474
+26,rycndwon,cryptolocker,Malicious,[ 0.00138252  0.97276896],cryptolocker,conficker,locky,ramnit,0.864065349102,0.0946634933352,0.0272124260664,0.00943784601986
+27,uvvop,cryptolocker,Malicious,[  1.42586232e-05   9.99917388e-01],banjori,conficker,cryptolocker,locky,0.994519889355,0.00347980461083,0.00126495154109,0.000312877004035
+28,qvmlv,cryptolocker,Malicious,[  1.60846030e-05   9.99903321e-01],conficker,cryptolocker,locky,zeus,0.931426763535,0.0476703122258,0.0185386314988,0.00102717324626
+29,velsgxhbzxj,cryptolocker,Malicious,[  1.24658244e-11   1.00000000e+00],conficker,locky,ramnit,cryptolocker,0.999485850334,0.000495595973916,8.89823968464e-06,6.21491790298e-06
+30,zegaqgiout,cryptolocker,Malicious,[  1.33406456e-06   9.99995112e-01],cryptolocker,conficker,locky,ramnit,0.943853020668,0.0491382479668,0.00629284791648,0.000661827332806
+31,carbb,cryptolocker,Malicious,[ 0.03915853  0.49871275],banjori,conficker,locky,ramnit,0.999835371971,0.000147902261233,1.30820817503e-05,1.90537207345e-06
+32,fypbetgtjaf,cryptolocker,Malicious,[  3.72027698e-09   1.00000000e+00],cryptolocker,locky,corebot,ramnit,0.999999403954,3.28082137457e-07,1.11810031456e-07,7.42210275462e-08
+33,nilnd,cryptolocker,Malicious,[  6.32550044e-04   9.94929671e-01],cryptolocker,conficker,locky,zeus,0.904905974865,0.0908618122339,0.00244762585498,0.00159921776503
+34,tyzsxaxohlx,cryptolocker,Malicious,[  3.34576917e-08   9.99999881e-01],conficker,locky,zeus,cryptolocker,0.99996984005,2.66817696684e-05,1.84529403668e-06,1.56187911671e-06
+35,ozqnzti,cryptolocker,Malicious,[  5.59381488e-06   9.99957800e-01],conficker,banjori,zeus,locky,0.999992370605,4.68400276077e-06,2.84518046101e-06,1.48429748492e-07
+36,jjwkcmly,cryptolocker,Malicious,[  2.74114342e-07   9.99998450e-01],tinba,conficker,cryptolocker,locky,0.39873161912,0.325363725424,0.199670404196,0.0700184777379
+37,ugphzkkpbns,cryptolocker,Malicious,[  8.22877808e-11   1.00000000e+00],conficker,locky,zeus,tinba,0.999995350838,4.47389084002e-06,1.2601263677e-07,1.47009808771e-08
+38,tivftte,cryptolocker,Malicious,[  5.06339966e-05   9.99459445e-01],conficker,locky,rovnix,ramnit,0.60067909956,0.19888959825,0.135027468204,0.0315902270377
+39,tmxjypcjket,cryptolocker,Malicious,[  2.15941299e-07   9.99999046e-01],cryptolocker,corebot,locky,tinba,0.782467722893,0.118657581508,0.0408048592508,0.0391279906034
+40,whdepznu,cryptolocker,Malicious,[  2.41075577e-06   9.99980450e-01],conficker,locky,zeus,cryptolocker,0.999943733215,3.42837556673e-05,1.81906252692e-05,2.19592789108e-06
+41,tgatpiowtq,cryptolocker,Malicious,[  1.87498881e-05   9.99881148e-01],locky,ramnit,conficker,matsnu,0.756642758846,0.161929816008,0.0406499765813,0.0202621854842
+42,axvxv,cryptolocker,Malicious,[  1.08695649e-05   9.99921679e-01],conficker,locky,zeus,cryptolocker,0.981908142567,0.0168693363667,0.000487399869598,0.00027890765341
+43,hugjjrna,cryptolocker,Malicious,[  2.22297400e-04   9.97381985e-01],cryptolocker,conficker,locky,pushdo,0.97953492403,0.0128310993314,0.00754907354712,3.02717908198e-05
+44,zysgtfcz,cryptolocker,Malicious,[  5.94099845e-08   9.99999762e-01],conficker,locky,zeus,banjori,0.999996781349,2.36552614297e-06,7.89110856658e-07,3.86717466938e-08
+45,jgdoplc,cryptolocker,Malicious,[ 0.0012477   0.98657358],conficker,cryptolocker,locky,banjori,0.532440662384,0.239780694246,0.0915665999055,0.085302144289
+46,ijroe,cryptolocker,Malicious,[ 0.0468132   0.54313922],conficker,locky,tinba,ramnit,0.98161560297,0.0109066786245,0.00423560384661,0.00152140075807
+47,vcdumtl,cryptolocker,Malicious,[ 0.00497955  0.9282217 ],locky,conficker,tinba,cryptolocker,0.383911460638,0.304047822952,0.236309811473,0.0600428692997
+48,nfbcsohyzoi,cryptolocker,Malicious,[  3.08186117e-08   9.99999881e-01],conficker,locky,tinba,zeus,0.999993085861,4.20564902015e-06,1.62333446951e-06,1.05962419639e-06
+49,gqmgnf,cryptolocker,Malicious,[ 0.00288326  0.93635523],conficker,locky,cryptolocker,tinba,0.951171398163,0.032027091831,0.0100429710001,0.00470117107034
+50,ymvgell,cryptolocker,Malicious,[  3.10714764e-04   9.94185686e-01],conficker,locky,banjori,ramnit,0.495271772146,0.323270648718,0.0909861922264,0.0819018855691
+51,sxtdkposc,cryptolocker,Malicious,[  3.39845101e-05   9.99675155e-01],ramnit,locky,tinba,conficker,0.624283730984,0.155432075262,0.120767056942,0.095874838531
+52,sijqj,cryptolocker,Malicious,[  8.18349217e-05   9.99417305e-01],cryptolocker,conficker,zeus,locky,0.905246198177,0.0915727168322,0.00167953409255,0.00125633459538
+53,blrzvmtxjit,cryptolocker,Malicious,[  2.60731940e-11   1.00000000e+00],conficker,locky,tinba,ramnit,0.999887228012,0.00010883014329,2.44093985202e-06,7.71760994667e-07
+54,gbdwpo,cryptolocker,Malicious,[  4.17151568e-05   9.99487042e-01],conficker,locky,tinba,cryptolocker,0.937394797802,0.0553376302123,0.00273789511994,0.0024697072804
+55,uvefslvxwls,cryptolocker,Malicious,[  1.56213016e-08   1.00000000e+00],locky,ramnit,cryptolocker,conficker,0.911391913891,0.0627151429653,0.01063057594,0.00836755055934
+56,ndlftheyi,cryptolocker,Malicious,[  2.53993843e-04   9.93250489e-01],conficker,rovnix,locky,ramnit,0.761546194553,0.110122896731,0.0759349167347,0.0432215593755
+57,ssnvguuav,cryptolocker,Malicious,[  1.12089754e-06   9.99989033e-01],cryptolocker,locky,conficker,ramnit,0.979340910912,0.0111330077052,0.00847295951098,0.00101711146999
+58,kvyrdhxm,cryptolocker,Malicious,[  3.02868575e-09   1.00000000e+00],conficker,locky,cryptolocker,tinba,0.739712655544,0.132357284427,0.112653687596,0.0117213400081
+59,nntaiqauw,cryptolocker,Malicious,[  4.86272029e-07   9.99996543e-01],banjori,cryptolocker,locky,conficker,0.925412714481,0.0425616651773,0.0161789879203,0.0121873924509
+60,gnfzlqbvnw,cryptolocker,Malicious,[  3.04505310e-10   1.00000000e+00],conficker,locky,tinba,zeus,0.999988675117,9.98189170787e-06,7.67863696183e-07,3.49347459405e-07
+61,blnpfvwtl,cryptolocker,Malicious,[  5.72851766e-11   1.00000000e+00],cryptolocker,locky,conficker,tinba,0.665630936623,0.146468386054,0.10338909924,0.0462009161711
+62,nucxdjsh,cryptolocker,Malicious,[  3.50616872e-04   9.96802807e-01],conficker,locky,cryptolocker,ramnit,0.907759845257,0.0811522677541,0.00813641957939,0.00265430915169
+63,ztwzec,cryptolocker,Malicious,[  4.57113725e-04   9.94119406e-01],conficker,zeus,banjori,locky,0.999948382378,4.76860986964e-05,3.49384549736e-06,5.31204761955e-07
+64,jrytflal,cryptolocker,Malicious,[  1.52409397e-04   9.97366846e-01],locky,conficker,cryptolocker,ramnit,0.605543017387,0.190938711166,0.17734721303,0.024813791737
+65,gttrqqae,cryptolocker,Malicious,[  1.26129116e-05   9.99887705e-01],locky,conficker,cryptolocker,ramnit,0.426455110312,0.335259526968,0.179035678506,0.0590177215636
+66,nhsmfl,cryptolocker,Malicious,[  2.89291984e-05   9.99621391e-01],conficker,locky,cryptolocker,ramnit,0.736277461052,0.23517626524,0.021303653717,0.00630976539105
+67,jjtxlbjdhrg,cryptolocker,Malicious,[  5.37683276e-09   1.00000000e+00],conficker,locky,ramnit,tinba,0.537928700447,0.423077762127,0.0384870059788,0.00041084602708
+68,srdrbxekizd,cryptolocker,Malicious,[  2.55399790e-08   9.99999881e-01],conficker,locky,ramnit,zeus,0.99948656559,0.000510964135174,1.44396358337e-06,7.22628328731e-07
+69,urhzb,cryptolocker,Malicious,[  2.18442336e-04   9.97866809e-01],conficker,banjori,zeus,locky,0.997034430504,0.00284186331555,0.000101202858787,2.24788127525e-05
+70,vqghqsfted,cryptolocker,Malicious,[  1.05797393e-09   1.00000000e+00],locky,cryptolocker,conficker,ramnit,0.743847072124,0.125710502267,0.086332090199,0.0405398234725
+71,ruxriht,cryptolocker,Malicious,[  1.99972010e-06   9.99994040e-01],pushdo,conficker,locky,tinba,0.488750070333,0.447570264339,0.0502450726926,0.00660191196948
+72,przdtvlt,cryptolocker,Malicious,[  7.99595728e-06   9.99948025e-01],conficker,zeus,banjori,locky,0.999956250191,1.83776737686e-05,1.68388778548e-05,8.14239137981e-06
+73,uihcjx,cryptolocker,Malicious,[  3.82201892e-04   9.93674755e-01],conficker,locky,cryptolocker,ramnit,0.9899700284,0.00806370284408,0.000653550261632,0.000606454093941
+74,lmesvdyh,cryptolocker,Malicious,[  2.83431245e-06   9.99977827e-01],conficker,locky,ramnit,tinba,0.964471578598,0.0307903848588,0.00424420647323,0.000439699972048
+75,vubrhfol,cryptolocker,Malicious,[  4.82147470e-06   9.99970436e-01],cryptolocker,conficker,locky,ramnit,0.535607337952,0.356479644775,0.0921626836061,0.0149071775377
+76,sldzmutv,cryptolocker,Malicious,[  3.57807148e-05   9.99578059e-01],conficker,locky,banjori,zeus,0.999909996986,3.70747620764e-05,2.95903628285e-05,1.86669458344e-05
+77,nsgrcsm,cryptolocker,Malicious,[ 0.00890988  0.81833106],conficker,locky,ramnit,tinba,0.855837702751,0.105800569057,0.0310257319361,0.0063583930023
+78,btnput,cryptolocker,Malicious,[ 0.01544911  0.78555512],cryptolocker,conficker,locky,zeus,0.598246455193,0.374044984579,0.0207897815853,0.00328261195682
+79,nkwqfu,cryptolocker,Malicious,[  2.08940506e-07   9.99999046e-01],conficker,cryptolocker,locky,ramnit,0.870628297329,0.066563218832,0.0581190697849,0.00205081538297
+80,xxcet,cryptolocker,Ambiguous,[ 0.04710162  0.40278375],conficker,cryptolocker,locky,zeus,0.713327169418,0.227053150535,0.0407957322896,0.012699585408
+81,fakeua,cryptolocker,Malicious,[ 0.00746266  0.8966884 ],conficker,cryptolocker,locky,zeus,0.917583703995,0.0379209108651,0.0364195145667,0.00267594959587
+82,zbtgfwl,cryptolocker,Malicious,[  2.73681479e-04   9.95744526e-01],conficker,locky,zeus,ramnit,0.998604476452,0.00134971435182,1.81387022167e-05,1.25543829199e-05
+83,ngakumuqbt,cryptolocker,Malicious,[  4.10753245e-08   9.99999881e-01],cryptolocker,conficker,locky,ramnit,0.982667982578,0.00856007635593,0.00566341215745,0.00223421282135
+84,legnzubxhy,cryptolocker,Malicious,[  1.56966866e-08   9.99999881e-01],conficker,banjori,locky,zeus,0.997893154621,0.00207365094684,3.2136849768e-05,8.9143287596e-07
+85,hxohc,cryptolocker,Malicious,[  3.36404592e-05   9.99780834e-01],conficker,cryptolocker,locky,tinba,0.841954886913,0.111778095365,0.0258729364723,0.0136498510838
+86,aqjchrl,cryptolocker,Malicious,[  1.23513237e-04   9.98725951e-01],cryptolocker,conficker,locky,ramnit,0.996411859989,0.00265449797735,0.000858180748764,5.87608847127e-05
+87,lydpz,cryptolocker,Malicious,[  1.35547070e-05   9.99879718e-01],conficker,locky,zeus,banjori,0.999727547169,0.00016823221813,8.62289962242e-05,6.67228005113e-06
+88,kluswilopgk,cryptolocker,Malicious,[  7.36017973e-05   9.99477565e-01],conficker,locky,ramnit,matsnu,0.468088269234,0.288109183311,0.221395045519,0.0136920725927
+89,idgumxqgmg,cryptolocker,Malicious,[  7.65446373e-09   1.00000000e+00],conficker,locky,ramnit,cryptolocker,0.520702183247,0.403263032436,0.0723562762141,0.0018790748436
+90,cstzascihp,cryptolocker,Malicious,[  3.36347643e-04   9.94389832e-01],conficker,locky,zeus,banjori,0.999972581863,1.81711402547e-05,8.24834842206e-06,9.47510841343e-07
+91,erwllnavx,cryptolocker,Malicious,[  5.54931175e-04   9.96829331e-01],conficker,locky,cryptolocker,ramnit,0.536987900734,0.287824571133,0.134549111128,0.0399251244962
+92,loaef,cryptolocker,Malicious,[ 0.01201424  0.77195179],conficker,locky,cryptolocker,zeus,0.97329300642,0.0198581088334,0.00587826129049,0.000659055192955
+93,ogawjdaj,cryptolocker,Malicious,[  9.42979765e-04   9.92311418e-01],conficker,locky,ramnit,pushdo,0.695520997047,0.300849407911,0.00337072578259,0.000129357315018
+94,tsexz,cryptolocker,Malicious,[ 0.00704024  0.86441302],conficker,zeus,locky,banjori,0.99822551012,0.0011271511903,0.000482296134578,0.000145033875015
+95,pvfyg,cryptolocker,Malicious,[  5.96854698e-05   9.99514461e-01],conficker,locky,ramnit,tinba,0.967562794685,0.0275894589722,0.00237750774249,0.000977207440883
+96,deuxuoupr,cryptolocker,Malicious,[ 0.00488567  0.95093256],conficker,ramnit,locky,cryptolocker,0.26769721508,0.250183910131,0.248524591327,0.233107060194
+97,ronmkpwunm,cryptolocker,Malicious,[  5.61609122e-05   9.99575317e-01],conficker,locky,cryptolocker,tinba,0.664718091488,0.245643630624,0.0484314523637,0.0392175838351
+98,mnfaoq,cryptolocker,Malicious,[  1.95454486e-04   9.97481406e-01],conficker,locky,cryptolocker,ramnit,0.886859595776,0.0726900994778,0.0331800058484,0.00678017409518
+99,knwuryuqoj,cryptolocker,Malicious,[  2.42495393e-08   9.99999881e-01],cryptolocker,locky,conficker,ramnit,0.999991297722,4.25525286118e-06,3.0080623219e-06,1.21554205634e-06
+100,ygrmocpao,cryptolocker,Malicious,[ 0.00533476  0.92277867],conficker,locky,ramnit,cryptolocker,0.654865145683,0.304080933332,0.036156129092,0.00477261235937
+101,xohmtqeg,cryptolocker,Malicious,[  3.71999931e-06   9.99977827e-01],ramnit,conficker,locky,cryptolocker,0.36753475666,0.332932442427,0.288403958082,0.00743963150308
+102,tnzshph,cryptolocker,Malicious,[  3.03654724e-05   9.99702394e-01],conficker,zeus,locky,banjori,0.999981641769,1.25038768601e-05,3.49477136297e-06,2.40676854446e-06
+103,dwynzev,cryptolocker,Malicious,[  4.37236959e-05   9.99590695e-01],conficker,locky,zeus,banjori,0.99996471405,1.9309878553e-05,1.28420833789e-05,3.0807038911e-06
+104,cgxqfichwzd,cryptolocker,Malicious,[  9.70995950e-10   1.00000000e+00],conficker,banjori,zeus,locky,0.999533295631,0.000424339610618,3.05231951643e-05,1.15860166261e-05
+105,hgcvrm,cryptolocker,Malicious,[  3.08494591e-10   1.00000000e+00],cryptolocker,conficker,tinba,locky,0.603954434395,0.341150730848,0.0298816058785,0.0229619294405
+106,bwtjcpd,cryptolocker,Malicious,[  1.17339740e-04   9.99116957e-01],conficker,locky,ramnit,tinba,0.77759373188,0.204463243484,0.0118785388768,0.00459075300023
+107,bikbyhruja,cryptolocker,Malicious,[  7.94789012e-05   9.98748779e-01],locky,conficker,cryptolocker,ramnit,0.456880271435,0.425760298967,0.0414274409413,0.0367180556059
+108,couwtaihei,cryptolocker,Malicious,[  2.72712001e-04   9.94459867e-01],locky,cryptolocker,conficker,ramnit,0.453363388777,0.41312712431,0.0716093480587,0.0465743467212
+109,lechgifle,cryptolocker,Ambiguous,[ 0.36141846  0.03150554],cryptolocker,conficker,locky,ramnit,0.851969957352,0.0772476270795,0.0235360749066,0.0194844398648
+110,ksfcmtxl,cryptolocker,Malicious,[  4.88746366e-07   9.99997020e-01],conficker,locky,ramnit,cryptolocker,0.591863512993,0.277947932482,0.0841552093625,0.0383434928954
+111,kqazijri,cryptolocker,Malicious,[ 0.00134332  0.97580487],conficker,banjori,locky,zeus,0.999937057495,2.9266169804e-05,2.25806616072e-05,1.11634299174e-05
+112,xlnukyaserm,cryptolocker,Malicious,[  2.33491563e-04   9.95463550e-01],cryptolocker,locky,ramnit,matsnu,0.439971983433,0.417900502682,0.109338842332,0.028374383226
+113,uccrnraiylm,cryptolocker,Malicious,[  4.62785117e-08   9.99999642e-01],locky,ramnit,conficker,cryptolocker,0.557070493698,0.376391530037,0.0427136234939,0.0230301227421
+114,hqnrha,cryptolocker,Malicious,[  1.35674582e-05   9.99864459e-01],conficker,locky,ramnit,cryptolocker,0.891038417816,0.0746892690659,0.0335435494781,0.000282995111775
+115,gcvshjj,cryptolocker,Malicious,[  1.51056142e-07   9.99999285e-01],conficker,locky,cryptolocker,tinba,0.41652828455,0.39384251833,0.106928005815,0.0783224850893
+116,yqkexsmrhlh,cryptolocker,Malicious,[  2.27627639e-10   1.00000000e+00],ramnit,locky,conficker,cryptolocker,0.633278369904,0.361133933067,0.00395515421405,0.00141852349043
+117,tpttlbmbbz,cryptolocker,Malicious,[  1.42407248e-06   9.99991417e-01],conficker,locky,tinba,ramnit,0.85544782877,0.12500846386,0.0126460390165,0.00667309481651
+118,rpcpr,cryptolocker,Malicious,[ 0.03294361  0.49143922],conficker,locky,cryptolocker,ramnit,0.961657643318,0.0254342406988,0.0105790663511,0.00106765376404
+119,fzsexkrk,cryptolocker,Malicious,[  2.63754532e-06   9.99975443e-01],conficker,banjori,locky,zeus,0.999672055244,0.0002502159914,4.85805103381e-05,2.86853646685e-05
+120,go,cryptolocker,Ambiguous,[ 0.26416278  0.10781638],conficker,banjori,zeus,locky,0.81689453125,0.161989092827,0.0150166191161,0.00203970586881
+121,iaopcu,cryptolocker,Malicious,[ 0.02432353  0.60925347],banjori,conficker,locky,cryptolocker,0.910973548889,0.0579677633941,0.0281083621085,0.00152232998516
+122,pqqmcdxg,cryptolocker,Malicious,[  1.30701267e-07   9.99999523e-01],conficker,locky,tinba,ramnit,0.477045685053,0.460763305426,0.0320596545935,0.0287614353001
+123,apgqjdtb,cryptolocker,Malicious,[  2.93508521e-07   9.99998212e-01],cryptolocker,locky,conficker,ramnit,0.470436602831,0.40503886342,0.122264958918,0.00211868528277
+124,xhthttye,cryptolocker,Malicious,[ 0.00189337  0.97603446],conficker,locky,tinba,ramnit,0.721040070057,0.192671567202,0.0685786083341,0.0114099634811
+125,qqlpcfjvmqi,cryptolocker,Malicious,[  2.28786434e-09   1.00000000e+00],ramnit,locky,tinba,cryptolocker,0.89400357008,0.0695186704397,0.0310346484184,0.00383024592884
+126,okkdcsfjjuo,cryptolocker,Malicious,[  1.03896092e-08   1.00000000e+00],tinba,ramnit,cryptolocker,locky,0.428106099367,0.324406921864,0.0874232426286,0.0807675495744
+127,fgcpbd,cryptolocker,Malicious,[  1.43890589e-04   9.98153985e-01],conficker,locky,tinba,ramnit,0.982741415501,0.0133419763297,0.00237044482492,0.00134392792825
+128,qxvtxnlrcz,cryptolocker,Malicious,[  3.22063681e-10   1.00000000e+00],conficker,locky,ramnit,zeus,0.996574163437,0.00342220021412,3.61683078154e-06,1.45626204429e-08
+129,fwhnbvqy,cryptolocker,Malicious,[  1.24024668e-09   1.00000000e+00],cryptolocker,conficker,locky,tinba,0.975364625454,0.0223984923214,0.00200385996141,0.00013788913202
+130,svubgqosq,cryptolocker,Malicious,[  9.51691277e-08   9.99999762e-01],conficker,locky,tinba,ramnit,0.955973267555,0.0344676040113,0.00533210998401,0.0038049146533
+131,inlunf,cryptolocker,Malicious,[ 0.00285889  0.960949  ],conficker,locky,rovnix,tinba,0.80760371685,0.11149097234,0.0306751541793,0.017746867612
+132,zopalutdgt,cryptolocker,Malicious,[  3.39377322e-04   9.97909606e-01],conficker,ramnit,cryptolocker,corebot,0.56200748682,0.167630821466,0.135618418455,0.0712515190244
+133,fxfwbikqob,cryptolocker,Malicious,[  1.77285884e-08   1.00000000e+00],conficker,locky,cryptolocker,ramnit,0.877422273159,0.0729066506028,0.0489903725684,0.000640124373604
+134,czvdgczwdq,cryptolocker,Malicious,[  5.50687353e-08   9.99999881e-01],conficker,zeus,locky,banjori,0.999999284744,4.80073026665e-07,8.71967245075e-08,7.80445077453e-08
+135,ujwhupfrtku,cryptolocker,Malicious,[  4.88304868e-05   9.99713123e-01],conficker,locky,cryptolocker,ramnit,0.721380829811,0.217863306403,0.0596076399088,0.000827626092359
+136,nnjyrwahhoi,cryptolocker,Malicious,[  2.31684588e-10   1.00000000e+00],cryptolocker,ramnit,locky,conficker,0.78723859787,0.127415597439,0.0840494632721,0.00124683778267
+137,fhdsykyro,cryptolocker,Malicious,[  1.58176699e-05   9.99872923e-01],locky,conficker,ramnit,cryptolocker,0.643767058849,0.26625469327,0.0870910808444,0.00277948263101
+138,xfzmeio,cryptolocker,Malicious,[ 0.00229944  0.94792092],conficker,banjori,zeus,locky,0.998567461967,0.00135760800913,5.37492560397e-05,2.0884870537e-05
+139,kwcaagk,cryptolocker,Malicious,[  2.33711165e-04   9.96917963e-01],conficker,locky,banjori,ramnit,0.771183490753,0.221460253,0.00367878912948,0.00320457317866
+140,ademacqhtos,cryptolocker,Malicious,[ 0.03667647  0.5357796 ],ramnit,matsnu,pushdo,locky,0.749079227448,0.0933610722423,0.089139573276,0.034184128046
+141,ktxyy,cryptolocker,Malicious,[  6.01417487e-05   9.99541640e-01],conficker,locky,cryptolocker,tinba,0.963452994823,0.0180629305542,0.00836590025574,0.00795841962099
+142,ognseme,cryptolocker,Malicious,[ 0.03048804  0.5112431 ],conficker,locky,ramnit,matsnu,0.806525826454,0.0918673276901,0.0580038838089,0.0149423694238
+143,plhjis,cryptolocker,Malicious,[  1.23485813e-06   9.99995708e-01],conficker,cryptolocker,locky,zeus,0.845486104488,0.129874333739,0.0228982847184,0.00110220070928
+144,jpqrdqqo,cryptolocker,Malicious,[  9.42607103e-10   1.00000000e+00],cryptolocker,locky,tinba,conficker,0.787264347076,0.159777492285,0.04363546893,0.00535046448931
+145,trbcublg,cryptolocker,Malicious,[  1.69872888e-04   9.98245955e-01],conficker,locky,cryptolocker,ramnit,0.657735466957,0.225650817156,0.115499481559,0.000540042703506
+146,dmealng,cryptolocker,Malicious,[  3.69463844e-04   9.94808137e-01],conficker,locky,cryptolocker,ramnit,0.824887037277,0.153918758035,0.00712576927617,0.00622059684247
+147,truarxm,cryptolocker,Malicious,[  2.28790945e-04   9.95838404e-01],conficker,banjori,locky,ramnit,0.872458577156,0.0685814917088,0.0517512783408,0.00676737166941
+148,znmdgqrwicp,cryptolocker,Malicious,[  5.59814382e-11   1.00000000e+00],conficker,locky,ramnit,tinba,0.985957562923,0.0128217823803,0.000989173306152,0.000150693100295
+149,rqbnqmmc,cryptolocker,Malicious,[  6.00388805e-09   1.00000000e+00],locky,cryptolocker,conficker,ramnit,0.363913953304,0.293208360672,0.182621061802,0.129844352603
+150,ohngldqiht,cryptolocker,Malicious,[  2.23097501e-07   9.99999285e-01],conficker,tinba,locky,ramnit,0.474910497665,0.231135308743,0.169637575746,0.123691350222
+151,ewyhgr,cryptolocker,Malicious,[  3.06149974e-04   9.95695829e-01],conficker,cryptolocker,locky,ramnit,0.475948691368,0.396192759275,0.0817779973149,0.0374749675393
+152,mwbidueyb,cryptolocker,Malicious,[  1.87399689e-06   9.99987364e-01],ramnit,locky,tinba,conficker,0.601314127445,0.254932075739,0.112241126597,0.011898717843
+153,xvbcfuo,cryptolocker,Malicious,[  3.34530228e-06   9.99974012e-01],cryptolocker,conficker,locky,zeus,0.62055939436,0.295870542526,0.0818968042731,0.000726286496501
+154,hsejrqdm,cryptolocker,Malicious,[  1.28050833e-05   9.99886394e-01],locky,ramnit,tinba,conficker,0.530977368355,0.383814096451,0.044119309634,0.0404788814485
+155,tdcwlwnw,cryptolocker,Malicious,[  2.44148112e-07   9.99998808e-01],conficker,cryptolocker,locky,tinba,0.777565181255,0.0950952172279,0.0820217579603,0.0392050854862
+156,opzftls,cryptolocker,Malicious,[  1.86881414e-06   9.99990821e-01],conficker,banjori,zeus,locky,0.601797997952,0.39790892601,0.000281338259811,1.13639225674e-05
+157,rvivhhbyg,cryptolocker,Malicious,[  7.89189653e-06   9.99948144e-01],conficker,locky,cryptolocker,ramnit,0.449592292309,0.275923997164,0.26999732852,0.00414173305035
+158,wakgepu,cryptolocker,Malicious,[ 0.00152855  0.97562909],conficker,locky,ramnit,cryptolocker,0.851926863194,0.14441332221,0.00142982462421,0.00090335047571
+159,hsyzmwse,cryptolocker,Malicious,[  4.83780168e-05   9.99472797e-01],conficker,locky,zeus,banjori,0.999990463257,4.96239954373e-06,4.27227814725e-06,2.14237388718e-07
+160,ysftaklogdb,cryptolocker,Malicious,[ 0.03092629  0.63352531],locky,conficker,ramnit,cryptolocker,0.925497531891,0.0454432927072,0.0289356261492,9.28830922931e-05
+161,jbwcmvz,cryptolocker,Malicious,[  3.78307247e-10   1.00000000e+00],conficker,locky,tinba,ramnit,0.9973128438,0.00234399153851,0.000176063273102,0.00011931717745
+162,vzgecmpyrlz,cryptolocker,Malicious,[  1.40740633e-06   9.99991179e-01],conficker,banjori,locky,zeus,0.99981123209,0.000183887968888,4.62798061562e-06,1.9552820163e-07
+163,adeuwmgj,cryptolocker,Malicious,[  7.74854052e-05   9.99244332e-01],conficker,locky,cryptolocker,ramnit,0.480234742165,0.320759266615,0.177243024111,0.0216198079288
+164,ipjkrw,cryptolocker,Malicious,[  6.30464854e-07   9.99998093e-01],conficker,locky,cryptolocker,tinba,0.896055221558,0.0613385885954,0.0274987500161,0.00784615147859
+165,nftdckcn,cryptolocker,Malicious,[  3.58425968e-05   9.99499202e-01],locky,tinba,conficker,ramnit,0.395821034908,0.327127486467,0.181460723281,0.0907065495849
+166,lkhjuycqh,cryptolocker,Malicious,[  1.97447443e-05   9.99848247e-01],ramnit,conficker,locky,cryptolocker,0.715691685677,0.0920635163784,0.0764325410128,0.0606825686991
+167,ycmeqkqb,cryptolocker,Malicious,[  1.84525518e-07   9.99999166e-01],conficker,locky,ramnit,cryptolocker,0.627955973148,0.345273196697,0.0198462344706,0.00685085263103
+168,jitcxqfug,cryptolocker,Malicious,[  5.04116082e-10   1.00000000e+00],cryptolocker,tinba,conficker,locky,0.972276926041,0.00916585046798,0.00863990187645,0.00628378335387
+169,sbpspbz,cryptolocker,Malicious,[  1.59662814e-04   9.97348189e-01],conficker,locky,banjori,ramnit,0.998495817184,0.00144635234028,1.60327854246e-05,1.50400201164e-05
+170,dhzytqhgw,cryptolocker,Malicious,[  1.23994450e-08   1.00000000e+00],conficker,locky,banjori,zeus,0.999993085861,4.24703011959e-06,1.7386048512e-06,8.54738289036e-07
+171,asfdbhp,cryptolocker,Malicious,[  2.05431119e-04   9.98076677e-01],conficker,ramnit,locky,cryptolocker,0.693907082081,0.154118284583,0.145087763667,0.00603914121166
+172,ttfcejibc,cryptolocker,Malicious,[  3.68672918e-05   9.99224544e-01],cryptolocker,conficker,locky,tinba,0.951886773109,0.0334184877574,0.0117221092805,0.0025817961432
+173,wvkdo,cryptolocker,Malicious,[  2.47587421e-04   9.97470379e-01],conficker,locky,ramnit,tinba,0.878201246262,0.0997583195567,0.011926154606,0.00349581381306
+174,hpckmto,cryptolocker,Malicious,[  1.02222612e-05   9.99915361e-01],conficker,cryptolocker,locky,tinba,0.839462280273,0.0954932868481,0.050016798079,0.0121133904904
+175,fcjqeqyc,cryptolocker,Malicious,[  8.65233649e-11   1.00000000e+00],cryptolocker,conficker,locky,ramnit,0.845603823662,0.138722896576,0.0120425866917,0.00194920017384
+176,jjespwyo,cryptolocker,Malicious,[ 0.00873607  0.76866186],locky,conficker,cryptolocker,ramnit,0.474054038525,0.38064339757,0.125002264977,0.0186394769698
+177,jrrvwmfqszd,cryptolocker,Malicious,[  3.49266438e-09   1.00000000e+00],conficker,locky,tinba,ramnit,0.999912261963,8.52716111694e-05,1.88089370567e-06,3.23725515727e-07
+178,zjrcfwhug,cryptolocker,Malicious,[  1.01587534e-06   9.99993324e-01],conficker,locky,cryptolocker,zeus,0.999417066574,0.000400242279284,0.000108869986434,5.05703756062e-05
+179,apzirmyju,cryptolocker,Malicious,[  2.86917522e-04   9.95423377e-01],conficker,zeus,locky,banjori,0.999864339828,0.00012314383639,1.13206833703e-05,6.61620958908e-07
+180,yknkqjbmjls,cryptolocker,Malicious,[  1.04788064e-12   1.00000000e+00],ramnit,locky,conficker,cryptolocker,0.684386312962,0.297722786665,0.00916363857687,0.00784529279917
+181,ekvnsxwk,cryptolocker,Malicious,[  9.15721159e-07   9.99993443e-01],cryptolocker,conficker,locky,ramnit,0.439373940229,0.273636221886,0.171156421304,0.111562862992
+182,mlxdmmcbim,cryptolocker,Malicious,[  6.23149845e-06   9.99939322e-01],tinba,ramnit,locky,conficker,0.831764876842,0.0663825422525,0.0509053394198,0.037026591599
+183,paiobbz,cryptolocker,Malicious,[  3.04950372e-04   9.94428754e-01],conficker,locky,ramnit,banjori,0.993102788925,0.00595472194254,0.000790219171904,7.31903564883e-05
+184,qijefwjf,cryptolocker,Malicious,[  1.94427867e-06   9.99988794e-01],conficker,locky,cryptolocker,ramnit,0.7067887187,0.190607666969,0.0707132220268,0.0160579495132
+185,ommvnkbune,cryptolocker,Malicious,[  2.56491057e-05   9.99682307e-01],locky,ramnit,conficker,corebot,0.443514347076,0.26505151391,0.22060868144,0.024358779192
+186,vdmjlydlb,cryptolocker,Malicious,[  4.64884558e-08   9.99999762e-01],locky,cryptolocker,conficker,ramnit,0.427552103996,0.359808951616,0.187727883458,0.0227262564003
+187,digpf,cryptolocker,Malicious,[ 0.00263589  0.95848346],conficker,locky,cryptolocker,zeus,0.969254493713,0.0183243248612,0.00978907663375,0.00189280346967
+188,kzfhiyg,cryptolocker,Malicious,[  1.62529119e-08   1.00000000e+00],conficker,zeus,locky,banjori,0.999964356422,1.64698467415e-05,1.08767098936e-05,7.86242526374e-06
+189,hlxvppznmk,cryptolocker,Malicious,[  1.76020265e-09   1.00000000e+00],conficker,locky,ramnit,banjori,0.999710261822,0.000286694616079,2.60369620264e-06,2.56943962995e-07
+190,bjnewbpo,cryptolocker,Malicious,[ 0.00187363  0.95847917],conficker,tinba,locky,ramnit,0.642376244068,0.236761972308,0.11840929836,0.00167214334942
+191,adknuhkxao,cryptolocker,Malicious,[  1.98698586e-07   9.99999285e-01],ramnit,locky,conficker,cryptolocker,0.825232088566,0.109962962568,0.0568931475282,0.00598949659616
+192,zhvdgnoo,cryptolocker,Malicious,[  1.16036063e-06   9.99992013e-01],conficker,locky,zeus,banjori,0.997906327248,0.00177454622462,0.00017768034013,0.000109618420538
+193,dlgrdf,cryptolocker,Malicious,[  2.66648392e-04   9.98086452e-01],conficker,locky,cryptolocker,ramnit,0.911132872105,0.0828688889742,0.00325922691263,0.00257120863535
+194,jhamn,cryptolocker,Malicious,[ 0.01728578  0.80965376],conficker,locky,ramnit,cryptolocker,0.90759563446,0.0756112039089,0.0100059136748,0.0034038501326
+195,ffataqk,cryptolocker,Malicious,[ 0.02077457  0.76215672],conficker,cryptolocker,locky,pushdo,0.508708775043,0.318692296743,0.148651525378,0.00974741950631
+196,hemyfkyt,cryptolocker,Malicious,[  2.60905017e-05   9.99577701e-01],cryptolocker,conficker,locky,tinba,0.711416900158,0.258339911699,0.0188669655472,0.00933725573123
+197,rsdolpacs,cryptolocker,Ambiguous,[ 0.09470063  0.3390685 ],conficker,locky,cryptolocker,ramnit,0.818952143192,0.145687565207,0.0297853797674,0.00500889029354
+198,hvzmlunvfyj,cryptolocker,Malicious,[  9.86014159e-10   1.00000000e+00],conficker,locky,tinba,cryptolocker,0.999535918236,0.000362450053217,4.71945131721e-05,4.62823518319e-05
+199,pvoqdubd,cryptolocker,Malicious,[  2.57520161e-09   1.00000000e+00],conficker,locky,ramnit,cryptolocker,0.779595136642,0.205409213901,0.0134696755558,0.00137365842238
+200,xgyaw,cryptolocker,Malicious,[  5.29045123e-04   9.95220482e-01],conficker,locky,ramnit,cryptolocker,0.950799763203,0.0360522903502,0.00618032552302,0.00520045869052
+201,xqdxdkkl,cryptolocker,Malicious,[  4.98566596e-12   1.00000000e+00],conficker,locky,tinba,ramnit,0.820433676243,0.0951127633452,0.066046372056,0.0146155627444
+202,kwwyqr,cryptolocker,Malicious,[  1.76557500e-04   9.97936130e-01],cryptolocker,conficker,locky,tinba,0.661072432995,0.231430321932,0.0634840428829,0.0236664246768
+203,cttoplzgb,cryptolocker,Malicious,[  8.24184448e-04   9.85833287e-01],conficker,banjori,zeus,locky,0.962103009224,0.0376023054123,0.000213228267967,7.65562945162e-05
+204,btraikjuic,cryptolocker,Malicious,[ 0.0067723   0.75844014],cryptolocker,locky,conficker,matsnu,0.999972581863,1.39166932058e-05,1.11705357995e-05,1.05700462427e-06
+205,ubiwenoj,cryptolocker,Malicious,[  6.99768570e-05   9.99375641e-01],pushdo,conficker,locky,ramnit,0.704289376736,0.276731610298,0.0136178499088,0.00194973673206
+206,acybnyke,cryptolocker,Malicious,[  6.33301534e-05   9.99031544e-01],conficker,locky,ramnit,banjori,0.486266344786,0.431528955698,0.0788460075855,0.0015421762364
+207,vxoanpdwz,cryptolocker,Malicious,[  1.55208639e-07   9.99999404e-01],conficker,locky,ramnit,banjori,0.99735224247,0.00256739300676,6.58061253489e-05,1.04955051938e-05
+208,qxxjhgca,cryptolocker,Malicious,[  3.65889787e-06   9.99971867e-01],conficker,locky,ramnit,cryptolocker,0.7297732234,0.217998594046,0.027239151299,0.0247984360904
+209,reoyk,cryptolocker,Malicious,[ 0.00383442  0.93983668],conficker,locky,cryptolocker,ramnit,0.903334200382,0.0467132031918,0.0400985851884,0.00639265123755
+210,gxwztnh,cryptolocker,Malicious,[  4.71641124e-06   9.99980330e-01],conficker,locky,zeus,banjori,0.999947786331,2.9434399039e-05,1.62907108461e-05,4.47577349405e-06
+211,tgjnskqwc,cryptolocker,Malicious,[  9.09279263e-10   1.00000000e+00],locky,conficker,ramnit,tinba,0.613565385342,0.223522990942,0.158219277859,0.00456158304587
+212,xdxohczb,cryptolocker,Malicious,[  2.51892948e-06   9.99985695e-01],conficker,zeus,locky,banjori,0.999970316887,1.43597935676e-05,1.21227803902e-05,2.73345744972e-06
+213,kcilwfwa,cryptolocker,Malicious,[  1.33171045e-06   9.99995589e-01],conficker,locky,ramnit,zeus,0.974446117878,0.0195624008775,0.00468138186261,0.000445733719971
+214,xyrlnmked,cryptolocker,Malicious,[  3.35921072e-07   9.99998569e-01],cryptolocker,ramnit,locky,conficker,0.96925675869,0.0135748647153,0.0135047500953,0.00359774613753
+215,geafdzzte,cryptolocker,Malicious,[  8.25848401e-05   9.99685526e-01],conficker,banjori,locky,zeus,0.99995470047,2.52305435424e-05,1.62073138199e-05,3.13383952744e-06
+216,cqkxkx,cryptolocker,Malicious,[  1.75395044e-07   9.99999523e-01],conficker,locky,cryptolocker,zeus,0.935900270939,0.0613489374518,0.00191250094213,0.00040588027332
+217,pcidwqyndcv,cryptolocker,Malicious,[  7.51855325e-08   9.99999762e-01],cryptolocker,locky,ramnit,conficker,0.554480493069,0.411345124245,0.0175381917506,0.0138799957931
+218,tfguq,cryptolocker,Malicious,[  1.49133730e-05   9.99913573e-01],conficker,cryptolocker,locky,zeus,0.917115628719,0.0711565837264,0.0101716620848,0.000861286185682
+219,uugyq,cryptolocker,Malicious,[  2.57880674e-06   9.99986410e-01],conficker,locky,cryptolocker,ramnit,0.977128148079,0.0192038994282,0.00238757766783,0.000443250784883
+220,izqilywevz,cryptolocker,Malicious,[  2.04052526e-07   9.99999285e-01],conficker,zeus,locky,banjori,0.999995112419,4.17728870161e-06,7.05051945715e-07,4.37440750289e-09
+221,bvylklpm,cryptolocker,Malicious,[  2.10414640e-07   9.99999285e-01],cryptolocker,conficker,locky,tinba,0.772176265717,0.216719612479,0.0077234855853,0.00233008083887
+222,ystaplnttos,cryptolocker,Malicious,[  4.03794751e-04   9.88204360e-01],ramnit,locky,conficker,matsnu,0.533194363117,0.338536441326,0.0767818540335,0.0318333953619
+223,oulfhf,cryptolocker,Malicious,[  9.74610739e-05   9.99268234e-01],conficker,locky,ramnit,zeus,0.984594702721,0.0145964389667,0.000547336472664,0.000134502421133
+224,szmxrai,cryptolocker,Malicious,[  7.01537647e-04   9.89814758e-01],conficker,banjori,zeus,locky,0.976249098778,0.0234390050173,0.000287825154373,2.3414271709e-05
+225,mugeb,cryptolocker,Ambiguous,[ 0.06128283  0.35864869],conficker,locky,pushdo,zeus,0.915550231934,0.0434106141329,0.0325548499823,0.00493073044345
+226,kawkyht,cryptolocker,Malicious,[  4.62810014e-04   9.94777679e-01],conficker,locky,ramnit,banjori,0.572440564632,0.420296669006,0.00672129075974,0.000443532626377
+227,wcrcyifbgt,cryptolocker,Malicious,[  3.97894020e-08   9.99999881e-01],tinba,conficker,locky,ramnit,0.47498562932,0.295919895172,0.163714051247,0.0634151399136
+228,yuluk,cryptolocker,Ambiguous,[ 0.14962515  0.20907059],conficker,cryptolocker,locky,pushdo,0.846076488495,0.0734034925699,0.0575150251389,0.014101261273
+229,hhdsxbbgckx,cryptolocker,Malicious,[  2.45213965e-08   9.99999881e-01],locky,tinba,ramnit,cryptolocker,0.584228098392,0.264254629612,0.0806578248739,0.0488116033375
+230,yncstk,cryptolocker,Malicious,[ 0.02249696  0.60738391],conficker,locky,ramnit,tinba,0.831555426121,0.153203547001,0.0101738413796,0.00352613115683
+231,diprrmlodl,cryptolocker,Malicious,[  5.91208118e-05   9.99668360e-01],tinba,locky,ramnit,cryptolocker,0.768040239811,0.216399729252,0.00750689068809,0.00394417019561
+232,jxltlgoq,cryptolocker,Malicious,[  7.81075116e-09   1.00000000e+00],conficker,ramnit,locky,tinba,0.317114919424,0.292428016663,0.211235836148,0.107995733619
+233,tybvvfu,cryptolocker,Malicious,[  8.52685662e-06   9.99938250e-01],conficker,tinba,locky,cryptolocker,0.849512577057,0.0992130041122,0.0474230870605,0.00205848645419
+234,djlsyaox,cryptolocker,Malicious,[  1.42718736e-05   9.99879122e-01],locky,conficker,ramnit,tinba,0.486315339804,0.280723750591,0.23291695118,3.1435789424e-05
+235,yowtmmtsq,cryptolocker,Malicious,[  5.59027740e-08   9.99999762e-01],locky,tinba,conficker,ramnit,0.351557284594,0.345649808645,0.173459157348,0.102470032871
+236,klnydhr,cryptolocker,Malicious,[  6.45588298e-05   9.99182880e-01],conficker,locky,ramnit,cryptolocker,0.866215646267,0.0765210837126,0.0433382764459,0.0112461438403
+237,grxvbt,cryptolocker,Malicious,[  6.12395752e-06   9.99954224e-01],conficker,locky,cryptolocker,ramnit,0.944520115852,0.0435379371047,0.0104143526405,0.00116717384662
+238,txwcpoa,cryptolocker,Malicious,[  1.08383465e-05   9.99915361e-01],conficker,cryptolocker,locky,ramnit,0.452455490828,0.296118050814,0.229059755802,0.0218528062105
+239,izoqmtf,cryptolocker,Malicious,[  1.96971897e-07   9.99999166e-01],conficker,locky,zeus,cryptolocker,0.999863505363,9.02447136468e-05,4.54958826595e-05,4.97327903304e-07
+240,ucdcatkpg,cryptolocker,Malicious,[  2.97598290e-05   9.99577582e-01],locky,ramnit,conficker,corebot,0.390096843243,0.305838048458,0.301467746496,0.00121990335174
+241,rbxgcdmu,cryptolocker,Malicious,[  1.64622335e-07   9.99999285e-01],locky,conficker,tinba,cryptolocker,0.666584551334,0.260193347931,0.0651338100433,0.00489955814555
+242,ypunarcpu,cryptolocker,Malicious,[ 0.01284169  0.82832372],conficker,locky,ramnit,rovnix,0.923419833183,0.0440304353833,0.0168799106032,0.0117719788104
+243,bjtrunm,cryptolocker,Malicious,[ 0.00318197  0.93228072],conficker,locky,banjori,cryptolocker,0.952096581459,0.0435396172106,0.00124631123617,0.00101318012457
+244,kelajcvz,cryptolocker,Malicious,[  1.83984648e-05   9.99849796e-01],conficker,locky,ramnit,zeus,0.997638821602,0.00221921713091,5.5614294979e-05,4.49740437034e-05
+245,dfyrzdalkq,cryptolocker,Malicious,[  6.05610637e-08   9.99999762e-01],conficker,banjori,locky,zeus,0.7240254879,0.275862932205,9.40320751397e-05,1.7334585209e-05
+246,qihxcazk,cryptolocker,Malicious,[  1.23606569e-05   9.99908209e-01],conficker,zeus,locky,banjori,0.999989032745,6.0735601437e-06,4.9035502343e-06,1.52434722622e-08
+247,uvpakmfq,cryptolocker,Malicious,[  4.02953049e-08   9.99999881e-01],conficker,locky,cryptolocker,ramnit,0.522058308125,0.45037868619,0.0261333715171,0.00137661537156
+248,grhbnhd,cryptolocker,Malicious,[  1.22321808e-05   9.99872684e-01],cryptolocker,locky,conficker,ramnit,0.980459094048,0.0111463032663,0.005450530909,0.0029142734129
+249,agfkhcjwru,cryptolocker,Malicious,[  2.96817293e-10   1.00000000e+00],cryptolocker,corebot,locky,tinba,0.731201767921,0.127569019794,0.0749754458666,0.0445476621389
+250,mltdlobqa,cryptolocker,Malicious,[  1.78538194e-05   9.99944687e-01],cryptolocker,locky,tinba,conficker,0.909377992153,0.0436448231339,0.0163845550269,0.0158357713372

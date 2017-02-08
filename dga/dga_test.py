@@ -34,7 +34,7 @@ cols2= [line.rstrip('\n') for line in open('multi'+'cols.txt')]
 def subtest(binary_model, multi_model, data, cols1, cols2):
     labels = ['Benign','Malicious']
 
-    ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3),min_df = 0.0001)
+    ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))
     newvec = [0]*len(cols1)
     newcount = ngram_vectorizer.fit_transform(data)
 
@@ -48,6 +48,9 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
         newvec.append(0) 
     
     is_dga = [labels[i] for i in binary_model.predict_classes(np.array([newvec]))]
+    binary_prob = binary_model.predict_proba(np.array([newvec]))[0]
+    if sum(binary_prob) < 0.3:
+        is_dga[0] = 'Ambiguous'
     type_dga = None
 
     labels =  ['zeus', 'corebot', 'pushdo', 'ramnit', 'matsnu', 'banjori', 'tinba', 'rovnix', 'conficker', 'locky', 'cryptolocker']
@@ -73,32 +76,33 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
     probs = probs.tolist()[0]
     probs = sorted(probs, reverse = True)
     probs = probs[:4]
+
     #print probs
-    if is_dga == ['benign']:
+    if is_dga[0] == 'Benign':
         res = 'Safe'
     else:
         res = 'Malicious'
     print '%s Domain Address: %s   Top 4 Suspicious DGA Type: %s   Top 4 DGA Prob %s' % (res, data[0], ' '.join(type_dga), probs)
-    return is_dga, type_dga, probs
+    return is_dga, type_dga, probs, binary_prob
 
 def test(testdata, labels):
     is_dga_list = []
     type_dga_list = []
     probs_list = []
-    for d in testdata:
-        try:
-            is_dga, type_dga, probs = subtest(binary_model, multi_model, [d], cols1, cols2)
-            is_dga_list.append(is_dga[0])
-            type_dga_list.append(type_dga)
-            probs_list.append(probs)
-        except:
-            pass   
+    binary_probs = []
+    for d in testdata:     
+        is_dga, type_dga, probs, binary_prob = subtest(binary_model, multi_model, [d], cols1, cols2)
+        is_dga_list.append(is_dga[0])
+        type_dga_list.append(type_dga)
+        probs_list.append(probs)
+        binary_probs.append(binary_prob)
+         
     type_dga_list = pd.DataFrame(np.array(type_dga_list))
     probs_list = pd.DataFrame(np.array(probs_list))
-    res = [testdata, labels, is_dga_list]
+    res = [testdata, labels, is_dga_list, binary_probs]
     res = pd.DataFrame(res).transpose()
     table = pd.concat([res, type_dga_list, probs_list], axis=1)
-    table.columns = ['Domain','Label','Pred','Top1','Top2','Top3','Top4','Prob1','Prob2','Prob3','Prob4',]
+    table.columns = ['Domain','Label','Pred','Benign_prob','Top1','Top2','Top3','Top4','Prob1','Prob2','Prob3','Prob4',]
     print table
     return table
 
@@ -114,7 +118,7 @@ print domain_list
 labels = ['cryptolocker']*len(domain_list)
 table = test(domain_list, labels)
 table.to_csv(os.path.join(data_dir,'res_'+'cryptolocker'+'.csv'))
-indata = Datagenerator(43000,43050).get_data(force=True)
+indata = Datagenerator(43000,43020).get_data(force=True)
 
 X = [x[1] for x in indata]
 print len(X)
