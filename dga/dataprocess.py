@@ -82,7 +82,7 @@ class Dataprocess():
         
         domains += corebot.generate_domains(num_per_dga)
         labels += ['corebot']*num_per_dga
-        '''
+        
         #Create different length domains using cryptolocker
         crypto_lengths = range(8, 32)
         segs_size = max(1, num_per_dga/len(crypto_lengths))
@@ -91,7 +91,7 @@ class Dataprocess():
                                                      seed_num=random.randint(1, 1000000),
                                                      length=crypto_length)
             labels += ['cryptolocker']*segs_size
-        '''
+        
        # domains += dircrypt.generate_domains(num_per_dga)
        # labels += ['dircrypt']*num_per_dga
         '''
@@ -103,12 +103,12 @@ class Dataprocess():
         labels += ['kraken']*kraken_to_gen
         '''
         # generate locky and divide between configs
-        '''
+        
         locky_gen = max(1, num_per_dga/11)
         for i in range(1, 12):
             domains += lockyv2.generate_domains(locky_gen, config=i)
             labels += ['locky']*locky_gen
-        
+        '''
         #Generate pyskpa domains
         domains += pykspa.generate_domains(num_per_dga, datetime(2016, 1, 1))
         labels += ['pykspa']*num_per_dga
@@ -126,11 +126,11 @@ class Dataprocess():
                                               seed_num=random.randint(1, 1000000),
                                               length=rammdo_length)
             labels += ['ramdo']*segs_size
-
+        '''
         # ramnit
         domains += ramnit.generate_domains(num_per_dga, 0x123abc12)
         labels += ['ramnit']*num_per_dga
-        
+        '''
         # simda
         simda_lengths = range(8, 32)
         segs_size = max(1, num_per_dga/len(simda_lengths))
