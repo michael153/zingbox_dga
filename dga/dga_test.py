@@ -23,7 +23,6 @@ json_file = open('multi_model_json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 multi_model = model_from_json(loaded_model_json)
-
 binary_model.load_weights("binary_model")
 multi_model.load_weights("multi_model")
 
@@ -32,7 +31,7 @@ cols1= [line.rstrip('\n') for line in open('binary'+'cols.txt')]
 cols2= [line.rstrip('\n') for line in open('multi'+'cols.txt')]
 
 def subtest(binary_model, multi_model, data, cols1, cols2):
-    labels = ['benign','malicious']
+    labels = ['Benign','Malicious']
 
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3),min_df = 0.0001)
     newvec = [0]*len(cols1)
@@ -68,7 +67,6 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
     probs = multi_model.predict_proba(np.array([newvec]))
 
     top_prob = np.array([np.array(labels)[i] for i in probs.argsort()])
-    print top_prob
     top_prob = top_prob.tolist()[0]
     top_prob.reverse()
     type_dga = top_prob[:4]
@@ -90,13 +88,6 @@ with open('dga.txt','r') as f:
         domain = tldextract.extract(address).domain
         domain_list.append(domain)
 
-
-'''
-
-s_dga, type_dga = subtest(binary_model, multi_model, ['csteifhtzsjqil'], cols1, cols2)
-s_dga, type_dga = subtest(binary_model, multi_model, ['xwzhxswxhk'], cols1, cols2)
-s_dga, type_dga = subtest(binary_model, multi_model, ['noxgcxxvrlhywr'], cols1, cols2)
-'''
 labels = ['Malicious']*len(domain_list)
 is_dga_list = []
 type_dga_list = []
@@ -107,9 +98,11 @@ for d in domain_list[:500]:
     type_dga_list.append(type_dga)
     probs_list.append(probs)
 
-res = [labels, is_dga_list, type_dga_list, probs_list, domain_list]
-table = pd.DataFrame(res).transpose()
-table.columns = ['true','pred1','pred2','prob','address']
+type_dga_list = pd.DataFrame(np.array(type_dga_list))
+probs_list = pd.DataFrame(np.array(probs_list))
+res = [domain_list, labels, is_dga_list]
+res = pd.DataFrame(res).transpose()
+table = pd.concat([res, type_dga_list, probs_list], axis=1)
+table.columns = ['Domain','Label','Pred','Top1','Top2','Top3','Top4','Prob1','Prob2','Prob3','Prob4',]
 print table
-
 table.to_csv(os.path.join(data_dir,'test_res.csv'))
