@@ -74,27 +74,14 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     for item in cols:
         i += 1
         thefile.write("%s\n" % item)  
-
-    #print 'Create Unknown Feature '
-    #unknown_letter = []
-    
-    #for k in range(len(X)):
-     #   x = X[k]
-      #  l2 = [x[i]+x[i+1] for i in range(len(x)-1) if x[i]+x[i+1] not in cols]
-       # l3 = [x[i]+x[i+1]+x[i+2] for i in range(len(x)-2) if x[i]+x[i+1]+x[i+2] not in cols]
-       # unknown_letter.append(len(l2+l3))
-       # if k%100==0:
-        #    print k
-
+    # Add Length Feature
     countvec = csc_vappend(countvec, X_length)
-    #countvec = csc_vappend(countvec, unknown_letter)
     
     max_features = countvec.shape[1]
     # Create feature vectors
     print "Vectorizing data"   
-    # Convert labels to 0-18/0-2
+    # Convert labels to 0-11/0-2
     y = [label_set.index(x) for x in labels]
-    #if type == 'multi':
     y = np_utils.to_categorical(y, len(label_set))
     final_data = []
     final_score = []
@@ -127,12 +114,14 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
             else:
                 if (ep-best_iter) >= 2:
                     break
+
         probs = model.predict_proba(X_test.todense())
         m_auc = sklearn.metrics.roc_auc_score(y_test, probs)
         print '\nScore is %f' % m_auc
         if m_auc > best_m_auc:
             best_model = model
         
+        # Save prediction result
         final_test = [label_set[i] for i in y_test.argmax(axis=1)]
         final_prob = [label_set[i] for i in probs.argmax(axis=1)]
         top_prob = np.array([np.array(label_set)[i] for i in probs.argsort()])
@@ -144,6 +133,8 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
         output.to_csv(os.path.join(data_dir,"final" + type + str(fold)+".csv"))
         top_prob_output.to_csv(os.path.join(data_dir,"ranking" + type + str(fold)+".csv"))
         final_score.append(m_auc)
+        print final_score
+        # Save Model
         best_model.save_weights(type+"_model") 
         model_json = best_model.to_json()
         json_file = open(type+"_model_json", "w")

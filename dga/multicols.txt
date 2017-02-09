@@ -3685,6 +3685,7 @@
 4mp
 4mr
 4mt
+4mu
 4mv
 4mw
 4mx
@@ -4915,6 +4916,7 @@
 6fo
 6fp
 6fq
+6fr
 6fu
 6g
 6g0
@@ -24934,6 +24936,7 @@ r48
 r4e
 r4g
 r4l
+r4t
 r4z
 r5
 r50
@@ -25968,6 +25971,7 @@ s4c
 s4d
 s4e
 s4g
+s4h
 s4i
 s4k
 s4m
@@ -28698,6 +28702,7 @@ ur
 ur1
 ur2
 ur3
+ur4
 ur5
 ur7
 ura

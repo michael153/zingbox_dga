@@ -145,11 +145,11 @@ class Datagenerator():
                                               seed_num=random.randint(1, 1000000),
                                               length=rammdo_length)
             labels += ['ramdo']*segs_size
-
+        '''
         # ramnit
         domains += ramnit.generate_domains(num_per_dga, 0x123abc12)
         labels += ['ramnit']*num_per_dga
-
+        '''
         # simda
         
         simda_lengths = range(8, 32)
@@ -164,7 +164,7 @@ class Datagenerator():
         final_domains = []
         final_labels = []
         
-        for i in range(8):
+        for i in range(9):
         	final_domains.extend(domains[(max_num*i+min_num):(max_num*(i+1))])
         	final_labels.extend(labels[(max_num*i+min_num):(max_num*(i+1))])
         return final_domains, final_labels
