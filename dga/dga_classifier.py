@@ -5,6 +5,8 @@ import sys
 import json
 import numpy as np
 import pandas as pd
+from numpy import array
+from scipy.sparse import csr_matrix
 from dataprocess import Dataprocess
 from keras.layers.core import Dense
 from keras.models import Sequential
@@ -12,6 +14,7 @@ from keras.utils import np_utils
 from keras.metrics import top_k_categorical_accuracy
 from keras.models import model_from_json
 from collections import defaultdict
+#from progressbar import bar
 import sklearn
 from sklearn import feature_extraction
 from sklearn.decomposition import PCA
@@ -22,23 +25,33 @@ data_dir = os.path.abspath('data')
 
 def multi_model(max_features):
     model = Sequential()
-    model.add(Dense(30, input_dim=max_features, init='uniform', activation='relu'))
-    model.add(Dense(22, init='uniform', activation='relu'))                                               
     #model.add(Dense(30, input_dim=max_features, init='uniform', activation='relu'))
-    #model.add(Dense(22, init='uniform', activation='relu'))                                               
-    model.add(Dense(14, input_dim=max_features,init='uniform', activation='sigmoid'))
+    model.add(Dense(17, input_dim=max_features,init='uniform', activation='relu'))                                               
+    model.add(Dense(11, init='uniform', activation='softmax'))
+
     model.compile(loss='categorical_crossentropy',
                   optimizer='adam', metrics = [top_k_categorical_accuracy])
     return model
 
 def binary_model(max_features):
     model = Sequential()
-    model.add(Dense(12, input_dim=max_features, init='uniform', activation='relu'))
-    model.add(Dense(8, init='uniform', activation='relu'))
-    model.add(Dense(2,input_dim=max_features, init='uniform', activation='sigmoid'))
-    model.compile(loss='binary_crossentropy',
+    model.add(Dense(9, input_dim=max_features, init='uniform', activation='relu'))
+    model.add(Dense(2, init='uniform', activation='sigmoid'))
+    model.compile(loss='categorical_crossentropy',
                   optimizer='adam',  metrics = ['accuracy'])
     return model
+
+def csc_vappend(countvec, list):
+    countvec_row = []
+    nrow = countvec.shape[0]
+    ncol = countvec.shape[1]
+    for i in range(len(countvec.indptr)-1):
+        countvec_row.extend([i]*(countvec.indptr[i+1] - countvec.indptr[i]))
+    new_row = countvec_row + range(countvec.shape[0])
+    new_col = np.array(countvec.indices.tolist()+ [countvec.shape[1]]*countvec.shape[0])
+    new_data = np.array(countvec.data.tolist() + list)
+    countvec = csr_matrix((new_data,(new_row, new_col)), shape=(nrow, ncol+1))
+    return countvec
 
 def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     """Run train/test on logistic regression model"""
@@ -50,48 +63,27 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     # Extract data and labels
     X = [x[1] for x in indata]
     X_length = [len(x) for x in X]
+    X_length = [1 if x > 20 else 0 for x in X_length]
     labels = [x[0] for x in indata]
     label_set = list(set(labels))
-    print label_set
-    print labels[0]
-    ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3), min_df = 0.0001)
+    print 'Label set: %s' % label_set
+    ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))
     countvec = ngram_vectorizer.fit_transform(X)
-    '''
-    countvec = countvec.toarray()
-    countvec =np.append(countvec, [X_length], axis = 1)
-    '''
     cols = ngram_vectorizer.get_feature_names()
-    '''
-    unknown_letter = defaultdict(int)
-    for x in X:
-        ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))
-        countvec2 = ngram_vectorizer.fit_transform([x])
-        cols2 = ngram_vectorizer.get_feature_names()
-        print cols2
-        for col in cols2:
-            if cols2 not in cols1:
-                unknown_letter[x] += 1
-    
-    print unknown_letter
-    print unknown_letter.values()
-    countvec['unknown'] = unknown_letter.values()
-    '''
-    max_features = countvec.shape[1]
-
-    # Create feature vectors
-    print "vectorizing data"
     thefile = open(type+'cols.txt', 'w')
     i = 0
     for item in cols:
         i += 1
         thefile.write("%s\n" % item)  
-    print i
-    # Convert labels to 0-18/0-2
+    # Add Length Feature
+    countvec = csc_vappend(countvec, X_length)
+    
+    max_features = countvec.shape[1]
+    # Create feature vectors
+    print "Vectorizing data"   
+    # Convert labels to 0-11/0-2
     y = [label_set.index(x) for x in labels]
-    print y[:10]
-    #if type == 'multi':
     y = np_utils.to_categorical(y, len(label_set))
-    print y[:10]
     final_data = []
     final_score = []
     best_m_auc = 0.0
@@ -107,14 +99,13 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
             model = binary_model(max_features)
         print "Train..."
         X_train, X_holdout, y_train, y_holdout = train_test_split(X_train, y_train, test_size=0.05)
-        print X_train.shape
         best_iter = -1
         best_auc = 0.0
         out_data = {}
 
         for ep in range(max_epoch):
-            model.fit(X_train.toarray(), y_train, batch_size=batch_size, nb_epoch=1)
-            t_probs = model.predict_proba(X_holdout.toarray())
+            model.fit(X_train.todense(), y_train, batch_size=batch_size, nb_epoch=1)
+            t_probs = model.predict_proba(X_holdout.todense())
             t_auc = sklearn.metrics.roc_auc_score(y_holdout, t_probs)
             print 'Epoch %d: auc = %f (best=%f)' % (ep, t_auc, best_auc)
             if t_auc > best_auc:
@@ -124,32 +115,31 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
             else:
                 if (ep-best_iter) >= 2:
                     break
-        probs = model.predict_proba(X_test.toarray())
+
+        probs = model.predict_proba(X_test.todense())
         m_auc = sklearn.metrics.roc_auc_score(y_test, probs)
-        print 'score is %f' % m_auc
+        print '\nScore is %f' % m_auc
         if m_auc > best_m_auc:
             best_model = model
         
+        # Save prediction result
         final_test = [label_set[i] for i in y_test.argmax(axis=1)]
         final_prob = [label_set[i] for i in probs.argmax(axis=1)]
         top_prob = np.array([np.array(label_set)[i] for i in probs.argsort()])
         top_prob = np.concatenate((top_prob, np.array([label_test]).T), axis=1)
-        metric = pd.DataFrame([final_test, final_prob])
-        metric = metric.transpose()
-        metric.columns = ['actual','pred']
-        #metric = np.asarray(sklearn.metrics.confusion_matrix(final_test, final_prob))
-        #print metric
-        #metric = pd.DataFrame(data=metric, index=label_set, columns=label_set)
-        top_prob_metric = pd.DataFrame(data=top_prob)
-        metric.to_csv(os.path.join(data_dir,"final" + type + str(fold)+".csv"))
-        top_prob_metric.to_csv(os.path.join(data_dir,"ranking" + type + str(fold)+".csv"))
+        output = pd.DataFrame([final_test, final_prob])
+        output = output.transpose()
+        output.columns = ['actual','pred']
+        top_prob_output = pd.DataFrame(data=top_prob)
+        output.to_csv(os.path.join(data_dir,"final" + type + str(fold)+".csv"))
+        top_prob_output.to_csv(os.path.join(data_dir,"ranking" + type + str(fold)+".csv"))
         final_score.append(m_auc)
         print final_score
+        # Save Model
+        best_model.save_weights(type+"_model") 
         model_json = best_model.to_json()
-        with open(type+"_model.json", "w") as json_file:
-            json_file.write(model_json)
-        best_model.save_weights(type+"_model.h5") 
-
+        json_file = open(type+"_model_json", "w")
+        json_file.write(model_json)
     return best_model
 
 if __name__ == '__main__':

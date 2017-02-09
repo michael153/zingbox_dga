@@ -54,7 +54,7 @@ class Dataprocess():
         url = urlopen(address)
         zipfile = ZipFile(StringIO(url.read()))
         return [tldextract.extract(x.split(',')[1]).domain for x in \
-                zipfile.read(filename).split()[:(10*self.num)]]
+                zipfile.read(filename).split()[(4*self.num):(10*self.num)]]
 
     def get_malicious(self):
         num_per_dga=self.num
@@ -79,11 +79,11 @@ class Dataprocess():
         for banjori_seed in banjori_seeds:
             domains += banjori.generate_domains(segs_size, banjori_seed)
             labels += ['banjori']*segs_size
-
+        
         domains += corebot.generate_domains(num_per_dga)
         labels += ['corebot']*num_per_dga
-
-        # Create different length domains using cryptolocker
+        
+        #Create different length domains using cryptolocker
         crypto_lengths = range(8, 32)
         segs_size = max(1, num_per_dga/len(crypto_lengths))
         for crypto_length in crypto_lengths:
@@ -91,31 +91,33 @@ class Dataprocess():
                                                      seed_num=random.randint(1, 1000000),
                                                      length=crypto_length)
             labels += ['cryptolocker']*segs_size
-
-        domains += dircrypt.generate_domains(num_per_dga)
-        labels += ['dircrypt']*num_per_dga
-
-        # generate kraken and divide between configs
+        
+       # domains += dircrypt.generate_domains(num_per_dga)
+       # labels += ['dircrypt']*num_per_dga
+        '''
+        #generate kraken and divide between configs
         kraken_to_gen = max(1, num_per_dga/2)
         domains += kraken.generate_domains(kraken_to_gen, datetime(2016, 1, 1), 'a', 3)
         labels += ['kraken']*kraken_to_gen
         domains += kraken.generate_domains(kraken_to_gen, datetime(2016, 1, 1), 'b', 3)
         labels += ['kraken']*kraken_to_gen
-
+        '''
         # generate locky and divide between configs
+        
         locky_gen = max(1, num_per_dga/11)
         for i in range(1, 12):
             domains += lockyv2.generate_domains(locky_gen, config=i)
             labels += ['locky']*locky_gen
-
-        # Generate pyskpa domains
+        '''
+        #Generate pyskpa domains
         domains += pykspa.generate_domains(num_per_dga, datetime(2016, 1, 1))
         labels += ['pykspa']*num_per_dga
-
+        
         # Generate qakbot
+        
         domains += qakbot.generate_domains(num_per_dga, tlds=[])
         labels += ['qakbot']*num_per_dga
-
+        
         # ramdo divided over different lengths
         ramdo_lengths = range(8, 32)
         segs_size = max(1, num_per_dga/len(ramdo_lengths))
@@ -124,11 +126,11 @@ class Dataprocess():
                                               seed_num=random.randint(1, 1000000),
                                               length=rammdo_length)
             labels += ['ramdo']*segs_size
-
+        '''
         # ramnit
         domains += ramnit.generate_domains(num_per_dga, 0x123abc12)
         labels += ['ramnit']*num_per_dga
-
+        '''
         # simda
         simda_lengths = range(8, 32)
         segs_size = max(1, num_per_dga/len(simda_lengths))
@@ -138,6 +140,7 @@ class Dataprocess():
                                               tld=None,
                                               base=random.randint(2, 2**32))
             labels += ['simda']*segs_size
+        '''
         return domains, labels
     '''
     def get_internal(self):
@@ -163,20 +166,6 @@ class Dataprocess():
                 conficker.append(tldextract.extract(line).domain)
         domains += conficker[:self.num]
         labels += ['conficker']*self.num
-        '''
-        goz = []
-        with open(os.path.join(external_path,'goz.txt'), 'r') as f:
-            for line in f:
-                goz.append(tldextract.extract(line).domain)
-        domains += goz[:self.num]
-        labels += ['goz']*self.num
-        
-        new_goz = []
-        with open(os.path.join(external_path,'new_goz.txt'), 'r') as f:
-            for line in f:
-                new_goz.append(tldextract.extract(line).domain)
-        domains += new_goz[:self.num]
-        labels += ['new_goz']*self.num
         
         zeus = []
         with open(os.path.join(external_path,'zeus.txt'), 'r') as f:
@@ -184,28 +173,35 @@ class Dataprocess():
                 zeus.append(tldextract.extract(line).domain)
         domains += zeus[:self.num]
         labels += ['zeus']*self.num
-        '''
+        
         tinba = []
         with open(os.path.join(external_path,'tinba.txt'), 'r') as f:
             for line in f:
                 tinba.append(tldextract.extract(line).domain)
         domains += tinba[:self.num]
         labels += ['tinba']*self.num
-        '''
+
+        matsnu = []
+        with open(os.path.join(external_path,'matsnu.txt'), 'r') as f:
+            for line in f:
+                matsnu.append(tldextract.extract(line).domain)
+        domains += matsnu[:self.num]
+        labels += ['matsnu']*self.num
+        
         rovnix = []
         with open(os.path.join(external_path,'rovnix.txt'), 'r') as f:
             for line in f:
                 rovnix.append(tldextract.extract(line).domain)
         domains += rovnix[:self.num]
         labels += ['rovnix']*self.num
-        '''
+        
         pushdo = []
         with open(os.path.join(external_path,'pushdo.txt'), 'r') as f:
             for line in f:
                 pushdo.append(tldextract.extract(line).domain)
         domains += pushdo[:self.num]
         labels += ['pushdo']*self.num
-
+        
         return domains, labels
 
     def gen_data(self, force=False):
