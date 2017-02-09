@@ -115,13 +115,13 @@ with open('dga.txt','r') as f:
         domain_list.append(domain)
 print domain_list
 
-labels = ['cryptolocker']*len(domain_list)
+labels = ['conficker']*len(domain_list)
 table = test(domain_list, labels)
 table.to_csv(os.path.join(data_dir,'res_'+'cryptolocker'+'.csv'))
-indata = Datagenerator(43000,43030).get_data(force=True)
+indata = Datagenerator(43000,43300).get_data(force=True)
 
-X = [x[1] for x in indata]
+X = [x[1] for x in indata if len(x[1]) > 1]
 print len(X)
-labels = [x[0] for x in indata]
+labels = [x[0] for x in indata if len(x[1]) > 1]
 table = test(X, labels)
 table.to_csv(os.path.join(data_dir,'res_'+'all_test'+'.csv'))

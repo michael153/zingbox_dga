@@ -71,7 +71,7 @@ class Datagenerator():
         url = urlopen(address)
         zipfile = ZipFile(StringIO(url.read()))
         return [tldextract.extract(x.split(',')[1]).domain for x in \
-                zipfile.read(filename).split()[200:400]]
+                zipfile.read(filename).split()[:500]]
 
     def get_malicious(self):
         num_per_dga=self.max_num

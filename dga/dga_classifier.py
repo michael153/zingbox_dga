@@ -27,7 +27,7 @@ def multi_model(max_features):
     model = Sequential()
     #model.add(Dense(30, input_dim=max_features, init='uniform', activation='relu'))
     model.add(Dense(17, input_dim=max_features,init='uniform', activation='relu'))                                               
-    model.add(Dense(11, input_dim=17, init='uniform', activation='softmax'))
+    model.add(Dense(11, init='uniform', activation='softmax'))
     model.compile(loss='categorical_crossentropy',
                   optimizer='adam', metrics = [top_k_categorical_accuracy])
     return model
@@ -35,7 +35,7 @@ def multi_model(max_features):
 def binary_model(max_features):
     model = Sequential()
     model.add(Dense(9, input_dim=max_features, init='uniform', activation='relu'))
-    model.add(Dense(2,input_dim=9, init='uniform', activation='sigmoid'))
+    model.add(Dense(2, init='uniform', activation='sigmoid'))
     model.compile(loss='categorical_crossentropy',
                   optimizer='adam',  metrics = ['accuracy'])
     return model
@@ -62,10 +62,7 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     # Extract data and labels
     X = [x[1] for x in indata]
     X_length = [len(x) for x in X]
-    if type == 'multi':
-        X_length = [1 if x > 24 else 0 for x in X_length]
-    else:
-        X_length = [1 if x > 19 else 0 for x in X_length]
+    X_length = [1 if x > 20 else 0 for x in X_length]
     labels = [x[0] for x in indata]
     label_set = list(set(labels))
     print 'Label set: %s' % label_set
