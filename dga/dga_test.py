@@ -48,8 +48,11 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
         newvec.append(1)
     else:
         newvec.append(0) 
-    
     is_dga = [labels[i] for i in binary_model.predict_classes(np.array([newvec]))]
+    binary_prob = binary_model.predict_proba(np.array([newvec]))[0]
+    if sum(binary_prob) < 0.5:
+        is_dga[0] = 'Benign'
+    type_dga = None  
     binary_prob = binary_model.predict_proba(np.array([newvec]))[0]
     if sum(binary_prob) < 0.4:
         is_dga[0] = 'Benign'
@@ -85,6 +88,31 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
         res = 'Malicious'
     print '%s Domain Address: %s   Top 4 Suspicious DGA Type: %s   Top 4 DGA Prob %s' % (res, data[0], ' '.join(type_dga), probs)
     return is_dga, type_dga, probs, binary_prob
+<<<<<<< HEAD
+=======
+
+def test(testdata, labels):
+    is_dga_list = []
+    type_dga_list = []
+    probs_list = []
+    binary_probs = []
+    for d in testdata:     
+        is_dga, type_dga, probs, binary_prob = subtest(binary_model, multi_model, [d], cols1, cols2)
+        is_dga_list.append(is_dga[0])
+        type_dga_list.append(type_dga)
+        probs_list.append(probs)
+        binary_probs.append(binary_prob)
+         
+    type_dga_list = pd.DataFrame(np.array(type_dga_list))
+    probs_list = pd.DataFrame(np.array(probs_list))
+    res = [testdata, labels, is_dga_list, binary_probs]
+    res = pd.DataFrame(res).transpose()
+    table = pd.concat([res, type_dga_list, probs_list], axis=1)
+    table.columns = ['Domain','Label','Pred','Benign_prob','Top1','Top2','Top3','Top4','Prob1','Prob2','Prob3','Prob4',]
+    print table
+    return table
+
+>>>>>>> e3aa5078c57ce0b6a02ecb1f3dfc247204db821e
 
 def test(testdata, labels):
     is_dga_list = []
@@ -120,7 +148,15 @@ labels = ['conficker']*len(domain_list)
 table = test(domain_list, labels)
 table.to_csv(os.path.join(data_dir,'res_'+'test'+'.csv'))
 
+<<<<<<< HEAD
 indata = Datagenerator(43000,43300).get_data(force=True)
+=======
+labels = ['conficker']*len(domain_list)
+table = test(domain_list, labels)
+table.to_csv(os.path.join(data_dir,'res_'+'cryptolocker'+'.csv'))
+indata = Datagenerator(43000,43300).get_data(force=True)
+
+>>>>>>> e3aa5078c57ce0b6a02ecb1f3dfc247204db821e
 X = [x[1] for x in indata if len(x[1]) > 1]
 labels = [x[0] for x in indata if len(x[1]) > 1]
 table = test(X, labels)
