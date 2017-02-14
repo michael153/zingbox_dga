@@ -1,5 +1,8 @@
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.nn.modelimport.keras.Model;
 import org.nd4j.linalg.api.ndarray.INDArray;
@@ -12,17 +15,17 @@ import org.nd4j.linalg.factory.Nd4j;
 public class ImportKerasModel{
 
     public static void main(String[] args) throws Exception{
-        String inputfile = args[0];
         // Load Model
         ImportKerasModel obj = new ImportKerasModel();
-        // Test input string
-        obj.test(inputfile);
+        String[] inputfile = args;
+        obj.evaluate(inputfile);
     }
 
-    private String[] test(String inputfile) throws Exception{
+    private ArrayList<String[]> evaluate(String[] inputfile) throws Exception{
         // Get prediction result
+
         String[] binary_labels = {"Benign", "Malicious"};
-        String[] multi_labels = {"zeus", "corebot",
+        String[] multi_labels = {"zeus", "corebot", "goz",
                 "pushdo", "ramnit", "matsnu", "banjori", "tinba",
                 "rovnix", "conficker", "locky", "cryptolocker"};
 
@@ -30,25 +33,33 @@ public class ImportKerasModel{
         INDArray binarytest = getFeature(inputfile, binarycols);
         MultiLayerNetwork binary_model = binary();
         int[] binary_pred = binary_model.predict(binarytest);
-        String binary_res = binary_labels[binary_pred[0]];
+        String[] binary_res = new String[inputfile.length];
 
         String multicols = "multicols.txt";
         INDArray multitest = getFeature(inputfile, multicols);
         MultiLayerNetwork multi_model = multi();
         int[] multi_pred = multi_model.predict(multitest);
-        String multi_res = multi_labels[multi_pred[0]];
+        String[] multi_res = new String[inputfile.length];
 
-        if (binary_pred[0] == 0){
-            System.out.println("Safe domain address: " + inputfile + ";");
-        } else{
-            System.out.println("Malicious domain address: " + inputfile + ";");
-            System.out.println("Suspicious Malware Type: " + multi_res + ";");
+        for(int i=0; i < inputfile.length; i++){
+            binary_res[i] = binary_labels[binary_pred[i]];
+            multi_res[i] = multi_labels[multi_pred[i]];
+            if (binary_pred[i] == 0){
+                System.out.println("Safe domain address: " + inputfile[i] + ";");
+            } else{
+                System.out.println("Malicious domain address: " + inputfile[i] + ";");
+                System.out.println("Suspicious Malware Type: " + multi_res[i] + ";");
+            }
         }
 
-        return new String[]{binary_res, multi_res};
+        ArrayList<String[]> output = new ArrayList<String[]>();
+        output.add(binary_res);
+        output.add(multi_res);
+        return output;
+
     }
 
-    private MultiLayerNetwork binary() throws Exception{
+    public MultiLayerNetwork binary() throws Exception{
         // Import Keras Binary Model
         ClassLoader classLoader = getClass().getClassLoader();
         String modelJsonFilename = classLoader.getResource("binary_model_json").getFile();
@@ -56,7 +67,7 @@ public class ImportKerasModel{
         return Model.importSequentialModel(modelJsonFilename,weightsHdf5Filename);
     }
 
-    private MultiLayerNetwork multi() throws Exception{
+    public MultiLayerNetwork multi() throws Exception{
         // Import Keras Multi Model
         ClassLoader classLoader = getClass().getClassLoader();
         String modelJsonFilename = classLoader.getResource("multi_model_json").getFile();
@@ -67,35 +78,46 @@ public class ImportKerasModel{
     private String getCols(String fileName)throws Exception{
         // Get cols from column files
         StringBuilder result = new StringBuilder("");
+        String line = null;
         //Get file from resources folder
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource(fileName).getFile());
-        Scanner scanner = new Scanner(file);
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(classLoader.getResource(fileName).getFile()));
+        while ((line = bufferedReader.readLine()) != null)
+        {
             result.append(line).append("\n");
         }
-        scanner.close();
+        //scanner.close();
+        bufferedReader.close();
         return result.toString();
     }
 
-    private INDArray getFeature(String inputfile, String filename)throws Exception{
+
+    private INDArray getFeature(String[] inputfile, String filename)throws Exception{
+
         // Get feature based on column files
+
         String result = getCols(filename);
-        String[] inputlist = result.split("\n");
-        float[] feature = new float[inputlist.length+1];
-        for(int i=1; i<inputlist.length; i++){
-            if(inputfile.contains(inputlist[i])){
-                feature[i] = 1;
-            }else{
-                feature[i] = 0;
+        String[] cols = result.split("\n");
+        int x = inputfile.length;
+        int y = cols.length;
+        float[] featureArray = new float[(y+1)*x];
+        int nextIndex = 0;
+
+        for(String inputstring : inputfile){
+            for(int i=0; i<y; i++){
+                if(inputstring.contains(cols[i])){
+                    featureArray[(nextIndex)*(y+1)+i] = 1;
+                }else{
+                    featureArray[(nextIndex)*(y+1)+i] = 0;
+                }
+            }
+            if (inputstring.length() > 20) {
+                featureArray[++nextIndex *(y+1)-1] = 1;
+            } else {
+                featureArray[++nextIndex *(y+1)-1] = 0;
             }
         }
-        if (inputfile.length() > 20) {
-            feature[inputlist.length] = 1;
-        } else {
-            feature[inputlist.length] = 0;
-        }
-        return Nd4j.create(feature, new int[]{1,feature.length});
+
+        return Nd4j.create(featureArray, new int[]{x, y+1});
     }
 }

@@ -137,12 +137,15 @@ is_dga, type_dga, probs, binary_prob = subtest(binary_model, multi_model, ['bl9t
 
 start_time = time.time()
 domain_list = []
+fp = open("java_test.txt", "w")
 with open('test.txt','r') as f:
     for line in f:
         address = line
-        #address = line.split(',')[1]
-        domain = tldextract.extract(address).subdomain
+        #address = line.split(' ')[1]
+        domain = tldextract.extract(address).domain
+        fp.write(domain + '\n')
         domain_list.append(domain)
+fp.close()
 print("--- %s seconds ---" % (time.time() - start_time))
 labels = ['conficker']*len(domain_list)
 table = test(domain_list, labels)
