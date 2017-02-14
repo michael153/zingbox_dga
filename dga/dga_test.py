@@ -2,6 +2,7 @@ import os
 import json
 import numpy as np
 import pandas as pd
+import time
 from dataprocess import Dataprocess
 from datagenerator import Datagenerator
 from keras.layers.core import Dense
@@ -36,9 +37,6 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
 
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))
 
-    indata = Dataprocess(42000).get_data('binary')
-    labels = list(set([x[0] for x in indata]))
-
     newvec = [0]*len(cols1)
     newcount = ngram_vectorizer.fit_transform(data)
 
@@ -57,16 +55,7 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
         is_dga[0] = 'Benign'
     type_dga = None
 
-    labels =  ['zeus', 'corebot', 'pushdo', 'ramnit', 'matsnu', 'banjori', 'tinba', 'rovnix', 'conficker', 'locky', 'cryptolocker']
- 
-    ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))    
-    newvec = [0]*len(cols2)
-            newvec[i] = 1 
-    is_dga = [labels[i] for i in binary_model.predict_classes(np.array([newvec]))]
-    type_dga = None
-
-    indata = Dataprocess(50000).get_data('multi')
-    labels = list(set([x[0] for x in indata])) 
+    labels =  ['zeus', 'corebot', 'pushdo', 'ramnit', 'matsnu', 'banjori', 'tinba', 'rovnix', 'conficker', 'locky', 'cryptolocker']  
  
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))    
     newvec = [0]*len(cols2)
@@ -82,8 +71,6 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
     probs = multi_model.predict_proba(np.array([newvec]))
 
     top_prob = np.array([np.array(labels)[i] for i in probs.argsort()])
-            newvec[i] = 1 
-    probs = multi_model.predict_proba(np.array([newvec]))
     top_prob = top_prob.tolist()[0]
     top_prob.reverse()
     type_dga = top_prob[:4]
@@ -120,19 +107,19 @@ def test(testdata, labels):
     print table
     return table
 
-
+start_time = time.time()
 domain_list = []
 with open('dga.txt','r') as f:
     for line in f:
-        address = line.split(' ')[1]
+        address = line.split(',')[1]
         domain = tldextract.extract(address).domain
         domain_list.append(domain)
-
+print("--- %s seconds ---" % (time.time() - start_time))
 labels = ['conficker']*len(domain_list)
 table = test(domain_list, labels)
 table.to_csv(os.path.join(data_dir,'res_'+'cryptolocker'+'.csv'))
-indata = Datagenerator(43000,43300).get_data(force=True)
 
+indata = Datagenerator(43000,43300).get_data(force=True)
 X = [x[1] for x in indata if len(x[1]) > 1]
 labels = [x[0] for x in indata if len(x[1]) > 1]
 table = test(X, labels)
