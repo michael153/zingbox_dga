@@ -51,7 +51,7 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
     
     is_dga = [labels[i] for i in binary_model.predict_classes(np.array([newvec]))]
     binary_prob = binary_model.predict_proba(np.array([newvec]))[0]
-    if sum(binary_prob) < 0.5:
+    if sum(binary_prob) < 0.4:
         is_dga[0] = 'Benign'
     type_dga = None
 
@@ -109,15 +109,16 @@ def test(testdata, labels):
 
 start_time = time.time()
 domain_list = []
-with open('dga.txt','r') as f:
+with open('test.txt','r') as f:
     for line in f:
-        address = line.split(',')[1]
+        address = line
+        #address = line.split(',')[1]
         domain = tldextract.extract(address).domain
         domain_list.append(domain)
 print("--- %s seconds ---" % (time.time() - start_time))
 labels = ['conficker']*len(domain_list)
 table = test(domain_list, labels)
-table.to_csv(os.path.join(data_dir,'res_'+'cryptolocker'+'.csv'))
+table.to_csv(os.path.join(data_dir,'res_'+'test'+'.csv'))
 
 indata = Datagenerator(43000,43300).get_data(force=True)
 X = [x[1] for x in indata if len(x[1]) > 1]
