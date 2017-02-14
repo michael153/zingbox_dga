@@ -132,6 +132,8 @@ def test(testdata, labels):
     table.columns = ['Domain','Label','Pred','Benign_prob','Top1','Top2','Top3','Top4','Prob1','Prob2','Prob3','Prob4',]
     print table
     return table
+is_dga, type_dga, probs, binary_prob = subtest(binary_model, multi_model, ['bl9tx5cmmypb06gryxcq9v'], cols1, cols2)
+#http://bjcvo56ni6ncvcbwgm0foeekpkj.bl9tx5cmmypb06gryxcq9v.com
 
 start_time = time.time()
 domain_list = []
