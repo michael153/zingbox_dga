@@ -214,7 +214,7 @@ class Dataprocess():
             for line in f:
                 goz.append(tldextract.extract(line).domain)
         domains += goz[:self.num]
-        labels += ['goz']*:self.num
+        labels += ['goz']*self.num
 
         others = []
         with open(os.path.join(external_path,'others_dga.txt'), 'r') as f:

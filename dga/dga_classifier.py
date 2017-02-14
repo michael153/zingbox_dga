@@ -26,8 +26,8 @@ data_dir = os.path.abspath('data')
 def multi_model(max_features):
     model = Sequential()
     #model.add(Dense(30, input_dim=max_features, init='uniform', activation='relu'))
-    model.add(Dense(17, input_dim=max_features,init='uniform', activation='relu'))                                               
-    model.add(Dense(11, init='uniform', activation='softmax'))
+    model.add(Dense(20, input_dim=max_features,init='uniform', activation='relu'))                                               
+    model.add(Dense(14, init='uniform', activation='softmax'))
 
     model.compile(loss='categorical_crossentropy',
                   optimizer='adam', metrics = [top_k_categorical_accuracy])
@@ -59,7 +59,7 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     max_epoch = int(max_epoch)
     nfolds = int(nfolds)
     batch_size = int(batch_size)
-    indata = Dataprocess(num).get_data(type,force=False)
+    indata = Dataprocess(num).get_data(type,force=True)
     # Extract data and labels
     X = [x[1] for x in indata]
     X_length = [len(x) for x in X]
