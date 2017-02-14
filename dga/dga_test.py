@@ -58,7 +58,7 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
         is_dga[0] = 'Benign'
     type_dga = None
 
-    labels =   ['zeus', 'new_goz', 'corebot', 'goz', 'pushdo', 'ramnit', 'matsnu', 'banjori', 'tinba', 'rovnix', 'conficker', 'locky', 'others', 'cryptolocker'] 
+    labels =   ['zeus', 'corebot', 'goz', 'pushdo', 'ramnit', 'matsnu', 'banjori', 'tinba', 'rovnix', 'conficker', 'locky', 'cryptolocker'] 
  
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))    
     newvec = [0]*len(cols2)

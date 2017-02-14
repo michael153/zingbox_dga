@@ -202,26 +202,12 @@ class Dataprocess():
         domains += pushdo[:self.num]
         labels += ['pushdo']*self.num
 
-        new_goz = []
-        with open(os.path.join(external_path,'new_goz.txt'), 'r') as f:
-            for line in f:
-                new_goz.append(tldextract.extract(line).domain)
-        domains += new_goz
-        labels += ['new_goz']*len(new_goz)
-
         goz = []
         with open(os.path.join(external_path,'goz.txt'), 'r') as f:
             for line in f:
                 goz.append(tldextract.extract(line).domain)
         domains += goz[:self.num]
         labels += ['goz']*self.num
-
-        others = []
-        with open(os.path.join(external_path,'others_dga.txt'), 'r') as f:
-            for line in f:
-                others.append(tldextract.extract(line).domain)
-        domains += others
-        labels += ['others']*len(others)
         
         return domains, labels
 
