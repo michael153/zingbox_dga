@@ -88,8 +88,7 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
         res = 'Malicious'
     print '%s Domain Address: %s   Top 4 Suspicious DGA Type: %s   Top 4 DGA Prob %s' % (res, data[0], ' '.join(type_dga), probs)
     return is_dga, type_dga, probs, binary_prob
-<<<<<<< HEAD
-=======
+
 
 def test(testdata, labels):
     is_dga_list = []
@@ -112,7 +111,6 @@ def test(testdata, labels):
     print table
     return table
 
->>>>>>> e3aa5078c57ce0b6a02ecb1f3dfc247204db821e
 
 def test(testdata, labels):
     is_dga_list = []
@@ -148,15 +146,8 @@ labels = ['conficker']*len(domain_list)
 table = test(domain_list, labels)
 table.to_csv(os.path.join(data_dir,'res_'+'test'+'.csv'))
 
-<<<<<<< HEAD
-indata = Datagenerator(43000,43300).get_data(force=True)
-=======
-labels = ['conficker']*len(domain_list)
-table = test(domain_list, labels)
-table.to_csv(os.path.join(data_dir,'res_'+'cryptolocker'+'.csv'))
 indata = Datagenerator(43000,43300).get_data(force=True)
 
->>>>>>> e3aa5078c57ce0b6a02ecb1f3dfc247204db821e
 X = [x[1] for x in indata if len(x[1]) > 1]
 labels = [x[0] for x in indata if len(x[1]) > 1]
 table = test(X, labels)
