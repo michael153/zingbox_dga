@@ -21,7 +21,7 @@ public class ImportKerasModel{
         obj.evaluate(inputfile);
     }
 
-    private ArrayList<String[]> evaluate(String[] inputfile) throws Exception{
+    private String[] evaluate(String[] inputfile) throws Exception{
         // Get prediction result
 
         String[] binary_labels = {"Benign", "Malicious"};
@@ -41,22 +41,21 @@ public class ImportKerasModel{
         int[] multi_pred = multi_model.predict(multitest);
         String[] multi_res = new String[inputfile.length];
 
+        String[] output = new String[inputfile.length];
+
         for(int i=0; i < inputfile.length; i++){
             binary_res[i] = binary_labels[binary_pred[i]];
             multi_res[i] = multi_labels[multi_pred[i]];
             if (binary_pred[i] == 0){
                 System.out.println("Safe domain address: " + inputfile[i] + ";");
+                output[i] = binary_res[i];
             } else{
                 System.out.println("Malicious domain address: " + inputfile[i] + ";");
                 System.out.println("Suspicious Malware Type: " + multi_res[i] + ";");
+                output[i] = multi_res[i];
             }
         }
-
-        ArrayList<String[]> output = new ArrayList<String[]>();
-        output.add(binary_res);
-        output.add(multi_res);
         return output;
-
     }
 
     public MultiLayerNetwork binary() throws Exception{
