@@ -33,26 +33,24 @@ public class ImportKerasModel{
         INDArray binarytest = getFeature(inputfile, binarycols);
         MultiLayerNetwork binary_model = binary();
         int[] binary_pred = binary_model.predict(binarytest);
-        String[] binary_res = new String[inputfile.length];
 
         String multicols = "multicols.txt";
         INDArray multitest = getFeature(inputfile, multicols);
         MultiLayerNetwork multi_model = multi();
         int[] multi_pred = multi_model.predict(multitest);
-        String[] multi_res = new String[inputfile.length];
 
         String[] output = new String[inputfile.length];
 
         for(int i=0; i < inputfile.length; i++){
-            binary_res[i] = binary_labels[binary_pred[i]];
-            multi_res[i] = multi_labels[multi_pred[i]];
+            String binary_res = binary_labels[binary_pred[i]];
+            String multi_res = multi_labels[multi_pred[i]];
             if (binary_pred[i] == 0){
                 System.out.println("Safe domain address: " + inputfile[i] + ";");
-                output[i] = binary_res[i];
+                output[i] = binary_res;
             } else{
                 System.out.println("Malicious domain address: " + inputfile[i] + ";");
-                System.out.println("Suspicious Malware Type: " + multi_res[i] + ";");
-                output[i] = multi_res[i];
+                System.out.println("Suspicious Malware Type: " + multi_res + ";");
+                output[i] = multi_res;
             }
         }
         return output;
