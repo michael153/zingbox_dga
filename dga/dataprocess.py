@@ -1,19 +1,14 @@
-import numpy as np 
-import pandas as pd
+#!/usr/bin/env python
+#
+#  __  /_)             |                
+#     /  | __ \   _` | __ \   _ \\ \  / 
+#    /   | |   | (   | |   | (   |`  <  
+#  ____|_|_|  _|\__, |_.__/ \___/ _/\_\ 
+#               |___/                   
+#
+#  (C) Copyright Zingbox Ltd 2017
+#  All Rights Reserved
 
-from datetime import datetime
-from StringIO import StringIO
-from urllib import urlopen
-from zipfile import ZipFile
-from itertools import chain
-from collections import Counter
-from collections import defaultdict
-
-
-from dga_generators import banjori, corebot, cryptolocker, \
-    dircrypt, kraken, lockyv2, pykspa, qakbot, ramdo, ramnit, simda
-
-import cPickle as pickle
 import os
 import random
 import tldextract
@@ -23,26 +18,22 @@ import ast
 import pickle
 import ipaddress
 import tldextract
-
-
-#!/usr/bin/env python
-#
-#  __  /_)             |                
-#     /  | __ \   _` | __ \   _ \\ \  / 
-#    /   | |   | (   | |   | (   |`  <  
-#  ____|_|_|  _|\__, |_.__/ \___/ _/\_\ 
-#               |___/                   
-#
-#  (C) Copyright Zingbox Ltd 2016
-#  All Rights Reserved
+import numpy as np 
+import pandas as pd
+import cPickle as pickle
+from datetime import datetime
+from StringIO import StringIO
+from urllib import urlopen
+from zipfile import ZipFile
+from itertools import chain
+from collections import Counter
+from collections import defaultdict
+from dga_generators import banjori, corebot, cryptolocker, \
+    dircrypt, kraken, lockyv2, pykspa, qakbot, ramdo, ramnit, simda
 
 class Dataprocess():
 
-    #logger = logging.getLogger(__name__)
-
     def __init__(self, num):
-        #self.env = env
-        #self.tenantid = tenantid
         self.data_dir = os.path.abspath('data')
         self.datafile1 = os.path.join(self.data_dir, 'dga_train'+'.pkl')
         self.datafile2 = os.path.join(self.data_dir, 'all_train'+'.pkl')
@@ -54,11 +45,10 @@ class Dataprocess():
         url = urlopen(address)
         zipfile = ZipFile(StringIO(url.read()))
         return [tldextract.extract(x.split(',')[1]).domain for x in \
-                zipfile.read(filename).split()[(4*self.num):(10*self.num)]]
+                zipfile.read(filename).split()[:3*self.num]]
 
     def get_malicious(self):
         num_per_dga=self.num
-        """Generates num_per_dga of each DGA"""
         domains = []
         labels = []
 
@@ -142,20 +132,9 @@ class Dataprocess():
             labels += ['simda']*segs_size
         '''
         return domains, labels
-    '''
-    def get_internal(self):
-        fex_table = pd.DataFrame().from_csv(os.path.join(self.data_dir,'fex_table_'+self.tenantid+'.csv'))
-        internal_domain = []
-        for feature in ['f21', 'f22']:
-            mylist = fex_table[feature + '_list'].tolist()   
-            mylist = [ast.literal_eval(x) for x in mylist if str(x) != 'nan']
-            clist = [tldextract.extract(str(item)).domain for sublist in mylist for item in sublist if not is_ip(item)]
-            counter = Counter(clist)
-            internal_domain.extend([k for k in counter if counter[k] > 5])
-      return list(set(internal_domain))
-    '''
 
     def get_external(self):
+
         domains = []
         labels = []
         external_path = os.path.abspath('dga_wordlists')
@@ -212,6 +191,7 @@ class Dataprocess():
         return domains, labels
 
     def gen_data(self, force=False):
+
         if force or (not os.path.isfile(self.datafile1)) or (not os.path.isfile(self.datafile2)):
             domains, labels = self.get_malicious()
             otherdomains, otherlabels = self.get_external()
@@ -223,13 +203,6 @@ class Dataprocess():
             exdomains = self.get_alexa()
             domains += exdomains
             labels += ['benign']*len(exdomains)           
-            '''
-            if self.internal:
-                indomains = self.get_internal()
-                indomains = [x for x in indomains if x not in exdomains]
-                domains += indomains
-                labels += ['benign']*len(indomains)
-            '''
             pickle.dump(zip(labels, domains), open(self.datafile2, 'w'))
 
     def get_data(self, type, force=False):

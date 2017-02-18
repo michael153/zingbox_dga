@@ -3,8 +3,10 @@
 import os
 import sys
 import json
+import sklearn
 import numpy as np
 import pandas as pd
+
 from numpy import array
 from scipy.sparse import csr_matrix
 from dataprocess import Dataprocess
@@ -14,10 +16,7 @@ from keras.utils import np_utils
 from keras.metrics import top_k_categorical_accuracy
 from keras.models import model_from_json
 from collections import defaultdict
-#from progressbar import bar
-import sklearn
 from sklearn import feature_extraction
-from sklearn.decomposition import PCA
 from sklearn.cross_validation import train_test_split
 
 
@@ -25,17 +24,15 @@ data_dir = os.path.abspath('data')
 
 def multi_model(max_features):
     model = Sequential()
-    #model.add(Dense(30, input_dim=max_features, init='uniform', activation='relu'))
     model.add(Dense(20, input_dim=max_features,init='uniform', activation='relu'))                                               
     model.add(Dense(12, init='uniform', activation='softmax'))
-
     model.compile(loss='categorical_crossentropy',
                   optimizer='adam', metrics = [top_k_categorical_accuracy])
     return model
 
 def binary_model(max_features):
     model = Sequential()
-    model.add(Dense(9, input_dim=max_features, init='uniform', activation='relu'))
+    model.add(Dense(11, input_dim=max_features, init='uniform', activation='relu'))
     model.add(Dense(2, init='uniform', activation='sigmoid'))
     model.compile(loss='categorical_crossentropy',
                   optimizer='adam',  metrics = ['accuracy'])
@@ -71,17 +68,18 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     countvec = ngram_vectorizer.fit_transform(X)
     cols = ngram_vectorizer.get_feature_names()
     thefile = open(type+'cols.txt', 'w')
-    i = 0
+
     for item in cols:
-        i += 1
         thefile.write("%s\n" % item)  
+    
     # Add Length Feature
     countvec = csc_vappend(countvec, X_length)
     
     max_features = countvec.shape[1]
     # Create feature vectors
-    print "Vectorizing data"   
-    # Convert labels to 0-11/0-2
+    print "Vectorizing data" 
+
+    # Convert labels to 0-12/0-2
     y = [label_set.index(x) for x in labels]
     y = np_utils.to_categorical(y, len(label_set))
     final_data = []
