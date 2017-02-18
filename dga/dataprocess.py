@@ -206,8 +206,8 @@ class Dataprocess():
         with open(os.path.join(external_path,'goz.txt'), 'r') as f:
             for line in f:
                 goz.append(tldextract.extract(line).domain)
-        domains += goz[:self.num]
-        labels += ['goz']*self.num
+        domains += goz
+        labels += ['goz']*len(goz)
         
         return domains, labels
 
