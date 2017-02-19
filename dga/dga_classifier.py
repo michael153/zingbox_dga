@@ -24,7 +24,7 @@ data_dir = os.path.abspath('data')
 
 def multi_model(max_features):
     model = Sequential()
-    model.add(Dense(20, input_dim=max_features,init='uniform', activation='relu'))                                               
+    model.add(Dense(24, input_dim=max_features,init='uniform', activation='relu'))                                               
     model.add(Dense(12, init='uniform', activation='softmax'))
     model.compile(loss='categorical_crossentropy',
                   optimizer='adam', metrics = [top_k_categorical_accuracy])
@@ -32,7 +32,7 @@ def multi_model(max_features):
 
 def binary_model(max_features):
     model = Sequential()
-    model.add(Dense(11, input_dim=max_features, init='uniform', activation='relu'))
+    model.add(Dense(13, input_dim=max_features, init='uniform', activation='relu'))
     model.add(Dense(2, init='uniform', activation='sigmoid'))
     model.compile(loss='binary_crossentropy',
                   optimizer='adam',  metrics = ['accuracy'])
