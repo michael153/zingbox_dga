@@ -50,7 +50,7 @@ public class ImportKerasModel{
                 output.put(multi_labels[i], (float) multi_count_list[i]/inputfile.length);
             }
         }
-        
+
         output.put(binary_labels[imax], (float) binary_count_list[imax]/inputfile.length);
 
         for(int i = 0; i < inputfile.length; i++){
