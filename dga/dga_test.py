@@ -1,8 +1,8 @@
 import os
 import json
+import sys
 import numpy as np
 import pandas as pd
-import time
 from dataprocess import Dataprocess
 from datagenerator import Datagenerator
 from keras.layers.core import Dense
@@ -27,47 +27,30 @@ json_file.close()
 multi_model = model_from_json(loaded_model_json)
 binary_model.load_weights("binary_model")
 multi_model.load_weights("multi_model")
-
-
 cols1= [line.rstrip('\n') for line in open('binary'+'cols.txt')]
 cols2= [line.rstrip('\n') for line in open('multi'+'cols.txt')]
 
 def subtest(binary_model, multi_model, data, cols1, cols2):
     labels = ['Benign','Malicious']
 
-    ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))
-
     newvec = [0]*len(cols1)
-    newcount = ngram_vectorizer.fit_transform(data)
-
-    newcols = ngram_vectorizer.get_feature_names()
     for i in range(len(cols1)):
-        if cols1[i] in newcols:
+        if cols1[i] in data[0]:
             newvec[i] = 1
-    if len(newvec) > 20:
+    if len(data[0]) > 15:
         newvec.append(1)
     else:
         newvec.append(0) 
     is_dga = [labels[i] for i in binary_model.predict_classes(np.array([newvec]))]
     binary_prob = binary_model.predict_proba(np.array([newvec]))[0]
-    if sum(binary_prob) < 0.5:
-        is_dga[0] = 'Benign'
     type_dga = None  
-    binary_prob = binary_model.predict_proba(np.array([newvec]))[0]
-    if sum(binary_prob) < 0.4:
-        is_dga[0] = 'Benign'
-    type_dga = None
 
-    labels =   ['zeus', 'corebot', 'goz', 'pushdo', 'ramnit', 'matsnu', 'banjori', 'tinba', 'rovnix', 'conficker', 'locky', 'cryptolocker'] 
- 
-    ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))    
+    labels =   ['zeus', 'corebot', 'goz', 'pushdo', 'ramnit', 'matsnu', 'banjori', 'tinba', 'rovnix', 'conficker', 'locky', 'cryptolocker']    
     newvec = [0]*len(cols2)
-    newcount = ngram_vectorizer.fit_transform(data)
-    newcols = ngram_vectorizer.get_feature_names()
     for i in range(len(cols2)):
-        if cols2[i] in newcols:
+        if cols2[i] in data[0]:
             newvec[i] = 1
-    if len(newvec) > 20:
+    if len(data[0]) > 15:
         newvec.append(1)
     else:
         newvec.append(0) 
@@ -89,7 +72,6 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
     print '%s Domain Address: %s   Top 4 Suspicious DGA Type: %s   Top 4 DGA Prob %s' % (res, data[0], ' '.join(type_dga), probs)
     return is_dga, type_dga, probs, binary_prob
 
-
 def test(testdata, labels):
     is_dga_list = []
     type_dga_list = []
@@ -111,49 +93,22 @@ def test(testdata, labels):
     print table
     return table
 
+def main(testcase, domain = True):   
+    domain_list = []
+    fp = open(os.path.abspath('tests')+"/java_test.txt", "w")
+    with open(os.path.abspath('tests')+'/'+testcase,'r') as f:
+        for line in f:
+            address = line
+            if domain:
+                domain = tldextract.extract(address).domain
+            else:
+                domain = tldextract.extract(address).subdomain
+            fp.write(domain + '\n')
+            domain_list.append(domain)
+    fp.close()
+    labels = ['conficker']*len(domain_list)
+    table = test(domain_list, labels)
+    table.to_csv(os.path.join(data_dir,'test'+'_output'+'.csv'))
 
-def test(testdata, labels):
-    is_dga_list = []
-    type_dga_list = []
-    probs_list = []
-    binary_probs = []
-    for d in testdata:     
-        is_dga, type_dga, probs, binary_prob = subtest(binary_model, multi_model, [d], cols1, cols2)
-        is_dga_list.append(is_dga[0])
-        type_dga_list.append(type_dga)
-        probs_list.append(probs)
-        binary_probs.append(binary_prob)
-         
-    type_dga_list = pd.DataFrame(np.array(type_dga_list))
-    probs_list = pd.DataFrame(np.array(probs_list))
-    res = [testdata, labels, is_dga_list, binary_probs]
-    res = pd.DataFrame(res).transpose()
-    table = pd.concat([res, type_dga_list, probs_list], axis=1)
-    table.columns = ['Domain','Label','Pred','Benign_prob','Top1','Top2','Top3','Top4','Prob1','Prob2','Prob3','Prob4',]
-    print table
-    return table
-is_dga, type_dga, probs, binary_prob = subtest(binary_model, multi_model, ['bl9tx5cmmypb06gryxcq9v'], cols1, cols2)
-#http://bjcvo56ni6ncvcbwgm0foeekpkj.bl9tx5cmmypb06gryxcq9v.com
-
-start_time = time.time()
-domain_list = []
-fp = open("java_test.txt", "w")
-with open('test.txt','r') as f:
-    for line in f:
-        address = line
-        #address = line.split(' ')[1]
-        domain = tldextract.extract(address).domain
-        fp.write(domain + '\n')
-        domain_list.append(domain)
-fp.close()
-print("--- %s seconds ---" % (time.time() - start_time))
-labels = ['conficker']*len(domain_list)
-table = test(domain_list, labels)
-table.to_csv(os.path.join(data_dir,'res_'+'test'+'.csv'))
-
-indata = Datagenerator(43000,43300).get_data(force=True)
-
-X = [x[1] for x in indata if len(x[1]) > 1]
-labels = [x[0] for x in indata if len(x[1]) > 1]
-table = test(X, labels)
-table.to_csv(os.path.join(data_dir,'res_'+'all_test'+'.csv'))
+if __name__ == '__main__':
+    main(sys.argv[1],sys.argv[2])

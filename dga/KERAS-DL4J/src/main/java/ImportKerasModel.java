@@ -1,8 +1,10 @@
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.Arrays;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.nn.modelimport.keras.Model;
 import org.nd4j.linalg.api.ndarray.INDArray;
@@ -18,10 +20,10 @@ public class ImportKerasModel{
         // Load Model
         ImportKerasModel obj = new ImportKerasModel();
         String[] inputfile = args;
-        obj.evaluate(inputfile);
+        obj.test(inputfile);
     }
 
-    private String[] evaluate(String[] inputfile) throws Exception{
+    private Hashtable test(String[] inputfile) throws Exception{
         // Get prediction result
 
         String[] binary_labels = {"Benign", "Malicious"};
@@ -29,31 +31,50 @@ public class ImportKerasModel{
                 "pushdo", "ramnit", "matsnu", "banjori", "tinba",
                 "rovnix", "conficker", "locky", "cryptolocker"};
 
+        Hashtable output = new Hashtable();
+
         String binarycols = "binarycols.txt";
         INDArray binarytest = getFeature(inputfile, binarycols);
         MultiLayerNetwork binary_model = binary();
         int[] binary_pred = binary_model.predict(binarytest);
+        int[] binary_count_list = count(binary_pred);
+        int imax = Nd4j.getBlasWrapper().iamax(binary_model.output(binarytest).mean(0));
 
         String multicols = "multicols.txt";
         INDArray multitest = getFeature(inputfile, multicols);
         MultiLayerNetwork multi_model = multi();
         int[] multi_pred = multi_model.predict(multitest);
+        int[] multi_count_list = count(multi_pred);
+        for(int i = 0; i < multi_count_list.length; i++){
+            if(multi_count_list[i] > multi_count_list.length*0.1){
+                output.put(multi_labels[i], (float) multi_count_list[i]/inputfile.length);
+            }
+        }
+        
+        output.put(binary_labels[imax], (float) binary_count_list[imax]/inputfile.length);
 
-        String[] output = new String[inputfile.length];
-
-        for(int i=0; i < inputfile.length; i++){
+        for(int i = 0; i < inputfile.length; i++){
             String binary_res = binary_labels[binary_pred[i]];
             String multi_res = multi_labels[multi_pred[i]];
             if (binary_pred[i] == 0){
                 System.out.println("Safe domain address: " + inputfile[i] + ";");
-                output[i] = binary_res;
             } else{
                 System.out.println("Malicious domain address: " + inputfile[i] + ";");
                 System.out.println("Suspicious Malware Type: " + multi_res + ";");
-                output[i] = multi_res;
             }
         }
+        System.out.println("\n" + output);
         return output;
+    }
+
+    private int[] count(int[] pred_list){
+        int[] counter = new int[pred_list.length];
+
+        ArrayList<Integer> top_counter = new ArrayList<Integer>();
+        for(int i=0; i<pred_list.length; i++){
+            counter[pred_list[i]]++;
+        }
+        return counter;
     }
 
     public MultiLayerNetwork binary() throws Exception{
@@ -108,7 +129,7 @@ public class ImportKerasModel{
                     featureArray[(nextIndex)*(y+1)+i] = 0;
                 }
             }
-            if (inputstring.length() > 20) {
+            if (inputstring.length() > 15) {
                 featureArray[++nextIndex *(y+1)-1] = 1;
             } else {
                 featureArray[++nextIndex *(y+1)-1] = 0;
