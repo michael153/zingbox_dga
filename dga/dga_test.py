@@ -106,6 +106,7 @@ def main(testcase, which = "domain"):
             fp.write(domain + '\n')
             domain_list.append(domain)
     fp.close()
+    labels = ['unknown']*len(domain_list)
     table = test(domain_list, labels)
     table.to_csv(os.path.join(data_dir,'test'+'_output'+'.csv'))
 

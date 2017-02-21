@@ -50,6 +50,9 @@ public class ImportKerasModel{
         output.put(multi_labels[imax2], (float) multi_count_list[imax2]/inputfile.length);
         output.put(binary_labels[imax1], (float) binary_count_list[imax1]/inputfile.length);
 
+        //output.put(multi_labels[imax2], multi_model.output(multitest).mean(0).getColumn(imax2));
+        //output.put(binary_labels[imax1], binary_model.output(binarytest).mean(0).getColumn(imax1));
+
         for(int i = 0; i < inputfile.length; i++){
             String binary_res = binary_labels[binary_pred[i]];
             String multi_res = multi_labels[multi_pred[i]];
