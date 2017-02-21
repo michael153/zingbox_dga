@@ -60,7 +60,7 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     # Extract data and labels
     X = [x[1] for x in indata]
     X_length = [len(x) for x in X]
-    X_length = [1 if x > 20 else 0 for x in X_length]
+    X_length = [1 if x > 15 else 0 for x in X_length]
     labels = [x[0] for x in indata]
     label_set = list(set(labels))
     print 'Label set: %s' % label_set

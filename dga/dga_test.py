@@ -93,20 +93,19 @@ def test(testdata, labels):
     print table
     return table
 
-def main(testcase, domain = True):   
+def main(testcase, which = "domain"):   
     domain_list = []
     fp = open(os.path.abspath('tests')+"/java_test.txt", "w")
     with open(os.path.abspath('tests')+'/'+testcase,'r') as f:
         for line in f:
             address = line
-            if domain:
+            if which == "domain":
                 domain = tldextract.extract(address).domain
             else:
                 domain = tldextract.extract(address).subdomain
             fp.write(domain + '\n')
             domain_list.append(domain)
     fp.close()
-    labels = ['conficker']*len(domain_list)
     table = test(domain_list, labels)
     table.to_csv(os.path.join(data_dir,'test'+'_output'+'.csv'))
 

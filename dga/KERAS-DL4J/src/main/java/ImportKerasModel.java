@@ -38,20 +38,17 @@ public class ImportKerasModel{
         MultiLayerNetwork binary_model = binary();
         int[] binary_pred = binary_model.predict(binarytest);
         int[] binary_count_list = count(binary_pred);
-        int imax = Nd4j.getBlasWrapper().iamax(binary_model.output(binarytest).mean(0));
+        int imax1 = Nd4j.getBlasWrapper().iamax(binary_model.output(binarytest).mean(0));
 
         String multicols = "multicols.txt";
         INDArray multitest = getFeature(inputfile, multicols);
         MultiLayerNetwork multi_model = multi();
         int[] multi_pred = multi_model.predict(multitest);
         int[] multi_count_list = count(multi_pred);
-        for(int i = 0; i < multi_count_list.length; i++){
-            if(multi_count_list[i] > multi_count_list.length*0.1){
-                output.put(multi_labels[i], (float) multi_count_list[i]/inputfile.length);
-            }
-        }
+        int imax2 = Nd4j.getBlasWrapper().iamax(multi_model.output(multitest).mean(0));
 
-        output.put(binary_labels[imax], (float) binary_count_list[imax]/inputfile.length);
+        output.put(multi_labels[imax2], (float) multi_count_list[imax2]/inputfile.length);
+        output.put(binary_labels[imax1], (float) binary_count_list[imax1]/inputfile.length);
 
         for(int i = 0; i < inputfile.length; i++){
             String binary_res = binary_labels[binary_pred[i]];
