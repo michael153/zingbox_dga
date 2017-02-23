@@ -1,15 +1,11 @@
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.Arrays;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.nn.modelimport.keras.Model;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
-
+import scala.Tuple2;
 /**
  * Created by ylzhao on 2/1/17.
  */
@@ -23,7 +19,7 @@ public class ImportKerasModel{
         obj.test(inputfile);
     }
 
-    private Hashtable test(String[] inputfile) throws Exception{
+    private ArrayList test(String[] inputfile) throws Exception{
         // Get prediction result
 
         String[] binary_labels = {"Benign", "Malicious"};
@@ -31,28 +27,24 @@ public class ImportKerasModel{
                 "pushdo", "ramnit", "matsnu", "banjori", "tinba",
                 "rovnix", "conficker", "locky", "cryptolocker"};
 
-        Hashtable output = new Hashtable();
+        ArrayList output = new ArrayList<Tuple2>();
 
         String binarycols = "binarycols.txt";
         INDArray binarytest = getFeature(inputfile, binarycols);
         MultiLayerNetwork binary_model = binary();
-        int[] binary_pred = binary_model.predict(binarytest);
-        int[] binary_count_list = count(binary_pred);
         int imax1 = Nd4j.getBlasWrapper().iamax(binary_model.output(binarytest).mean(0));
+        INDArray binary_mean = binary_model.output(binarytest).mean(0);
 
         String multicols = "multicols.txt";
         INDArray multitest = getFeature(inputfile, multicols);
         MultiLayerNetwork multi_model = multi();
-        int[] multi_pred = multi_model.predict(multitest);
-        int[] multi_count_list = count(multi_pred);
-        int imax2 = Nd4j.getBlasWrapper().iamax(multi_model.output(multitest).mean(0));
+        INDArray multi_mean = multi_model.output(multitest).mean(0);
 
-        output.put(multi_labels[imax2], (float) multi_count_list[imax2]/inputfile.length);
-        output.put(binary_labels[imax1], (float) binary_count_list[imax1]/inputfile.length);
-
-        //output.put(multi_labels[imax2], multi_model.output(multitest).mean(0).getColumn(imax2));
-        //output.put(binary_labels[imax1], binary_model.output(binarytest).mean(0).getColumn(imax1));
-
+        output.add(new Tuple2<String, INDArray>(binary_labels[imax1],binary_mean.getColumn(imax1)));
+        for(int i=0; i < multi_labels.length; i++){
+            output.add(new Tuple2<String, INDArray>(multi_labels[i],multi_mean.getColumn(i)));
+        }
+        /*
         for(int i = 0; i < inputfile.length; i++){
             String binary_res = binary_labels[binary_pred[i]];
             String multi_res = multi_labels[multi_pred[i]];
@@ -63,14 +55,13 @@ public class ImportKerasModel{
                 System.out.println("Suspicious Malware Type: " + multi_res + ";");
             }
         }
-        System.out.println("\n" + output);
+        */
+        System.out.println(output);
         return output;
     }
 
     private int[] count(int[] pred_list){
         int[] counter = new int[pred_list.length];
-
-        ArrayList<Integer> top_counter = new ArrayList<Integer>();
         for(int i=0; i<pred_list.length; i++){
             counter[pred_list[i]]++;
         }
