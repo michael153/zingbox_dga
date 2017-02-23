@@ -40,9 +40,9 @@ public class ImportKerasModel{
         MultiLayerNetwork multi_model = multi();
         INDArray multi_mean = multi_model.output(multitest).mean(0);
 
-        output.add(new Tuple2<String, INDArray>(binary_labels[imax1],binary_mean.getColumn(imax1)));
+        output.add(new Tuple2<String, Float>(binary_labels[imax1],binary_mean.getFloat(imax1)));
         for(int i=0; i < multi_labels.length; i++){
-            output.add(new Tuple2<String, INDArray>(multi_labels[i],multi_mean.getColumn(i)));
+            output.add(new Tuple2<String, Float>(multi_labels[i],multi_mean.getFloat(i)));
         }
         /*
         for(int i = 0; i < inputfile.length; i++){
