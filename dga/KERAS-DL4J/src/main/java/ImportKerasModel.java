@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
-import org.deeplearning4j.nn.modelimport.keras.Model;
+import org.deeplearning4j.nn.modelimport.keras.KerasModelImport;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 import scala.Tuple2;
@@ -73,7 +73,7 @@ public class ImportKerasModel{
         ClassLoader classLoader = getClass().getClassLoader();
         String modelJsonFilename = classLoader.getResource("binary_model_json").getFile();
         String weightsHdf5Filename = classLoader.getResource("binary_model").getFile();
-        return Model.importSequentialModel(modelJsonFilename,weightsHdf5Filename);
+        return KerasModelImport.importKerasSequentialModelAndWeights(modelJsonFilename,weightsHdf5Filename);
     }
 
     public MultiLayerNetwork multi() throws Exception{
@@ -81,7 +81,7 @@ public class ImportKerasModel{
         ClassLoader classLoader = getClass().getClassLoader();
         String modelJsonFilename = classLoader.getResource("multi_model_json").getFile();
         String weightsHdf5Filename = classLoader.getResource("multi_model").getFile();
-        return Model.importSequentialModel(modelJsonFilename, weightsHdf5Filename);
+        return KerasModelImport.importKerasSequentialModelAndWeights(modelJsonFilename, weightsHdf5Filename);
     }
 
     private String getCols(String fileName)throws Exception{
