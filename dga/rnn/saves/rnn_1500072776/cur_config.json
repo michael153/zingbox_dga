@@ -1,0 +1,23 @@
+{
+    "output": {
+        "num": 10, 
+        "type": "softmax"
+    }, 
+    "hidden_layers": [
+        {
+            "return_sequences": "True", 
+            "dropout": 0.1, 
+            "num": 128, 
+            "type": "LSTM"
+        }, 
+        {
+            "return_sequences": "False", 
+            "dropout": 0.2, 
+            "num": 128, 
+            "type": "LSTM"
+        }
+    ], 
+    "input": {
+        "num": 128
+    }
+}

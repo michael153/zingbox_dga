@@ -11,10 +11,13 @@ from numpy import array
 from scipy.sparse import csr_matrix
 from dataprocess import Dataprocess
 from keras.layers.core import Dense
+from keras.layers.wrappers import TimeDistributed
+from keras.layers.recurrent import LSTM
 from keras.models import Sequential
 from keras.utils import np_utils
 from keras.metrics import top_k_categorical_accuracy
 from keras.models import model_from_json
+from keras.callbacks import Callback
 from collections import defaultdict
 from sklearn import feature_extraction
 from sklearn.cross_validation import train_test_split
@@ -22,18 +25,75 @@ from sklearn.cross_validation import train_test_split
 
 data_dir = os.path.abspath('data')
 
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
+class EarlyStoppingByLossVal(Callback):
+    def __init__(self, monitor='val_loss', value=0.000005, verbose=0):
+        super(Callback, self).__init__()
+        self.monitor = monitor
+        self.value = value
+        self.verbose = verbose
+
+    def on_epoch_end(self, epoch, logs={}):
+        current = logs.get(self.monitor)
+        if current is None:
+            print("***Warning: Early stopping requires %s available!" % self.monitor)
+        if current < self.value:
+            if self.verbose > 0:
+                print("Epoch %05d: early stopping THR" % epoch)
+            self.model.stop_training = True
+
 def multi_model(max_features):
+    print "MAX_FEATURES = " + str(max_features)
     model = Sequential()
-    model.add(Dense(24, input_dim=max_features,init='uniform', activation='relu'))                                               
-    model.add(Dense(12, init='uniform', activation='softmax'))
+    json_data = json.load(open('config/model_config.json'))["multi"]
+    hlayer_num = json_data["hidden_layers"].__len__()
+    if hlayer_num > 0:
+        first_num = json_data["hidden_layers"][0]["num"]
+        first_type = json_data["hidden_layers"][0]["type"]
+        model.add(Dense(first_num, input_dim=max_features, init='uniform', activation=first_type))
+        print(bcolors.OKGREEN + "*** MULTI_INPUT: %s" % str(max_features))
+        print("*** HIDDEN_LAYER 1: (%s, %s)" % (str(first_num), first_type))
+        for i in range(1, hlayer_num):
+            l_num = json_data["hidden_layers"][i]["num"]
+            l_type = json_data["hidden_layers"][i]["type"]
+            model.add(Dense(l_num, init='uniform', activation=l_type)) #Regular NN
+            print("*** HIDDEN_LAYER %s: (%s, %s)" % (str(i+1), str(l_num), l_type))
+    output_num = 12
+    model.add(Dense(output_num, init='uniform', activation=json_data["output_type"]))
+    print("*** OUTPUT_LAYER: (%s, %s)" % (str(output_num), json_data["output_type"]))
+    print(bcolors.ENDC)
     model.compile(loss='categorical_crossentropy',
                   optimizer='adam', metrics = [top_k_categorical_accuracy])
     return model
 
 def binary_model(max_features):
     model = Sequential()
-    model.add(Dense(13, input_dim=max_features, init='uniform', activation='relu'))
-    model.add(Dense(2, init='uniform', activation='sigmoid'))
+    json_data = json.load(open('config/model_config.json'))["binary"]
+    hlayer_num = json_data["hidden_layers"].__len__()
+    if hlayer_num > 0:
+        first_num = json_data["hidden_layers"][0]["num"]
+        first_type = json_data["hidden_layers"][0]["type"]
+        model.add(Dense(first_num, input_dim=max_features, init='uniform', activation=first_type))
+        print(bcolors.OKGREEN + "*** MULTI_INPUT: %s" % str(max_features))
+        print("*** HIDDEN_LAYER 1: (%s, %s)" % (str(first_num), first_type))
+        for i in range(1, hlayer_num):
+            l_num = json_data["hidden_layers"][i]["num"]
+            l_type = json_data["hidden_layers"][i]["type"]
+            model.add(Dense(l_num, init='uniform', activation=l_type))
+            print("*** HIDDEN_LAYER %s: (%s, %s)" % (str(i+1), str(l_num), l_type))
+    output_num = 2
+    model.add(Dense(output_num, init='uniform', activation=json_data["output_type"]))
+    print("*** OUTPUT_LAYER: (%s, %s)" % (str(output_num), json_data["output_type"]))
+    print(bcolors.ENDC)
     model.compile(loss='binary_crossentropy',
                   optimizer='adam',  metrics = ['accuracy'])
     return model
@@ -63,6 +123,7 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     X_length = [1 if x > 15 else 0 for x in X_length]
     labels = [x[0] for x in indata]
     label_set = list(set(labels))
+
     print 'Label set: %s' % label_set
     ngram_vectorizer = feature_extraction.text.CountVectorizer(analyzer='char', ngram_range=(2,3))
     countvec = ngram_vectorizer.fit_transform(X)
@@ -73,9 +134,10 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
         thefile.write("%s\n" % item)  
     
     # Add Length Feature
-    countvec = csc_vappend(countvec, X_length)
+    # countvec = csc_vappend(countvec, X_length)
     
     max_features = countvec.shape[1]
+    print "COUNTVEC.SHAPE[1]: %s" % str(max_features)
     # Create feature vectors
     print "Vectorizing data" 
 
@@ -86,14 +148,20 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
     final_score = []
     best_m_auc = 0.0
 
+    callbacks = [
+        EarlyStoppingByLossVal(monitor='val_loss', value=0.00001, verbose=1),
+    ]
+
     for fold in range(nfolds):
         print "fold %u/%u" % (fold+1, nfolds)
         X_train, X_test, y_train, y_test, _, label_test = train_test_split(countvec, y,
                                                                            labels, test_size=0.2)
+        print "Input shape: " + str(X_train.todense().shape)
+        print "Labels shape: " + str(y_train.shape) + "\n"
         print 'Build model...'
         if type == 'multi':
             model = multi_model(max_features)
-        else:
+        elif type == 'binary':
             model = binary_model(max_features)
         print "Train..."
         X_train, X_holdout, y_train, y_holdout = train_test_split(X_train, y_train, test_size=0.05)
@@ -101,14 +169,15 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
         best_auc = 0.0
         out_data = {}
 
+
         for ep in range(max_epoch):
-            model.fit(X_train.todense(), y_train, batch_size=batch_size, nb_epoch=1)
+            model.fit(X_train.todense(), y_train, batch_size=batch_size, nb_epoch=1, callbacks=callbacks)
             t_probs = model.predict_proba(X_holdout.todense())
             t_auc = sklearn.metrics.roc_auc_score(y_holdout, t_probs)
             print 'Epoch %d: auc = %f (best=%f)' % (ep, t_auc, best_auc)
             if t_auc > best_auc:
                 best_auc = t_auc
-                best_iter = ep         
+                best_iter = ep     
                 #out_data = {'y': y_test, 'labels': label_test, 'probs':probs, 'epochs': ep}              
             else:
                 if (ep-best_iter) >= 2:
@@ -133,11 +202,13 @@ def main(type, num, max_epoch=50, nfolds=10, batch_size=128):
         top_prob_output.to_csv(os.path.join(data_dir,"ranking" + type + str(fold)+".csv"))
         final_score.append(m_auc)
         print final_score
+        print "CLASSIFIER AVERAGE FINAL SCORE: %s" % str(sum(final_score)/len(final_score))
         # Save Model
         best_model.save_weights(type+"_model") 
         model_json = best_model.to_json()
         json_file = open(type+"_model_json", "w")
         json_file.write(model_json)
+        json_file.close()
     return best_model
 
 if __name__ == '__main__':

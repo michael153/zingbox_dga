@@ -1,0 +1,28 @@
+{
+	"loss": "categorical_crossentropy",
+	"optimizer": "rmsprop",
+	"metrics": [
+		"accuracy"
+	],
+	"output": {
+		"type": "softmax",
+		"num": 10
+	},
+	"input": {
+		"num": 128
+	},
+	"hidden_layers": [
+		{
+			"type": "LSTM",
+			"return_sequences": "True",
+			"num": 128,
+			"dropout": 0.1
+		},
+		{
+			"type": "LSTM",
+			"return_sequences": "False",
+			"num": 128,
+			"dropout": 0.2
+		}
+	]
+}

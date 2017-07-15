@@ -10,6 +10,7 @@
 #  All Rights Reserved
 
 import os
+import time
 import random
 import tldextract
 import glob
@@ -18,18 +19,33 @@ import ast
 import pickle
 import ipaddress
 import tldextract
+import datetime
 import numpy as np 
 import pandas as pd
 import cPickle as pickle
-from datetime import datetime
+import datetime
+from string import ascii_lowercase, ascii_uppercase, digits
 from StringIO import StringIO
+from random import choice
 from urllib import urlopen
 from zipfile import ZipFile
 from itertools import chain
 from collections import Counter
 from collections import defaultdict
 from dga_generators import banjori, corebot, cryptolocker, \
-    dircrypt, kraken, lockyv2, pykspa, qakbot, ramdo, ramnit, simda
+    dircrypt, kraken, lockyv2, pykspa, qakbot, ramdo, ramnit, simda, GameoverZeus, \
+    tinba, matsnu, rovnix, pushdo
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
 
 class Dataprocess():
 
@@ -48,89 +64,62 @@ class Dataprocess():
                 zipfile.read(filename).split()[:3*self.num]]
 
     def get_malicious(self):
-        num_per_dga=self.num
+        cur_date = datetime.datetime(datetime.datetime.today().year, datetime.datetime.today().month, datetime.datetime.today().day)  
+        num_per_dga = max(1, self.num/30)
         domains = []
         labels = []
 
-        # We use some arbitrary seeds to create domains with banjori
-        banjori_seeds = ['somestring', 'firetruck', 'bulldozer', 'airplane', 'racecar',
-                         'apartment', 'laptop', 'laptopcomp', 'malwareisbad', 'crazytrain',
-                         'thepolice', 'fivemonkeys', 'hockey', 'football', 'baseball',
-                         'basketball', 'trackandfield', 'fieldhockey', 'softball', 'redferrari',
-                         'blackcheverolet', 'yellowelcamino', 'blueporsche', 'redfordf150',
-                         'purplebmw330i', 'subarulegacy', 'hondacivic', 'toyotaprius',
-                         'sidewalk', 'pavement', 'stopsign', 'trafficlight', 'turnlane',
-                         'passinglane', 'trafficjam', 'airport', 'runway', 'baggageclaim',
-                         'passengerjet', 'delta1008', 'american765', 'united8765', 'southwest3456',
-                         'albuquerque', 'sanfrancisco', 'sandiego', 'losangeles', 'newyork',
-                         'atlanta', 'portland', 'seattle', 'washingtondc']
+        for delta in range(0, 30):
+            print bcolors.WARNING + "Generating for timedelta(days=" + str(delta) + ")" + bcolors.ENDC
+            d = cur_date + datetime.timedelta(days=delta)
 
-        segs_size = max(1, num_per_dga/len(banjori_seeds))
-        for banjori_seed in banjori_seeds:
-            domains += banjori.generate_domains(segs_size, banjori_seed)
-            labels += ['banjori']*segs_size
-        
-        domains += corebot.generate_domains(num_per_dga)
-        labels += ['corebot']*num_per_dga
-        
-        #Create different length domains using cryptolocker
-        crypto_lengths = range(8, 32)
-        segs_size = max(1, num_per_dga/len(crypto_lengths))
-        for crypto_length in crypto_lengths:
-            domains += cryptolocker.generate_domains(segs_size,
-                                                     seed_num=random.randint(1, 1000000),
-                                                     length=crypto_length)
-            labels += ['cryptolocker']*segs_size
-        
-       # domains += dircrypt.generate_domains(num_per_dga)
-       # labels += ['dircrypt']*num_per_dga
-        '''
-        #generate kraken and divide between configs
-        kraken_to_gen = max(1, num_per_dga/2)
-        domains += kraken.generate_domains(kraken_to_gen, datetime(2016, 1, 1), 'a', 3)
-        labels += ['kraken']*kraken_to_gen
-        domains += kraken.generate_domains(kraken_to_gen, datetime(2016, 1, 1), 'b', 3)
-        labels += ['kraken']*kraken_to_gen
-        '''
-        # generate locky and divide between configs
-        
-        locky_gen = max(1, num_per_dga/11)
-        for i in range(1, 12):
-            domains += lockyv2.generate_domains(locky_gen, config=i)
-            labels += ['locky']*locky_gen
-        '''
-        #Generate pyskpa domains
-        domains += pykspa.generate_domains(num_per_dga, datetime(2016, 1, 1))
-        labels += ['pykspa']*num_per_dga
-        
-        # Generate qakbot
-        
-        domains += qakbot.generate_domains(num_per_dga, tlds=[])
-        labels += ['qakbot']*num_per_dga
-        
-        # ramdo divided over different lengths
-        ramdo_lengths = range(8, 32)
-        segs_size = max(1, num_per_dga/len(ramdo_lengths))
-        for rammdo_length in ramdo_lengths:
-            domains += ramdo.generate_domains(segs_size,
-                                              seed_num=random.randint(1, 1000000),
-                                              length=rammdo_length)
-            labels += ['ramdo']*segs_size
-        '''
-        # ramnit
-        domains += ramnit.generate_domains(num_per_dga, 0x123abc12)
-        labels += ['ramnit']*num_per_dga
-        '''
-        # simda
-        simda_lengths = range(8, 32)
-        segs_size = max(1, num_per_dga/len(simda_lengths))
-        for simda_length in range(len(simda_lengths)):
-            domains += simda.generate_domains(segs_size,
-                                              length=simda_length,
-                                              tld=None,
-                                              base=random.randint(2, 2**32))
-            labels += ['simda']*segs_size
-        '''
+            banjori_seeds = []
+            for k in range(0, 3):
+                random.seed(time.time())
+                total_len = random.randint(6, 15)
+                s = ''.join(choice(ascii_lowercase + digits) for i in range(total_len))
+                banjori_seeds.append(s)
+
+            segs_size = max(1, num_per_dga/len(banjori_seeds))
+            for banjori_seed in banjori_seeds:
+                domains += banjori.generate_domains(segs_size, banjori_seed)
+                labels += ['banjori']*segs_size
+            
+            random.seed(time.time())
+            domains += corebot.generate_domains(num_per_dga, seed=''.join(choice(ascii_uppercase[:6] + digits) for i in range(9)), d=d)
+            labels += ['corebot']*num_per_dga
+            
+            #Create different length domains using cryptolocker
+            crypto_lengths = range(8, 32)
+            segs_size = max(1, num_per_dga/len(crypto_lengths))
+            for crypto_length in crypto_lengths:
+                domains += cryptolocker.generate_domains(segs_size,
+                                                         seed_num=random.randint(1, 1000000),
+                                                         length=crypto_length)
+            
+            random.seed(time.time())
+            domains += lockyv2.generate_domains(num_per_dga, d=d, config=random.randint(1, 11))
+            labels += ['locky']*num_per_dga
+
+            random.seed(time.time())
+            domains += ramnit.generate_domains(num_per_dga, int(''.join(choice(ascii_uppercase[:6] + digits) for i in range(8)), 16))
+            labels += ['ramnit']*num_per_dga
+
+            domains += GameoverZeus.generate_domains(num_per_dga, d)
+            labels += ['zeus']*num_per_dga
+
+            domains += tinba.generate_domains(num_per_dga, d)
+            labels += ['tinba']*num_per_dga
+
+            domains += matsnu.generate_domains(num_per_dga, d)
+            labels += ['matsnu']*num_per_dga
+
+            domains += rovnix.generate_domains(num_per_dga, d)
+            labels += ['rovnix']*num_per_dga
+
+            domains += pushdo.generate_domains(num_per_dga, d)
+            labels += ['pushdo']*num_per_dga
+
         return domains, labels
 
     def get_external(self):
@@ -143,50 +132,10 @@ class Dataprocess():
         with open(os.path.join(external_path,'conficker.txt'), 'r') as f:
             for line in f:
                 conficker.append(tldextract.extract(line).domain)
+        print bcolors.WARNING + "Getting random " + str(self.num) + " conficker data values..." + bcolors.ENDC
+        random.shuffle(conficker)
         domains += conficker[:self.num]
         labels += ['conficker']*self.num
-        
-        zeus = []
-        with open(os.path.join(external_path,'zeus.txt'), 'r') as f:
-            for line in f:
-                zeus.append(tldextract.extract(line).domain)
-        domains += zeus[:self.num]
-        labels += ['zeus']*self.num
-        
-        tinba = []
-        with open(os.path.join(external_path,'tinba.txt'), 'r') as f:
-            for line in f:
-                tinba.append(tldextract.extract(line).domain)
-        domains += tinba[:self.num]
-        labels += ['tinba']*self.num
-
-        matsnu = []
-        with open(os.path.join(external_path,'matsnu.txt'), 'r') as f:
-            for line in f:
-                matsnu.append(tldextract.extract(line).domain)
-        domains += matsnu[:self.num]
-        labels += ['matsnu']*self.num
-        
-        rovnix = []
-        with open(os.path.join(external_path,'rovnix.txt'), 'r') as f:
-            for line in f:
-                rovnix.append(tldextract.extract(line).domain)
-        domains += rovnix[:self.num]
-        labels += ['rovnix']*self.num
-        
-        pushdo = []
-        with open(os.path.join(external_path,'pushdo.txt'), 'r') as f:
-            for line in f:
-                pushdo.append(tldextract.extract(line).domain)
-        domains += pushdo[:self.num]
-        labels += ['pushdo']*self.num
-
-        goz = []
-        with open(os.path.join(external_path,'goz.txt'), 'r') as f:
-            for line in f:
-                goz.append(tldextract.extract(line).domain)
-        domains += goz
-        labels += ['goz']*len(goz)
         
         return domains, labels
 
@@ -203,6 +152,7 @@ class Dataprocess():
             exdomains = self.get_alexa()
             domains += exdomains
             labels += ['benign']*len(exdomains)           
+            #todo Zip Time
             pickle.dump(zip(labels, domains), open(self.datafile2, 'w'))
 
     def get_data(self, type, force=False):

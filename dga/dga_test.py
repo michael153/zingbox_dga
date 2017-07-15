@@ -31,6 +31,10 @@ cols1= [line.rstrip('\n') for line in open('binary'+'cols.txt')]
 cols2= [line.rstrip('\n') for line in open('multi'+'cols.txt')]
 
 def subtest(binary_model, multi_model, data, cols1, cols2):
+    # print "COLS1: "
+    # print cols1
+    # print "\n\nCOLS2: "
+    # print cols2
     labels = ['Benign','Malicious']
 
     newvec = [0]*len(cols1)
@@ -45,7 +49,7 @@ def subtest(binary_model, multi_model, data, cols1, cols2):
     binary_prob = binary_model.predict_proba(np.array([newvec]))[0]
     type_dga = None  
 
-    labels =   ['zeus', 'corebot', 'goz', 'pushdo', 'ramnit', 'matsnu', 'banjori', 'tinba', 'rovnix', 'conficker', 'locky', 'cryptolocker']    
+    labels =   ['zeus', 'corebot', 'goz', 'pushdo', 'ramnit', 'matsnu', 'banjori', 'tinba', 'rovnix', 'conficker', 'locky', 'cryptolocker']
     newvec = [0]*len(cols2)
     for i in range(len(cols2)):
         if cols2[i] in data[0]:

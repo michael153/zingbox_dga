@@ -1,0 +1,40 @@
+{
+	"binary": {
+		"output_type": "sigmoid", 
+		"hidden_layers": [
+			{
+				"num": 500, 
+				"type": "relu"
+			}, 
+			{
+				"num": 100, 
+				"type": "sigmoid"
+			}, 
+			{
+				"num": 15, 
+				"type": "relu"
+			}
+		]
+	}, 
+	"multi": {
+		"output_type": "softmax", 
+		"hidden_layers": [
+			{
+				"num": 500, 
+				"type": "relu"
+			}, 
+			{
+				"num": 100, 
+				"type": "sigmoid"
+			},
+			{
+				"num": 30,
+				"type": "tanh"
+			},
+			{
+				"num": 20,
+				"type": "relu"
+			}
+		]
+	}
+}
